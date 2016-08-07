@@ -274,35 +274,6 @@ KOMA-script documentation for details.}]{fancyhdr}
 \newcommand*{\keywords}[1]{\def\keywordnames{#1}}
 
 %----------------------------------------------------------------------------------------
-%	DECLARATION PAGE DESIGN
-%----------------------------------------------------------------------------------------
-
-\newcommand{\authorshipname}{Declaration of Authorship}
-\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\authorshipname}{Declaration of Authorship} % Declaration of Authorship text for English countries
-\providecaptionname{german,ngerman,austrian,naustrian}{\authorshipname}{Eidesstattliche Erkl\"arung} % Declaration of Authorship text for Germanic countries
-
-\newenvironment{declaration}{
-	\checktoopen
-	\tttypeout{\authorshipname}
-	\thispagestyle{plain}
-	\null\vfil
-	{\noindent\huge\bfseries\authorshipname\par\vspace{10pt}}
-}{}
-
-%----------------------------------------------------------------------------------------
-%	DEDICATION PAGE DESIGN
-%----------------------------------------------------------------------------------------
-
-\newcommand\dedicatory[1]{
-	\checktoopen
-	\tttypeout{Dedicatory}
-	\null\vfil
-	\thispagestyle{plain}
-	\begin{center}{\Large\slshape #1}\end{center}
-	\vfil\null
-}
-
-%----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
@@ -326,6 +297,25 @@ KOMA-script documentation for details.}]{fancyhdr}
 }
 {
   \vfil\vfil\vfil\null
+}
+
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+\newcommand{\acknowledgementname}{Acknowledgements}
+\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish} {\acknowledgementname}{Acknowledgements} % Acknowledgement text for English countries
+\providecaptionname{german,ngerman,austrian,naustrian}{\acknowledgementname}{Danksagung} % Acknowledgement text for Germanic countries
+
+\NewDocumentEnvironment{acknowledgements}{}{%
+\checktoopen
+\tttypeout{\acknowledgementname}
+\thispagestyle{plain}
+\begin{center}{\huge\textit{\acknowledgementname}\par}\end{center}
+}
+{
+\vfil\vfil\null
 }
 
 %----------------------------------------------------------------------------------------
@@ -381,23 +371,6 @@ KOMA-script documentation for details.}]{fancyhdr}
 \ifbool{nolistspace}{\endgroup}{}
 }
 
-%----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS PAGE DESIGN
-%----------------------------------------------------------------------------------------
-
-\newcommand{\acknowledgementname}{Acknowledgements}
-\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish} {\acknowledgementname}{Acknowledgements} % Acknowledgement text for English countries
-\providecaptionname{german,ngerman,austrian,naustrian}{\acknowledgementname}{Danksagung} % Acknowledgement text for Germanic countries
-
-\NewDocumentEnvironment{acknowledgements}{}{%
-\checktoopen
-\tttypeout{\acknowledgementname}
-\thispagestyle{plain}
-\begin{center}{\huge\textit{\acknowledgementname}\par}\end{center}
-}
-{
-\vfil\vfil\null
-}
 
 %----------------------------------------------------------------------------------------
 
