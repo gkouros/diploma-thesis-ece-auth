@@ -261,6 +261,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \def\ttitle{}
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
 \newcommand*{\thesistitle}[1]{\def\@title{#1}\def\ttitle{#1}}
+\newcommand*{\thesisengtitle}[1]{\def\@engtitle{#1}\def\tengtitle{#1}}
 \newcommand*{\examiner}[1]{\def\examname{#1}}
 \newcommand*{\degree}[1]{\def\degreename{#1}}
 \renewcommand*{\author}[1]{\def\authorname{#1}}
@@ -314,19 +315,13 @@ KOMA-script documentation for details.}]{fancyhdr}
 	\null\vfil
 	\thispagestyle{plain}
 	\begin{center}
-	{\normalsize \MakeUppercase{\univname} \par} % University name in capitals
-	\bigskip
+
 	{\huge\textit{\abstractname} \par}
-	\bigskip
-	{\normalsize \facname \par} % Faculty name
-	{\normalsize \deptname \par} % Department name
-	\bigskip
-	{\normalsize \degreename\par} % Degree name
-	\bigskip
-	{\normalsize\bfseries \@title \par} % Thesis title
+	\bigskip\bigskip
+
+	{\Large\bfseries \@engtitle \par} % Thesis title
 	\medskip
-	{\normalsize \byname{} \authorname \par} % Author name
-	\bigskip
+
 	\end{center}
 }
 {
