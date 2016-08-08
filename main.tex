@@ -24,13 +24,13 @@ headsepline, % Uncomment to get a line under the header
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
 \usepackage{xltxtra}
-\usepackage{xgreek}
+\usepackage{xgreek}	
 \setmainfont[Mapping=tex-text]{GFS Didot}
 \usepackage{amsfonts}
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
+\usepackage[backend=biber]{biblatex}
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
-\addbibresource{example.bib} % The filename of the bibliography
+\addbibresource{references.bib} % The filename of the bibliography
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -121,13 +121,24 @@ headsepline, % Uncomment to get a line under the header
 \let\cleardoublepage\clearpage
 
 %----------------------------------------------------------------------------------------
+%	SUMMARY PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{summary}
+%\addchaptertocentry{\summaryname} % Add the summary to the table of contents
+<summary>
+
+\end{summary}
+
+
+%----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
 %\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-TODO: Add abstract\\[1cm]
+<abstract>\\[1cm]
 
 
 \begin{flushright}
@@ -154,7 +165,7 @@ TODO: Add abstract\\[1cm]
 να ασχοληθώ και να αγαπήσω τον τομέα της ρομποτικής, αλλά και ταυτόχρονα να βιώσω ανεκτίμητες εμπειρίες, μέσα σε ένα περιβάλλον εξερεύνησης, δημιουργικότητας και συλλογικότητας.\\
 \par
 Τέλος, θα ήθελα να εκφράσω ένα μεγάλο ευχαριστώ στους γονείς μου, Αντώνη και Κατερίνα, όπως
-επίσης και στα αδέρφια μου, Δημήτρη και Αλέξανδρο για την υπομονή και αμέριστη υποστήριξη τους, τόσο κατά την διάρκεια εκπόνησης της παρούσας διπλωματικής, αλλά και ακόμα περισσότερο, κατά την διάρκεια των σπουδών μου.
+επίσης και στα αδέρφια μου, Δημήτρη και Αλέξανδρο για την υπομονή και αμέριστη υποστήριξη τους, τόσο κατά την διάρκεια εκπόνησης της παρούσας διπλωματικής, αλλά και ακόμα περισσότερο, κατά την διάρκεια των σπουδών μου.\\
 
 
 \end{acknowledgements}
@@ -176,28 +187,28 @@ TODO: Add abstract\\[1cm]
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
 
-\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-
-\textbf{LAH} & \textbf{L}ist \textbf{A}bbreviations \textbf{H}ere\\
-\textbf{WSF} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or\\
-
-\end{abbreviations}
+%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+%
+%\textbf{LAH} & \textbf{L}ist \textbf{A}bbreviations \textbf{H}ere\\
+%\textbf{WSF} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or\\
+%
+%\end{abbreviations}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS
 %----------------------------------------------------------------------------------------
 
-\begin{symbols}{lll} % Include a list of Symbols (a three column table)
-
-$a$ & distance & \si{\meter} \\
-$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
-%Symbol & Name & Unit \\
-
-\addlinespace % Gap to separate the Roman symbols from the Greek
-
-$\omega$ & angular frequency & \si{\radian} \\
-
-\end{symbols}
+%\begin{symbols}{lll} % Include a list of Symbols (a three column table)
+%
+%$a$ & distance & \si{\meter} \\
+%$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
+%%Symbol & Name & Unit \\
+%
+%\addlinespace % Gap to separate the Roman symbols from the Greek
+%
+%$\omega$ & angular frequency & \si{\radian} \\
+%
+%\end{symbols}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS
@@ -235,7 +246,9 @@ $\omega$ & angular frequency & \si{\radian} \\
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\printbibliography[title=Βιβλιογραφία]
+\cite{Reference1}
+
+\printbibliography[title=Βιβλιογραφία,heading=bibintoc]
 
 %----------------------------------------------------------------------------------------
 
