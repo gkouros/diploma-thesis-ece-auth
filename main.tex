@@ -10,10 +10,10 @@
 
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
-oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+twoside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
 %chapterinoneline,% Have the chapter title next to the number in one single line
-english, % ngerman for German
-singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+english,
+%singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
 %liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
@@ -43,7 +43,7 @@ headsepline, % Uncomment to get a line under the header
 	bindingoffset=2cm, % Binding offset
 	top=1.5cm, % Top margin
 	bottom=1.5cm, % Bottom margin
-	%showframe,% show how the type block is set on the page
+	%showframe, show how the type block is set on the page
 }
 
 %----------------------------------------------------------------------------------------
@@ -118,12 +118,14 @@ headsepline, % Uncomment to get a line under the header
 \end{center}
 \end{titlepage}
 
+\let\cleardoublepage\clearpage
+
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+%\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
 TODO: Add abstract\\[1cm]
 
@@ -142,9 +144,18 @@ TODO: Add abstract\\[1cm]
 %----------------------------------------------------------------------------------------
 
 \begin{acknowledgements}
-\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+%\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
 
-The acknowledgments and the people to thank go here, don't forget to include your project advisor\ldots
+\par\bigskip
+Αρχικά θα ήθελα να ευχαριστήσω τον επιβλέπων καθηγητή μου, κ. Λουκά Πέτρου, για την συνεχή
+υποστήριξη και εμπιστοσύνη που μου έδειξε, τόσο στα πλαίσια εκπόνησης της παρούσας διπλωματικής, αλλά και κατά την συμμετοχή μου στην ομάδα P.A.N.D.O.R.A..\\
+\par
+Ένα ξεχωριστό ευχαριστώ, οφείλω στην ομάδα P.A.N.D.O.R.A., τους υπεύθυνους-επιβλέποντες καθηγητές και τους συμφοιτητές, μέλη της ομάδας, που μου έδωσαν την ευκαιρία να γνωρίσω,
+να ασχοληθώ και να αγαπήσω τον τομέα της ρομποτικής, αλλά και ταυτόχρονα να βιώσω ανεκτίμητες εμπειρίες, μέσα σε ένα περιβάλλον εξερεύνησης, δημιουργικότητας και συλλογικότητας.\\
+\par
+Τέλος, θα ήθελα να εκφράσω ένα μεγάλο ευχαριστώ στους γονείς μου, Αντώνη και Κατερίνα, όπως
+επίσης και στα αδέρφια μου, Δημήτρη και Αλέξανδρο για την υπομονή και αμέριστη υποστήριξη τους, τόσο κατά την διάρκεια εκπόνησης της παρούσας διπλωματικής, αλλά και ακόμα περισσότερο, κατά την διάρκεια των σπουδών μου.
+
 
 \end{acknowledgements}
 
@@ -152,10 +163,13 @@ The acknowledgments and the people to thank go here, don't forget to include you
 %	LIST OF CONTENTS/FIGURES/TABLES PAGES
 %----------------------------------------------------------------------------------------
 
+\renewcommand{\contentsname}{Πίνακας Περιεχομένων}
 \tableofcontents % Prints the main table of contents
 
+\renewcommand{\listfigurename}{Λίστα Σχημάτων}
 \listoffigures % Prints the list of figures
 
+\renewcommand{\listtablename}{Λίστα Πινάκων}
 \listoftables % Prints the list of tables
 
 %----------------------------------------------------------------------------------------
@@ -168,19 +182,6 @@ The acknowledgments and the people to thank go here, don't forget to include you
 \textbf{WSF} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or\\
 
 \end{abbreviations}
-
-%----------------------------------------------------------------------------------------
-%	PHYSICAL CONSTANTS/OTHER DEFINITIONS
-%----------------------------------------------------------------------------------------
-
-\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
-
-% The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
-
-	Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
-%Constant Name & $Symbol$ & $Constant Value$ with units\\
-
-\end{constants}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS
@@ -206,10 +207,11 @@ $\omega$ & angular frequency & \si{\radian} \\
 
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
 
-% Include the chapters of the thesis as separate files from the Chapters folder
-% Uncomment the lines as you write the chapters
+% change chapter label
+\renewcommand{\chaptername}{Κεφάλαιο}
 
-%\include{Chapters/Chapter1}
+% include chapters
+\include{Chapters/Chapter1}
 %\include{Chapters/Chapter2}
 %\include{Chapters/Chapter3}
 %\include{Chapters/Chapter4}
@@ -221,9 +223,10 @@ $\omega$ & angular frequency & \si{\radian} \\
 
 \appendix % Cue to tell LaTeX that the following "chapters" are Appendices
 
-% Include the appendices of the thesis as separate files from the Appendices folder
-% Uncomment the lines as you write the Appendices
+% change appendix label
+\renewcommand{\appendixname}{Παράρτημα}
 
+% include apendices
 \include{Appendices/AppendixA}
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
@@ -232,7 +235,7 @@ $\omega$ & angular frequency & \si{\radian} \\
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\printbibliography[heading=bibintoc]
+\printbibliography[title=Βιβλιογραφία]
 
 %----------------------------------------------------------------------------------------
 

@@ -175,7 +175,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\checktoopen}{% New command to move content to the next page which prints to the next odd page if twosided mode is active  
-\if@openright\cleardoublepage\else\clearpage\fi
+\clearpage
 \ifdef{\phantomsection}{\phantomsection}{}% The \phantomsection command is necessary for hyperref to jump to the correct page
 }
 
@@ -228,6 +228,7 @@
 }
 \ifoot{}% Inner footer
 \ofoot{}% Outer footer
+
 \pagestyle{thesisSimple}
 \providepairofpagestyles[thesisSimple]{thesis}{%
 \automark*[section]{}%
@@ -236,8 +237,10 @@
 	\ofoot[\ttitle/\authorname]{\ttitle/\authorname}
 	\ifoot[\today]{\today}
 }
+
 \pagestyle{thesis}
 \ifbool{headsepline}{\KOMAoption{headsepline}{true}}{}
+
 \PreventPackageFromLoading[\ClassError{\classname}{Package `fancyhdr' is
 incompatible\MessageBreak with this class}{The pagesyles are defined 
 using package `scrlayer-scrpage', please consult the\MessageBreak 
@@ -278,6 +281,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 %----------------------------------------------------------------------------------------
 
 \newcommand{\byname}{by}
+%\providecaptionname{greek}{\byname}{από}
 \providecaptionname{german,ngerman,austrian,naustrian}{\byname}{von}
 \providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\byname}{by}
 \newenvironment{abstract}{
@@ -304,15 +308,13 @@ KOMA-script documentation for details.}]{fancyhdr}
 %	ACKNOWLEDGEMENTS PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
-\newcommand{\acknowledgementname}{Acknowledgements}
-\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish} {\acknowledgementname}{Acknowledgements} % Acknowledgement text for English countries
-\providecaptionname{german,ngerman,austrian,naustrian}{\acknowledgementname}{Danksagung} % Acknowledgement text for Germanic countries
-
+\newcommand{\acknowledgementname}{Ευχαριστίες}
+\providecaptionname{greek} {\acknowledgementname}{Ευχαριστίες}
 \NewDocumentEnvironment{acknowledgements}{}{%
 \checktoopen
 \tttypeout{\acknowledgementname}
 \thispagestyle{plain}
-\begin{center}{\huge\textit{\acknowledgementname}\par}\end{center}
+\begin{center}{\huge{\acknowledgementname}\par}\end{center}
 }
 {
 \vfil\vfil\null
@@ -322,9 +324,8 @@ KOMA-script documentation for details.}]{fancyhdr}
 %	ABBREVIATIONS PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
-\newcommand{\abbrevname}{List of Abbreviations}
-\providecaptionname{english,british,american}{\abbrevname}{List of Abbreviations}
-\providecaptionname{ngerman,german,austrian,naustrian}{\abbrevname}{Abk\"urzungsverzeichnis}
+\newcommand{\abbrevname}{Λίστα Συντομογραφιών}
+\providecaptionname{greek}{\abbrevname}{Λίστα Συντομογραφιών}
 \NewDocumentEnvironment{abbreviations}{ m }{%
 	\ifbool{nolistspace}{\begingroup\singlespacing}{}
 	\ifbool{listtoc}{\addchap{\abbrevname}}{\addchap*{\abbrevname}}
@@ -335,31 +336,13 @@ KOMA-script documentation for details.}]{fancyhdr}
 \ifbool{nolistspace}{\endgroup}{}
 }
 
-%----------------------------------------------------------------------------------------
-%	PHYSICAL CONSTANTS PAGE DESIGN
-%----------------------------------------------------------------------------------------
-
-\newcommand{\constantsname}{Physical Constants}
-\providecaptionname{english,british,american}{\constantsname}{Physical Constants}
-\providecaptionname{ngerman,german,austrian,naustrian}{\constantsname}{Physikalische Konstanten}
-
-\NewDocumentEnvironment{constants}{ m }{%
-	\ifbool{nolistspace}{\begingroup\singlespacing}{}
-	\ifbool{listtoc}{\addchap{\constantsname}}{\addchap*{\constantsname}}
-	\begin{longtable}{#1}
-}{%
-\end{longtable}
-\addtocounter{table}{-1} % Don't count this table as one of the document tables
-\ifbool{nolistspace}{\endgroup}{}
-}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS PAGE DESIGN
 %----------------------------------------------------------------------------------------
 
-\newcommand{\symbolsname}{List of Symbols}
-\providecaptionname{english,british,american}{\symbolsname}{List of Symbols}
-\providecaptionname{ngerman,german,austrian,naustrian}{\symbolsname}{Symbolverzeichnis}
+\newcommand{\symbolsname}{Λίστα Συμβόλων}
+\providecaptionname{greek}{\symbolsname}{Λίστα Συμβόλων}
 
 \NewDocumentEnvironment{symbols}{ m }{%
 	\ifbool{nolistspace}{\begingroup\singlespacing}{}
@@ -382,9 +365,9 @@ bookmarksopen=true,
 bookmarksopenlevel=0,
 hypertexnames=false,
 colorlinks=true, % Set to false to disable coloring links
-citecolor=magenta, % The color of citations
-linkcolor=red, % The color of references to document elements (sections, figures, etc)
-urlcolor=magenta, % The color of hyperlinks (URLs)
+citecolor=blue, % The color of citations
+linkcolor=blue, % The color of references to document elements (sections, figures, etc)
+urlcolor=blue, % The color of hyperlinks (URLs)
 pdfstartview={FitV},
 unicode,
 breaklinks=true,
