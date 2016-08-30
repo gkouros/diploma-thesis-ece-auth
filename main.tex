@@ -23,10 +23,17 @@ english,
 headsepline, % Uncomment to get a line under the header
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
+%\usepackage{xltxtra}
+%\usepackage{xgreek}	
+%\setmainfont[Mapping=tex-text]{GFS Didot}
+%\usepackage{amsfonts}
+
+\usepackage[cm-default]{fontspec}
+\usepackage{xunicode}
 \usepackage{xltxtra}
-\usepackage{xgreek}	
-\setmainfont[Mapping=tex-text]{GFS Didot}
-\usepackage{amsfonts}
+\usepackage{xgreek}
+\setmainfont[Mapping=tex-text]{DejaVuSerif}
+
 \usepackage[backend=biber]{biblatex}
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
@@ -52,7 +59,7 @@ headsepline, % Uncomment to get a line under the header
 
 \thesistitle{Ανάπτυξη Αυτόνομου Ρομποτικού Οχήματος 4WS}
 \thesisengtitle{Development of an Autonomous 4WS Robotic Vehicle}
-\supervisor{Πέτρου Λουκάς\\ Αναπληρωτής Καθηγητής}
+\supervisor{Πέτρου Λουκάς\\ Αναπλ. Καθηγητής}
 \degree{Δίπλωμα Ηλεκτρολόγου Μηχανικού και Μηχανικού Ηλεκτρονικών Υπολογιστών}
 \author{Κούρος Γεώργιος}
 
@@ -83,9 +90,9 @@ headsepline, % Uncomment to get a line under the header
 % University/department logo - uncomment to place it
 \includegraphics{images/auth_logo.png}\\[0.2cm]
 % university name
-{\Large \univname}\\ [0.2cm]
+{\large \univname}\\ [0.2cm]
 % faculty name
-{\Large \facname}\\ [0.2cm]
+{\large \facname}\\ [0.2cm]
 % department name
 \deptname\\
 % group of department name
@@ -156,16 +163,16 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{acknowledgements}
 %\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-
-\par\bigskip
-Αρχικά θα ήθελα να ευχαριστήσω τον επιβλέπων καθηγητή μου, κ. Λουκά Πέτρου, για την συνεχή
-υποστήριξη και εμπιστοσύνη που μου έδειξε, τόσο στα πλαίσια εκπόνησης της παρούσας διπλωματικής, αλλά και κατά την συμμετοχή μου στην ομάδα P.A.N.D.O.R.A..\\
-\par
-Ένα ξεχωριστό ευχαριστώ, οφείλω στην ομάδα P.A.N.D.O.R.A., τους υπεύθυνους-επιβλέποντες καθηγητές και τους συμφοιτητές, μέλη της ομάδας, που μου έδωσαν την ευκαιρία να γνωρίσω,
-να ασχοληθώ και να αγαπήσω τον τομέα της ρομποτικής, αλλά και ταυτόχρονα να βιώσω ανεκτίμητες εμπειρίες, μέσα σε ένα περιβάλλον εξερεύνησης, δημιουργικότητας και συλλογικότητας.\\
-\par
-Τέλος, θα ήθελα να εκφράσω ένα μεγάλο ευχαριστώ στους γονείς μου, Αντώνη και Κατερίνα, όπως
-επίσης και στα αδέρφια μου, Δημήτρη και Αλέξανδρο για την υπομονή και αμέριστη υποστήριξη τους, τόσο κατά την διάρκεια εκπόνησης της παρούσας διπλωματικής, αλλά και ακόμα περισσότερο, κατά την διάρκεια των σπουδών μου.\\
+%
+%\par\bigskip
+%Αρχικά θα ήθελα να ευχαριστήσω τον επιβλέπων καθηγητή μου, κ. Λουκά Πέτρου, για την συνεχή
+%υποστήριξη και εμπιστοσύνη που μου έδειξε, τόσο στα πλαίσια εκπόνησης της παρούσας διπλωματικής, αλλά και κατά την συμμετοχή μου στην ομάδα P.A.N.D.O.R.A..\\
+%\par
+%Ένα ξεχωριστό ευχαριστώ, οφείλω στην ομάδα P.A.N.D.O.R.A., τους υπεύθυνους-επιβλέποντες καθηγητές και τους συμφοιτητές, μέλη της ομάδας, που μου έδωσαν την ευκαιρία να γνωρίσω,
+%να ασχοληθώ και να αγαπήσω τον τομέα της ρομποτικής, αλλά και ταυτόχρονα να βιώσω ανεκτίμητες εμπειρίες, μέσα σε ένα περιβάλλον εξερεύνησης, δημιουργικότητας και συλλογικότητας.\\
+%\par
+%Τέλος, θα ήθελα να εκφράσω ένα μεγάλο ευχαριστώ στους γονείς μου, Αντώνη και Κατερίνα, όπως
+%επίσης και στα αδέρφια μου, Δημήτρη και Αλέξανδρο για την υπομονή και αμέριστη υποστήριξη τους, τόσο κατά την διάρκεια εκπόνησης της παρούσας διπλωματικής, αλλά και ακόμα περισσότερο, κατά την διάρκεια των σπουδών μου.\\
 
 
 \end{acknowledgements}
@@ -222,11 +229,12 @@ headsepline, % Uncomment to get a line under the header
 \renewcommand{\chaptername}{Κεφάλαιο}
 
 % include chapters
-\include{Chapters/Chapter1}
-%\include{Chapters/Chapter2}
-%\include{Chapters/Chapter3}
-%\include{Chapters/Chapter4}
-%\include{Chapters/Chapter5}
+\include{Chapters/Chapter1/Chapter1}
+\include{Chapters/Chapter2/Chapter2}
+\include{Chapters/Chapter3/Chapter3}
+\include{Chapters/Chapter4/Chapter4}
+\include{Chapters/Chapter5/Chapter5}
+\include{Chapters/Chapter6/Chapter6}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
