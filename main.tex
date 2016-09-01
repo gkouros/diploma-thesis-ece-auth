@@ -23,16 +23,19 @@ english,
 headsepline, % Uncomment to get a line under the header
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
-%\usepackage{xltxtra}
-%\usepackage{xgreek}	
-%\setmainfont[Mapping=tex-text]{GFS Didot}
-%\usepackage{amsfonts}
-
-\usepackage[cm-default]{fontspec}
-\usepackage{xunicode}
 \usepackage{xltxtra}
-\usepackage{xgreek}
-\setmainfont[Mapping=tex-text]{DejaVuSerif}
+\usepackage{xgreek}	
+\setmainfont[Mapping=tex-text]{GFS Didot}
+\usepackage{amsfonts}
+\usepackage[Greek,Latin]{ucharclasses}
+\setTransitionsForGreek{\setlanguage{greek}}{\setlanguage{american}}
+\setmainfont[Kerning=On,Mapping=tex-text]{Linux Libertine O}
+
+%\usepackage[cm-default]{fontspec}
+%\usepackage{xunicode}
+%\usepackage{xltxtra}
+%\usepackage{xgreek}
+%\setmainfont[Mapping=tex-text]{DejaVuSerif}
 
 \usepackage[backend=biber]{biblatex}
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
@@ -46,11 +49,11 @@ headsepline, % Uncomment to get a line under the header
 \geometry{
 	paper=a4paper, % Change to letterpaper for US letter
 	inner=2.5cm, % Inner margin
-	outer=3.8cm, % Outer margin
-	bindingoffset=2cm, % Binding offset
+	outer=2.5cm, % Outer margin
+	bindingoffset=0cm, % Binding offset
 	top=1.5cm, % Top margin
 	bottom=1.5cm, % Bottom margin
-	%showframe, show how the type block is set on the page
+	%showframe %show how the type block is set on the page
 }
 
 %----------------------------------------------------------------------------------------
@@ -80,6 +83,8 @@ headsepline, % Uncomment to get a line under the header
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
 \pagestyle{plain}
 
+%\sloppy % fixes overflow of text outside right boundary
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -88,7 +93,8 @@ headsepline, % Uncomment to get a line under the header
 \begin{center}
 
 % University/department logo - uncomment to place it
-\includegraphics{images/auth_logo.png}\\[0.2cm]
+\input{Figures/auth_logo.pdf_tex}\\[0.2cm]
+
 % university name
 {\large \univname}\\ [0.2cm]
 % faculty name
@@ -186,6 +192,7 @@ headsepline, % Uncomment to get a line under the header
 
 \renewcommand{\listfigurename}{Λίστα Σχημάτων}
 \listoffigures % Prints the list of figures
+\renewcommand{\figurename}{Σχήμα}
 
 \renewcommand{\listtablename}{Λίστα Πινάκων}
 \listoftables % Prints the list of tables

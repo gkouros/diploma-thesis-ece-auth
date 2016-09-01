@@ -255,9 +255,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="158.80775"
-     inkscape:cy="147.80425"
+     inkscape:zoom="3.959798"
+     inkscape:cx="204.32984"
+     inkscape:cy="115.50728"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -541,42 +541,46 @@
          sodipodi:role="line" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="373.5864"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="375.5864"
        y="238.7373"
        id="text6682"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6684"
-         x="373.5864"
+         x="375.5864"
          y="238.7373"
-         style="font-weight:bold">E<tspan
-   style="font-size:3.75px"
-   id="tspan7634">da</tspan></tspan></text>
+         style="font-weight:bold;font-size:10px;">E<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan4322">da</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="384.96576"
-       y="260.242"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="384.20813"
+       y="261.75723"
        id="text7638"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7640"
-         x="384.96576"
-         y="260.242"
-         style="font-weight:bold">Ep</tspan></text>
+         x="384.20813"
+         y="261.75723"
+         style="font-weight:bold;font-size:10px">E<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan4324">p</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="363.5372"
-       y="280.42059"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="361.01181"
+       y="284.20868"
        id="text7642"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7644"
-         x="363.5372"
-         y="280.42059"
-         style="font-weight:bold">Ey</tspan></text>
+         x="361.01181"
+         y="284.20868"
+         style="font-weight:bold;font-size:10px">E<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan4328">y</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.25px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -588,15 +592,15 @@
          id="tspan7648"
          x="267.28717"
          y="355.9563"
-         style="font-weight:bold;font-size:7.5px">θ</tspan></text>
+         style="font-weight:bold;font-size:10px">θ</tspan></text>
     <path
        d="m 363.79397,232.7479 4.24612,0.39403 -2.09247,3.71715"
        style="fill:none;stroke:#231f20;stroke-width:0.90679681;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
        id="path80"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#1e1e1e;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.2, 0.2;stroke-dashoffset:0.16;stroke-opacity:1;marker-start:url(#marker11014)"
-       d="m 347.52546,243.95337 c -0.73667,-1.59666 -1.2353,-2.20798 -2.30441,-2.73057"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#1e1e1e;stroke-width:0.31997657;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.31997657,15.35887527;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker11014)"
+       d="m 355.91132,239.15574 c -1.15783,-2.60025 -1.94154,-3.59581 -3.62188,-4.44688"
        id="path8424"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -607,21 +611,21 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="346.83966"
-       y="247.99643"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Courier New';-inkscape-font-specification:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="358.22244"
+       y="229.93381"
        id="text6676"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6678"
-         x="346.83966"
-         y="247.99643"
-         style="font-weight:bold;font-size:5px">E<tspan
-   style="font-size:2.5px"
+         x="358.22244"
+         y="229.93381"
+         style="font-weight:bold;font-size:10px">E<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
    id="tspan7636">o</tspan></tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#1e1e1e;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 344.54932,241.03556 c 1.04966,0.18948 1.96534,0.92883 2.52232,1.78571"
+       style="fill:none;fill-rule:evenodd;stroke:#1e1e1e;stroke-width:0.6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.6,0.6;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 350.28762,233.08199 c 2.19423,0.49778 4.10838,2.44004 5.27271,4.69104"
        id="path13900"
        inkscape:connector-curvature="0" />
     <text
@@ -635,7 +639,9 @@
          x="405.17377"
          y="168.92761"
          id="tspan14556"
-         style="font-weight:bold">X'</tspan></text>
+         style="font-weight:bold">X<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan4318">'</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:'Courier New';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Courier New';font-stretch:normal;font-variant:normal;"
@@ -647,7 +653,9 @@
          id="tspan14224"
          x="429.41742"
          y="316.91495"
-         style="font-weight:bold">Y'</tspan></text>
+         style="font-weight:bold">Y<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan4320">'</tspan></tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#1e1e1e;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-end:"
        d="m 362.62109,218.67762 c 7.43961,9.57809 10.6066,21.88844 10.6066,33.0825 0.24309,0.22395 0.0845,0.50669 0.12627,0.75761"
