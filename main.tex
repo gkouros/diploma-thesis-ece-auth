@@ -40,6 +40,15 @@ headsepline, % Uncomment to get a line under the header
 \usepackage[backend=biber]{biblatex}
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
+\usepackage{subfig}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\captionsetup[table]{name=Πίνακας}
+
+\renewcommand*\descriptionlabel[1]{\hspace\leftmargin$#1$}
+
 \addbibresource{references.bib} % The filename of the bibliography
 
 %----------------------------------------------------------------------------------------
@@ -151,9 +160,6 @@ headsepline, % Uncomment to get a line under the header
 \begin{abstract}
 %\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-<abstract>\\[1cm]
-
-
 \begin{flushright}
 {\normalsize Kouros Georgios \par} % Author name	
 {\normalsize Electrical and Computer Engineering Department \par} % Department name
@@ -264,8 +270,6 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-
-\cite{Reference1}
 
 \printbibliography[title=Βιβλιογραφία,heading=bibintoc]
 

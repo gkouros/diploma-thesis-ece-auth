@@ -187,7 +187,7 @@
 
 \renewcommand{\abovechapterspace}{\vspace*{10pt}} % Reduce the whitespace above a chapter heading
 
-\setcounter{tocdepth}{3} % The depth to which the document sections are printed to the table of contents
+\setcounter{tocdepth}{2} % The depth to which the document sections are printed to the table of contents
 \providecommand\addchaptertocentry[1]{%
 \addcontentsline{toc}{chapter}{#1}%
 }
