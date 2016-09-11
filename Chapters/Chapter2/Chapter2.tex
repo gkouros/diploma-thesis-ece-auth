@@ -522,7 +522,7 @@ O ελεγκτής \textit{EPOS 24/1}, όπως προαναφέρθηκε, επ
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Chapters/Chapter2/Figures/drivetrain.png}
-	\caption{Σύστημα Μετάδοσης Κίνησης (Drivetrain) της ρομποτικής πλατφόρμας \textit{Monstertruck}}.
+	\caption{Σύστημα Μετάδοσης Κίνησης (Drivetrain) της ρομποτικής πλατφόρμας \textit{Monstertruck.}}
 	\label{fig:drivetrain}
 \end{figure}
 
@@ -675,48 +675,423 @@ O ελεγκτής \textit{EPOS 24/1}, όπως προαναφέρθηκε, επ
 
 \begin{align}
 \begin{split}
-	\delta_{LF} &= -0.0082 \theta_{F}^5 - 0.0162 \theta_{F}^4 - 0.00605 \theta_{F}^3 - 0.0192 \theta_{F}^2 + 0.6691 \theta_{F}\\
-	\delta_{LR} &= 0.0082 \theta_{R}^5 + 0.0162 \theta_{R}^4 + 0.00605 \theta_{R}^3 + 0.0192 \theta_{R}^2 - 0.6691 \theta_{R}\\
-	\delta_{RF} &= 0.0126 \delta_{LF}^5 - 0.0432 \delta_{LF}^4 + 0.0067 \delta_{LF}^3 - 0.0851 \delta_{LF}^2 + 0.9997 \delta_{LF} + 0.0035\\
-	\delta_{RR} &= -0.0126 \delta_{LR}^5 + 0.0432 \delta_{LR}^4 - 0.0067 \delta_{LR}^3 + 0.0851 \delta_{LR}^2 - 0.9997 \delta_{LR} - 0.0035\\
-	\theta_{F} &= 0.5334 \delta_{LF}^5 + 0.2997 \delta_{LF}^4 + 0.2857 \delta_{LF}^3 + 0.0556 \delta_{LF}^2 + 1.4951 \delta_{LF}\\
-	\theta_{R} &= - 0.5334 \delta_{LR}^5 - 0.2997 \delta_{LR}^4 - 0.2857 \delta_{LR}^3 - 0.0556 \delta_{LR}^2 - 1.4951 \delta_{LR}\\
+	\delta_{LF} &= -0.0082\;\cdot \theta_{F}^5 - 0.0162\;\cdot \theta_{F}^4 - 0.00605\;\cdot \theta_{F}^3 - 0.0192\;\cdot \theta_{F}^2 + 0.6691\;\cdot \theta_{F}\\
+	\delta_{LR} &= 0.0082\;\cdot \theta_{R}^5 + 0.0162\;\cdot \theta_{R}^4 + 0.00605\;\cdot \theta_{R}^3 + 0.0192\;\cdot \theta_{R}^2 - 0.6691\;\cdot \theta_{R}\\
+	\delta_{RF} &= 0.0126\;\cdot \delta_{LF}^5 - 0.0432\;\cdot \delta_{LF}^4 + 0.0067\;\cdot \delta_{LF}^3 - 0.0851\;\cdot \delta_{LF}^2 + 0.9997\;\cdot \delta_{LF} + 0.0035\\
+	\delta_{RR} &= -0.0126\;\cdot \delta_{LR}^5 + 0.0432\;\cdot \delta_{LR}^4 - 0.0067\;\cdot \delta_{LR}^3 + 0.0851\;\cdot \delta_{LR}^2 - 0.9997\;\cdot \delta_{LR} - 0.0035\\
+	\theta_{F} &= 0.5334\;\cdot \delta_{LF}^5 + 0.2997\;\cdot \delta_{LF}^4 + 0.2857\;\cdot \delta_{LF}^3 + 0.0556\;\cdot \delta_{LF}^2 + 1.4951\;\cdot \delta_{LF}\\
+	\theta_{R} &= - 0.5334\;\cdot \delta_{LR}^5 - 0.2997\;\cdot \delta_{LR}^4 - 0.2857\;\cdot \delta_{LR}^3 - 0.0556\;\cdot \delta_{LR}^2 - 1.4951\;\cdot \delta_{LR}\\
 \end{split}
 \end{align}
 
-όπου:
+όπου
 
 \begin{description}
-	\item[\theta_{F}] είναι η γωνία στρέψης του μπροστινού σερβοκινητήρα
-	\item[\theta_{R}] είναι η γωνία στρέψης του πίσω σερβοκινητήρα
-	\item[\delta_{LF}] είναι η γωνία στρέψης του μπροστινού αριστερού τροχού
-	\item[\delta_{RF}] είναι η γωνία στρέψης του μπροστινού δεξιού τροχού
-	\item[\delta_{LR}] είναι η γωνία στρέψης του πίσω αριστερού τροχού
-	\item[\delta_{RR}] είναι η γωνία στρέψης του πίσω δεξιού τροχού
+	\item[\theta_{F}:] γωνία στρέψης του μπροστινού σερβοκινητήρα
+	\item[\theta_{R}:] γωνία στρέψης του πίσω σερβοκινητήρα
+	\item[\delta_{LF}:] γωνία στρέψης του μπροστινού αριστερού τροχού
+	\item[\delta_{RF}:] γωνία στρέψης του μπροστινού δεξιού τροχού
+	\item[\delta_{LR}:] γωνία στρέψης του πίσω αριστερού τροχού
+	\item[\delta_{RR}:] γωνία στρέψης του πίσω δεξιού τροχού
 \end{description}
 
 
+\newpage
 %----------------------------------------------------------------------------------------
 %	SECTION 3: Kinematic Analysis
 %----------------------------------------------------------------------------------------
 \section{Κινηματική Ανάλυση}
-Ένα σύγχρονο αυτοκίνητο όχημα, στην πλειονότητα των περιπτώσεων, για να κινηθεί, περιλαμβάνει έναν κινητήρα, ο οποίος είναι υπεύθυνος για την περιστροφική κίνηση των μπροστινών (μπροστινοκίνηση), πίσω (πισωκίνηση) ή όλων (τετρακίνηση) των τροχών. Επίσης, περιλαμβάνει ένα σύστημα στρέψης των τροχών, είτε μπροστινών (μπροστινοδιεύθυνση), είτε πισινών (πισωδιεύθυνση), είτε και των τεσσάρων (τετραδιεύθυνση), έτσι ώστε να μπορεί να εκτελεί στροφές και να μην κινείται μόνο ευθύγραμμα.
+Ένα σύγχρονο αυτοκίνητο όχημα, στην πλειονότητα των περιπτώσεων, για να κινηθεί, περιλαμβάνει έναν κινητήρα, ο οποίος είναι υπεύθυνος για την περιστροφική κίνηση των μπροστινών (μπροστινοκίνηση), πίσω (πισωκίνηση) ή όλων (τετρακίνηση) των τροχών. Επίσης, περιλαμβάνει ένα σύστημα στρέψης των τροχών, είτε μπροστινών (μπροστινοδιεύθυνση), είτε πισινών (πισωδιεύθυνση), είτε και των τεσσάρων (τετραδιεύθυνση), έτσι ώστε να μπορεί να κινείται σε καμπύλες τροχιές και όχι μόνο ευθύγραμμα.
 
 \bigskip
-Μέσω της κινηματικής ανάλυσης, ενός τροχοφόρου οχήματος, γίνεται η προσπάθεια να μεταφραστούν οι κινήσεις των τροχών σε κινήσεις του οχήματος, για την περίπτωση της ευθείας κινηματικής ανάλυσης. Αντίθετα, στην αντίστροφη κινηματική ανάλυση, γίνεται προσπάθεια να μεταφραστούν οι κινήσεις του οχήματος σε κινήσεις των τροχών του.
+Η \textit{κινηματική ανάλυση} του οχήματος, που παρουσιάζεται στην παρούσα ενότητα, προσπαθεί να περιγράψει την επίδραση του ελέγχου κίνησης των τροχών του, στην κίνηση του οχήματος και στις μεταβολές της κατάστασης του. Η \textit{κατάσταση} ενός άκαμπτου (rigid) ρομποτικού οχήματος, συνήθως περιγράφεται, από έξι μεταβλητές, τις καρτεσιανές συντεταγμένες του x, y, z και τις γωνίες Euler yaw, pitch, roll, ως προς ένα αυθαίρετο εξωτερικό σύστημα συντεταγμένων. Στην προκειμένη περίπτωση, το πρόβλημα που εξετάζεται, περιορίζεται σε επίπεδο περιβάλλον και επομένως, ως \textit{κατάστασης} του οχήματος, λαμβάνεται, η \textit{πόζα} του, η οποία περιγράφεται από τις καρτεσιανές συνταγμένες του $x, y$ στο επίπεδο και τον προσανατολισμό του $\theta$, ως προς αυθαίρετο εξωτερικό σύστημα συντεταγμένων.
 
-\subsection{Κινηματικό Ackermann}
-Τα συμβατικά αυτοκίνητα, που κυκλοφορούν τις τελευταίες δεκαετίες χρησιμοποιούν το λεγόμενο κινηματικό Ackermann. Το κινηματικό Ackermann, ορίζει μία συνθήκη, την λεγόμενη συνθήκη Ackermann, μεταξύ των τροχών στρέψης ενός αυτοκινήτου, που αν ικανοποιείται προβλέπει την κίνηση των τροχών, χωρίς ολίσθηση, σε χαμηλές ταχύτητες, όπου δεν λαμβάνουν χώρα δυναμικά φαινόμενα.
-
-
-
+\begin{equation}
+	πόζα s = [x\;\; y\;\; \theta]^T
+\end{equation}
 
 
+\textbf{TODO: Λίγα γενικά για κίνηση στο επίπεδο, ταχύτητες κλπ και τροχιά, ως σύνολο κυκλικών τροχιών}
+
+
+\subsection{Κινηματικό Μοντέλο Ackermann}
+Τα συμβατικά αυτοκίνητα, που κυκλοφορούν στην αγορά, χρησιμοποιούν το λεγόμενο \textit{κινηματικό Ackermann}. Το \textit{κινηματικό Ackermann}, ορίζει μία συνθήκη, την λεγόμενη \textit{συνθήκη Ackermann}, μεταξύ των τροχών στρέψης ενός αυτοκινήτου, που αν ικανοποιείται προβλέπει την κίνηση των τροχών, χωρίς ολίσθηση, σε χαμηλές ταχύτητες, όπου δεν λαμβάνονται υπόψιν δυναμικά φαινόμενα \cite{vehicle_dynamics}. Η συνθήκη Ackermann, υποστηρίζει ότι για να κινείται ένα τετράτροχο όχημα χωρίς να ολισθαίνουν οι τροχοί του, θα πρέπει οι κάθετοι, στους τροχούς, άξονες να τέμνονται σε ένα κοινό σημείο, το οποίο ονομάζεται Στιγμιαίο Κέντρο Περιστροφής (Instantaneous Center of Rotation - ICR) και αποτελεί το κέντρο της στιγμιαίας κυκλικής τροχιάς που ακολουθεί το όχημα.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Chapters/Chapter2/Figures/ackermann_model.png}
+	\caption{Κινηματικό Μοντέλο Ackermann.}
+	\label{fig:ackermann_model}
+\end{figure}
+
+\bigskip
+Λαμβάνοντας υπόψιν το σχήμα \ref{fig:ackermann_model} προκύπτουν οι γωνίες στρέψης των τροχών ως
+
+\begin{equation}
+	\tan(\delta_i) = \frac{l}{R - \frac{w}{2}}
+	\text{\;\;ή\;\;}	
+	\cot(\delta_i) = \frac{R - \frac{w}{2}}{l}
+	\label{eq:ackermann_inner_steering_angle}
+\end{equation}
+
+\begin{equation}
+	\tan(\delta_o) = \frac{l}{R + \frac{w}{2}}
+	\text{\;\;ή\;\;}
+	\cot(\delta_o) = \frac{R + \frac{w}{2}}{l}
+	\label{eq:ackermann_outer_steering_angle}
+\end{equation}
+
+Αφαιρώντας τις εξισώσεις (\ref{eq:ackermann_inner_steering_angle}), (\ref{eq:ackermann_outer_steering_angle}), προκύπτει η \textit{συνθήκη Ackermann}.
+
+\begin{equation}
+	\cot{\delta_i} - \cot{\delta_o} = w / l
+	\label{eq:ackermann_condition}
+\end{equation}
+
+
+\noindent
+όπου
+\begin{description}
+	\item[\delta_i:] γωνία στρέψης εσωτερικού (inner), ως προς την στροφή, τροχού.
+	\item[\delta_o:] γωνία στρέψης εξωτερικού (outer), ως προς την στροφή, τροχού.
+	\item[L:] μεταξόνιο (wheelbase).
+	\item[w:] μετατρόχιο (track).
+	\item[R:] ακτίνα τροχιάς που εκτελεί το μεσαίο σημείο μεταξύ των πίσω τροχών.
+\end{description}
+
+\bigskip
+Το όχημα, που παρουσιάζεται στο σχήμα \ref{fig:ackermann_model}, πραγματοποιεί μία κυκλική τροχιά γύρω από το \textit{Στιγμιαίο Κέντρο Περιστροφής} Ο. Αν λάβοουμε ως σημείο αναφοράς το κέντρο Μ του πίσω άξονα, τότε το όχημα εκτελεί μία κυκλική τροχιά, ακτίνας $R$, γύρω από το σημείο O. Η ακτίνα R, μπορεί να υπολογιστεί προσθέτοντας τις εξισώσεις (\ref{eq:ackermann_inner_steering_angle}), (\ref{eq:ackermann_outer_steering_angle}), ως
+
+\begin{equation}
+	R = l \frac{\cot{\delta_i} + \cot{\delta_o}}{2} = l \cot{\delta} = \frac{l}{\tan{\delta}}
+	\label{eq:ackermann_rear_middle_turning_radius}
+\end{equation}
+
+\noindent
+όπου $\delta$ είναι ισοδύναμη γωνία στρέψης ποδηλάτου, με ίδιο μεταξόνιο και για ακτίνα τροχιάς R (σχήμα \ref{fig:ackermann_bicylce_model}). 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Chapters/Chapter2/Figures/ackermann_bicycle_model.png}
+	\caption{Ισοδύναμο μοντέλο ποδηλάτου Ackermann.}
+	\label{fig:ackermann_bicylce_model}
+\end{figure}
+
+\bigskip
+Αντίστοιχα, ο υπολογισμός της ακτίνας $R_c$ του κέντρου μάζας του οχήματος, με βάση το σχήμα \ref{fig:ackermann_model}, προκύπτει 
+
+\begin{equation}
+	R_c = \sqrt{R^2 + l_R^2} = \sqrt{R^2 + (l - l_F)^2}
+	\label{eq:ackermann_center_mass_turning_radius}
+\end{equation}
+
+\noindent
+όπου, $l_R$ και $l_F$ είναι η απόσταση του κέντρου μάζας του οχήματος από τον άξονα των μπροστινών και πίσω τροχών αντίστοιχα, όπου $l_R + l_F = l$.
+
+\bigskip
+Κατά την κίνηση σε κυκλική τροχιά, κάθε τροχός του οχήματος διαγράφει διαφορετική τροχιά από τους υπόλοιπους. Για παράδειγμα, στο σχήμα \ref{fig:ackermann_model}, για να καταστεί δυνατή η εκτέλεση της τροχιάς, γύρω από το Ο, χωρίς ολίσθηση, θα πρέπει οι τροχοί να κινούνται με διαφορετική γραμμική ταχύτητα, και άρα, καθένας, να περιστρέφονται με διαφορετική γωνιακή ταχύτητα, ως προς την άξονα τους, ανάλογη της ακτίνας της τροχιάς που διαγράφει. Επίσης, οι τροχοί κινούνται με την ίδια γωνιακή ταχύτητα $\dot\theta$, ως προς το Στιγμιαίο Κέντρο Περιστροφής Ο.
+
+\begin{equation}
+	\dot\theta_{ir} = \dot\theta_{or} = \dot\theta_{if} = \dot\theta_{of} = \dot\theta
+	\label{eq:theta_dot}
+\end{equation}
+
+\noindent
+όπου
+\begin{description}
+	\item[ir:] εσωτερικός πισινός τροχός
+	\item[or:] εξωτερικός πισινός τροχός
+	\item[if:] εσωτερικός μπροστινός τροχός
+	\item[of:] εξωτερικός μπροστινός τροχός
+\end{description}
+
+
+Αντικαθιστώντας στην εξίσωση (\ref{eq:theta_dot}), την σχέση μεταξύ γωνιακής και γραμμικής ταχύτητας
+	
+\begin{equation}
+	v = \dot\theta \cdot R
+	\label{eq:v_theta}
+\end{equation}	
+
+\noindent
+η εξίσωση (\ref{eq:theta_dot}) μετασχηματίζεται στη μορφή
+	
+\begin{equation}	
+	\frac{v_{ir}}{R_{ir}} = \frac{v_{or}}{R_{or}} = \frac{v_{if}}{R_{if}} = \frac{v_{of}}{R_{of}} = \dot\theta = \frac{v_c}{R_c}
+	\label{eq:theta_dot_2}
+\end{equation}
 
 
 
+\bigskip
+Επομένως, με βάση τις δύο παραπάνω παρατηρήσεις, και την σχέση (\ref{eq:theta_dot_2}) μπορεί να υπολογιστεί η γραμμική ταχύτητα κάθε τροχού, ως
+
+\begin{align}
+	v_{if} &= \dot\theta \cdot R_{if} = \dot\theta \cdot \sqrt{l^2 + (R - \frac{w}{2})^2}
+	\label{eq:ack_vif}\\
+	v_{of} &= \dot\theta \cdot R_{of} = \dot\theta \cdot \sqrt{l^2 + (R + \frac{w}{2})^2}
+	\label{eq:ack_vof}\\
+	v_{ir} &= \dot\theta \cdot R_{ir} = \dot\theta \cdot (R - \frac{w}{2})
+	\label{eq:ack_vir}\\
+	v_{or} &= \dot\theta \cdot R_{or} = \dot\theta \cdot (R + \frac{w}{2})
+	\label{eq:ack_vor}
+\end{align}
+
+\bigskip
+Χρησιμοποιώντας, τις εξισώσεις (\ref{eq:ack_vir}) - (\ref{eq:ack_vof}), όπως επίσης και την σχέση μεταξύ γραμμικής ταχύτητας $v$, περιστροφικής ταχύτητας $\omega$
+\begin{equation}
+	v = \omega \cdot r
+	\label{eq:v_omega}
+\end{equation}
+
+\noindent
+όπου
+\begin{description}
+	\item[\textit{r}:] το μήκος της ακτίνας των τροχών.
+\end{description}
+
+\noindent
+προκύπτουν οι περιστροφικές ταχύτητες των τροχών, ως
+
+\begin{align}
+	\omega_{ir} &= \frac{\dot\theta}{r} \cdot R_{ir} = \frac{\dot\theta}{r} \cdot (R - \frac{w}{2})
+	\label{eq:ack_wir}\\
+	\omega_{or} &= \frac{\dot\theta}{r} \cdot R_{or} = \frac{\dot\theta}{r} \cdot (R + \frac{w}{2})
+	\label{eq:ack_wor}\\
+	\omega_{if} &= \frac{\dot\theta}{r} \cdot R_{if} = \frac{\dot\theta}{r} \cdot \sqrt{l^2 + (R - \frac{w}{2})^2}
+	\label{eq:ack_wif}\\
+	\omega_{of} &= \frac{\dot\theta}{r} \cdot R_{of} = \frac{\dot\theta}{r} \cdot \sqrt{l^2 + (R + \frac{w}{2})^2}
+	\label{eq:ack_wof}
+\end{align}
 
 
-\subsection{Κινηματικό 4WS}
-\subsection{Κινηματική Ανάλυση Οχήματος \textit{Monstertruck}}
-\subsection{Μοντέλο Προσομοίωσης}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigskip
+\subsection{Κινηματικό Μοντέλο Τετραδιεύθυνσης - 4WS}
+Το \textit{κινηματικό μοντέλο τετραδιεύθυνσης} αποτελεί επέκταση του \textit{κινηματικού μοντέλου Ackermann}, χρησιμοποιώντας, ταυτόχρονη στρέψη των μπροστινών και πίσω τροχών του οχήματος. Προσφέρει, με αυτόν τον τρόπο μεγαλύτερη ευελιξία, μέσω μειωμένης ακτίνας τροχιάς , συγκριτικά με το απλό \textit{μοντέλο Ackermann} $(R_{4WS, min} < R_{2WS, min})$, ενώ, ακόμα, παρέχει και δυνατότητα  διαγώνιας κίνησης, μέσω παράλληλης στρέψη των τροχών (crab steering). Επίσης, στην ειδική περίπτωση, που κάθε τροχός, μπορεί να κινηθεί και να στραφεί ανεξάρτητα από τους άλλους, το όχημα μπορεί να πραγματοποιήσει επί τόπου στροφή (0-point-turn, $R_{4WS, min}=0$).
+
+
+
+\bigskip
+Στην παρούσα ενότητα, θα μας απασχολήσει η κινηματική ανάλυση του \textit{μοντέλου τετραδιεύθυνσης}, για τις λειτουργίες, της \textit{αρνητικής στρέψης (counter/negative steering)} και της \textit{θετικής στρέψης (same/positive/crab steering)} των τροχών. Η \textit{αρνητική τετραδιεύθυνση}, χρησιμοποιείται σε αυτοκίνητα, για χαμηλές ταχύτητες ($< 40 km/h$), με στόχο την αυξημένη ευελιξία, μέσω πραγματοποίησης πιο στενών ελιγμών. Αντίθετα, η \textit{θετική τετραδιεύθυνση}, χρησιμοποιείται για, υψηλές ταχύτητες ($> 40 km/h$), για πιο ομαλή αλλαγή λωρίδων, μέσω πιο μικρών μεταβολών στην ακτίνα της τροχιάς που εκτελεί. Σε ρομποτικές εφαρμογές, όπως και η παρούσα, όπου οι ταχύτητες είναι πολύ μικρότερες, το μοντέλο θετικής στρέψης μπορεί να χρησιμοποιηθεί σε αλγορίθμους κατασκευής μονοπατιών, για την επέκταση του ρεπερτορίου των δυνατών κινήσεων, αλλά και για την ενίσχυση αλγορίθμων διάσχισης μονοπατιού, μέσω διόρθωσης απόκλισης, σε περιπτώσεις παρεκκλίνουσας συμπεριφοράς, λόγω εξωτερικών παραγόντων, όπως ολίσθηση, ή ατελειών του κινηματικού ή του δυναμικού μοντέλου του οχήματος. Επίσης, στην ειδική περίπτωση \textit{θετικής τετραδιεύθυνσης}, όπου οι πίσω τροχοί στρέφονται με την ίδια γωνία και φορά με τους μπροστινούς, το όχημα κινείται πλαγίως, με μηδενική γωνιακή ταχύτητα και άρα μηδενική μεταβολή προσανατολισμού.
+
+
+\bigskip
+Η κινηματική ανάλυση του \textit{μοντέλου τετραδιεύθυνσης}, ακολουθεί ίδια κατεύθυνση με την κινηματική ανάλυση του \textit{μοντέλου Ackermann}, μέσω μία αντίστοιχης συνθήκης στρέψης των τροχών (steering condition) \cite{vehicle_dynamics}. Η συνθήκη αυτή, την οποία θα καλούμε, \textit{συνθήκη τετραδιεύθυνσης}, ορίζει την σχέση μεταξύ των γωνιών στρέψης και των τεσσάρων τροχών, έτσι ώστε, οι, κάθετοι στους τροχούς, άξονες να τέμνονται σε ένα κοινό σημείο (σχήματα \ref{fig:4ws_model}, \ref{fig:pos_4ws_model}). 
+
+\bigskip
+Η ανάλυση του \textit{κινηματικού μοντέλου τετραδιεύθυνσης} και η εξαγωγή των εξισώσεων και σχέσεων, που ακολουθεί στην συνέχεια, χρησιμοποιεί την διάταξη \textit{αρνητικής τετραδιεύθυνσης}, που παρουσιάζεται στο σχήμα \ref{fig:4ws_model}, αλλά ισχύει, παράλληλα και για την διάταξη \textit{θετικής τετραδιεύθυνσης}, γεγονός που μπορεί να αποδειχθεί με απλή γεωμετρική ανάλυση του σχήματος \ref{fig:pos_4ws_model}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Chapters/Chapter2/Figures/4ws_model.png}
+	\caption{Κινηματικό μοντέλο αρνητικής τετραδιεύθυνσης.}
+	\label{fig:4ws_model}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Chapters/Chapter2/Figures/pos_4ws_model.png}
+	\caption{Κινηματικό μοντέλο θετικής τετραδιεύθυνσης.}
+	\label{fig:pos_4ws_model}
+\end{figure}
+
+\newpage
+\bigskip
+Μέσω γεωμετρικής ανάλυσης του σχήματος \ref{fig:4ws_model}, βάση του ορισμού της \textit{συνθήκης τετραδιεύθυνσης}, προκύπτουν οι γωνίες στρέψης των τροχών του οχήματος:
+
+\begin{align}
+	\tan{\delta_{if}} &= \frac{c_1}{R-\frac{w}{2}}
+	\label{eq:4ws_front_inner_steering_angle}\\
+	\tan{\delta_{of}} &= \frac{c_1}{R+\frac{w}{2}}
+	\label{eq:4ws_front_outer_steering_angle}\\
+	\tan{\delta_{ir}} &= \frac{c_2}{R-\frac{w}{2}}
+	\label{eq:4ws_rear_inner_steering_angle}\\
+	\tan{\delta_{or}} &= \frac{c_2}{R+\frac{w}{2}}
+	\label{eq:4ws_rear_outer_steering_angle}		
+\end{align}
+
+Aντιστρέφοντας και αφαιρώντας τις σχέσεις (\ref{eq:4ws_front_inner_steering_angle}), (\ref{eq:4ws_front_outer_steering_angle}) και (\ref{eq:4ws_rear_inner_steering_angle}), (\ref{eq:4ws_rear_outer_steering_angle}) 
+
+\begin{align}
+	\cot{\delta_{of}} - \cot{\delta_{if}} &= \frac{w}{c_1}
+	\label{eq:front_4ws_condition}\\
+	\cot{\delta_{or}} - \cot{\delta_{ir}} &= \frac{w}{c_2}
+	\label{eq:rear_4ws_condition}
+\end{align}
+
+\noindent
+και έπειτα προσθέτοντας τις προκύπτουσες εξισώσεις (\ref{eq:front_4ws_condition}), (\ref{eq:rear_4ws_condition}), λαμβάνεται η μαθηματική εξίσωση της \textit{συνθήκης τετραδιεύθυνσης}.
+
+\begin{equation}
+	\frac{1}{\cot{\delta_{of}} - \cot{\delta_{if}}} + \frac{1}{\cot{\delta_{or}} - \cot{\delta_{ir}}} = \frac{l}{w}
+	\label{eq:4ws_condition}
+\end{equation}
+
+
+\bigskip\bigskip
+H γωνία $\beta$ πλευρικής ολίσθησης (sideslip angle) του κέντρου μάζας $\,C\,$ του οχήματος, υπολογίζεται, εύκολα, από το ισοδύναμο \textit{μοντέλο ποδηλάτου τετραδιεύθυνσης} (σχήμα \ref{fig:4ws_bicycle}).
+
+\begin{equation}
+	\tan{\beta} = \frac{l_r \cdot \tan{\delta_f} + l_f \cdot \tan{\delta_r}}{l}
+	\label{eq:neg_4ws_beta}\\
+\end{equation} 
+
+\noindent
+όπου
+\begin{description}
+	\item[\delta_f:] γωνία στρέψης μπροστινού τροχού ισοδύναμου μοντέλου ποδηλάτου τετραδιεύθυνσης
+	\item[\delta_r:] γωνία στρέψης πίσω τροχού ισοδύναμου μοντέλου ποδηλάτου τετραδιεύθυνσης
+\end{description}
+
+\bigskip
+Οι γωνίες στρέψης $\delta_f$ και $\delta_r$, μπορούν να υπολογιστούν για ένα όχημα με \textit{τετραδιεύθυνση} ως
+
+\begin{align}
+	\cot{\delta_f} &= \frac{\cot{\delta_{if}} + \cot{\delta_{of}}}{2} = \frac{R}{c_1}
+	\label{eq:df}\\
+	\cot{\delta_r} &= \frac{\cot{\delta_{ir}} + \cot{\delta_{or}}}{2} = \frac{R}{c_2}
+	\label{eq:dr}
+\end{align}
+
+\bigskip
+Αντιστρέφοντας και αφαιρώντας τις εξισώσεις (\ref{eq:dr}), (\ref{eq:df}), υπολογίζεται η ακτίνα $R$ της τροχιά, του σημείου $P$
+
+\begin{equation}
+	R = \frac{l}{\tan{\delta_f} - \tan{\delta_r}}
+	\label{eq:pos_p_turning_radius}
+\end{equation}
+
+
+\bigskip
+\noindent
+και έπειτα η ακτίνα $R_c$ της τροχιάς του κέντρου μάζας $C$ του οχήματος.
+
+\begin{equation}
+	R_c = \frac{R}{\cos{\beta}} = \frac{l}{\cos{\beta} \cdot (\tan{\delta_f} - \tan{\delta_r})}
+\end{equation}
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Chapters/Chapter2/Figures/4ws_bicycle.png}
+	\caption{Ισοδύναμο μοντέλο ποδηλάτου αρνητικής τετραδιεύθυνσης.}
+	\label{fig:4ws_bicycle}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Chapters/Chapter2/Figures/pos_4ws_bicycle_model.png}
+	\caption{Ισοδύναμο μοντέλο ποδηλάτου θετικής τετραδιεύθυνσης.}
+	\label{fig:pos_4ws_bicycle_model}
+\end{figure}
+
+
+
+%\bigskip
+%Για δεδομένη επιθυμητή τροχιά, ακτίνας R, του οχήματος, οι εξισώσεις (\ref{eq:4ws_front_inner_steering_angle})-(\ref{eq:4ws_rear_outer_steering_angle}) έχουν παραπάνω από μία λύση, γεγονός που περιπλέκει σημαντικά τους υπολογισμούς. Για την απλοποίηση του προβλήματος χρησιμοποιείται μία υποπερίπτωση του κινηματικού μοντέλου (σχήμα \ref{fig:4ws_simplified_model}), με βάση την οποία το κέντρο μάζας $C$ του οχήματος ταυτίζεται με το σημείο P, το οποίο αποτελεί το σημείο τομής του επιμήκη άξονα του οχήματος με την ευθεία που διέρχεται κάθετα από αυτόν και τον ενώνει με το \textit{Στιγμιαίο Κέντρο Περιστροφής Ο}. Σαν αποτέλεσμα, ισχύουν τα εξής:
+%
+%\begin{align}
+%	\begin{split}
+%		c_1 &= l_f\\
+%		c_2 &= l_r\\
+%		\beta &= 0^\circ
+%	\end{split}
+%	\label{eq:simple_4ws_conditions}
+%\end{align}
+%
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{Chapters/Chapter2/Figures/4ws_simplified_model.png}
+%	\caption{Κινηματικό μοντέλο απλοποιημένης αρνητικής τετραδιεύθυνσης.}
+%	\label{fig:4ws_simplified_model}
+%\end{figure}
+%
+%\bigskip
+%Οπότε οι σχέσεις (\ref{eq:4ws_front_inner_steering_angle})-(\ref{eq:4ws_rear_outer_steering_angle}), με βάση τις συνθήκες (\ref{eq:simple_4ws_conditions}) μετασχηματίζονται στην ακόλουθη μορφή:
+%
+%
+%\begin{align}
+%	\tan{\delta_{if}} &= \frac{l_f}{R-\frac{w}{2}}
+%	\label{eq:4ws_simple_front_inner_steering_angle}\\
+%	\tan{\delta_{of}} &= \frac{l_f}{R+\frac{w}{2}}
+%	\label{eq:4ws_simple_front_outer_steering_angle}\\
+%	\tan{\delta_{ir}} &= \frac{l_r}{R-\frac{w}{2}}
+%	\label{eq:4ws_simple_rear_inner_steering_angle}\\
+%	\tan{\delta_{or}} &= \frac{l_r}{R+\frac{w}{2}}
+%	\label{eq:4ws_simple_rear_outer_steering_angle}		
+%\end{align}
+
+\bigskip
+Για τον υπολογισμό των ταχυτήτων θα χρησιμοποιηθούν, πάλι, οι εξισώσεις (\ref{eq:theta_dot})-(\ref{eq:theta_dot_2}), εφόσον ισχύουν και στην προκειμένη περίπτωση, σε συνδυασμό με τις σχέσεις των ακτίνων τροχιάς κάθε τροχού, όπως προκύπτει από το σχήμα \ref{fig:4ws_model}.
+
+\begin{align}
+	R_{if} &= \frac{R - \frac{w}{2}}{\cos{\delta_{if}}}
+	\label{eq:neg_4ws_rif}\\
+	R_{of} &= \frac{R + \frac{w}{2}}{\cos{\delta_{of}}}
+	\label{eq:neg_4ws_rof}\\
+	R_{ir} &= \frac{R - \frac{w}{2}}{\cos{\delta_{ir}}}
+	\label{eq:neg_4ws_rir}\\
+	R_{or} &= \frac{R + \frac{w}{2}}{\cos{\delta_{or}}}
+	\label{eq:neg_4ws_or}
+\end{align}
+
+\bigskip
+Επομένως, οι γραμμικές ταχύτητες των τροχών προκύπτουν, ως
+
+\begin{align}
+	\label{eq:neg_4ws_vif}	
+	v_{if} &= \dot\theta \cdot R_{if} = \frac{v_c}{R_c} \cdot \frac{R - \frac{w}{2}}{\cos{\delta_{if}}}\\
+	\label{eq:neg_4ws_vof}	
+	v_{of} &= \dot\theta \cdot R_{of} = \frac{v_c}{R_c} \cdot \frac{R + \frac{w}{2}}{\cos{\delta_{of}}}\\
+	\label{eq:neg_4ws_vir}	
+	v_{ir} &= \dot\theta \cdot R_{ir} = \frac{v_c}{R_c} \cdot \frac{R - \frac{w}{2}}{\cos{\delta_{ir}}} \\
+	\label{eq:neg_4ws_vor}
+	v_{or} &= \dot\theta \cdot R_{or} = \frac{v_c}{R_c} \cdot \frac{R + \frac{w}{2}}{\cos{\delta_{or}}}
+\end{align}
+
+\bigskip
+\noindent
+και αντίστοιχα οι περιστροφικές ταχύτητες των τροχών, ως
+
+\begin{align}
+	\label{eq:neg_4ws_wif}	
+	\omega_{if} &= \frac{v_{if}}{r} = \frac{v_c}{r \cdot R_c} \cdot \frac{R - \frac{w}{2}}{\cos{\delta_{if}}}\\
+	\label{eq:neg_4ws_wof}	
+	\omega_{of} &= \frac{v_{if}}{r} = \frac{v_c}{r \cdot R_c} \cdot \frac{R + \frac{w}{2}}{\cos{\delta_{of}}}\\
+	\label{eq:neg_4ws_wir}	
+	\omega_{ir} &= \frac{v_{if}}{r} = \frac{v_c}{r \cdot R_c} \cdot \frac{R - \frac{w}{2}}{\cos{\delta_{ir}}} \\
+	\label{eq:neg_4ws_wor}
+	\omega_{or} &= \frac{v_{if}}{r} = \frac{v_c}{r \cdot R_c} \cdot \frac{R + \frac{w}{2}}{\cos{\delta_{or}}}
+\end{align}
+
+
+\bigskip
+Με βάση την παραπάνω κινηματική ανάλυση, οι εξισώσεις των ταχυτήτων, του οχήματος, ως προς το κέντρο μάζας του \textit{C}, μπορούν να υπολογιστούν, χρησιμοποιώντας τις σχέσεις
+
+\begin{gather}
+	\tan{\beta} = \frac{v_{c,y}}{v_{c,x}} \;\;\Leftrightarrow\;\; v_{c,y} = v_{c,x} \cdot \tan{\beta}
+	\label{eq:vel_beta}\\
+	v_c^2 = v_{c,x}^2 + v_{c,y}^2 \;\;\Leftrightarrow\;\; v_{c}^2 = v_{c,x}^2 - v_{c,x}^2  \cdot \tan{\beta}^2
+	\label{eq:v_squared}\\
+	v_c = \omega_c \cdot R_c
+	\label{eq:lin_ang_relationship}
+\end{gather}
+
+\noindent
+από τις οποίες, τελικά προκύπτουν οι εξισώσεις των ταχυτήτων του οχήματος:
+
+\begin{align}
+	v_{c,x} &= \frac{v_c}{\sqrt{1+tan{\beta}^2}}
+	\label{eq:lin_vel_x}\\
+	v_{c,y} &= \frac{v_c \cdot \tan{\beta}}{\sqrt{1+tan{\beta}^2}}
+	\label{eq:lin_vel_y}\\
+	\omega_c &= \frac{v_c}{l} \cdot \cos{\beta} (\tan{\delta_f} - \tan{\delta_r})
+	\label{eq:ang_vel}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\subsection{Κινηματική Ανάλυση Ρομποτικής Πλατφόρμας \textit{Monstertruck}}
