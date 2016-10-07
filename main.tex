@@ -58,6 +58,9 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{algorithm}
 \algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
 
+\usepackage{url}
+%\usepackage[strings]{underscore}
+
 \captionsetup[table]{name=Πίνακας}
 
 \renewcommand*\descriptionlabel[1]{\hspace\leftmargin$#1$}
@@ -219,29 +222,29 @@ headsepline, % Uncomment to get a line under the header
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
 
-\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-
-\textbf{4WS} & \textbf{4}-\textbf{W}heel-\textbf{S}teering\\
-\textbf{FWS} & \textbf{F}ront-\textbf{W}heel-\textbf{S}teering\\
-\textbf{RWS} & \textbf{R}ear-\textbf{W}heel-\textbf{S}teering\\
-\textbf{4WD} & \textbf{4}-\textbf{W}heel-\textbf{D}rive\\
-\textbf{FWD} & \textbf{F}ront-\textbf{W}heel-\textbf{D}rive\\
-\textbf{RWD} & \textbf{R}ear-\textbf{W}heel-\textbf{D}rive\\
-\textbf{CPU} & \textbf{C}entral \textbf{P}rocessing \textbf{U}nit\\
-\textbf{RAM} & \textbf{R}andom \textbf{A}ccess \textbf{M}emory\\
-\textbf{ESC} & \textbf{E}lectronic \textbf{S}peed \textbf{C}ontroller\\
-\textbf{RPM} & \textbf{R}ounds \textbf{P}er \textbf{M}inite\\
-\textbf{EC} & \textbf{E}lectronically \textbf{C}ontrolled\\
-\textbf{Li-Po} & \textbf{L}ithium-\textbf{P}olymer\\
-\textbf{ADC} & \textbf{A}nalog to \textbf{D}igital \textbf{C}onverter\\
-\textbf{IMU} & \textbf{I}nertial \textbf{M}easurement \textbf{U}nit\\
-\textbf{EKF} & \textbf{E}xtended \textbf{K}alman \textbf{F}ilters\\
-\textbf{OGM} & \textbf{O}ccupancy \textbf{G}rid \textbf{M}aps\\
-\textbf{CRSM} & \textbf{C}ritical \textbf{R}ays \textbf{S}can \textbf{M}atching\\ 
-\textbf{SLAM} & \textbf{S}imultaneous \textbf{L}ocalization and \textbf{M}apping\\
-\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
-
-\end{abbreviations}
+%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+%
+%\textbf{4WS} & \textbf{4}-\textbf{W}heel-\textbf{S}teering\\
+%\textbf{FWS} & \textbf{F}ront-\textbf{W}heel-\textbf{S}teering\\
+%\textbf{RWS} & \textbf{R}ear-\textbf{W}heel-\textbf{S}teering\\
+%\textbf{4WD} & \textbf{4}-\textbf{W}heel-\textbf{D}rive\\
+%\textbf{FWD} & \textbf{F}ront-\textbf{W}heel-\textbf{D}rive\\
+%\textbf{RWD} & \textbf{R}ear-\textbf{W}heel-\textbf{D}rive\\
+%\textbf{CPU} & \textbf{C}entral \textbf{P}rocessing \textbf{U}nit\\
+%\textbf{RAM} & \textbf{R}andom \textbf{A}ccess \textbf{M}emory\\
+%\textbf{ESC} & \textbf{E}lectronic \textbf{S}peed \textbf{C}ontroller\\
+%\textbf{RPM} & \textbf{R}ounds \textbf{P}er \textbf{M}inite\\
+%\textbf{EC} & \textbf{E}lectronically \textbf{C}ontrolled\\
+%\textbf{Li-Po} & \textbf{L}ithium-\textbf{P}olymer\\
+%\textbf{ADC} & \textbf{A}nalog to \textbf{D}igital \textbf{C}onverter\\
+%\textbf{IMU} & \textbf{I}nertial \textbf{M}easurement \textbf{U}nit\\
+%\textbf{EKF} & \textbf{E}xtended \textbf{K}alman \textbf{F}ilters\\
+%\textbf{OGM} & \textbf{O}ccupancy \textbf{G}rid \textbf{M}aps\\
+%\textbf{CRSM} & \textbf{C}ritical \textbf{R}ays \textbf{S}can \textbf{M}atching\\ 
+%\textbf{SLAM} & \textbf{S}imultaneous \textbf{L}ocalization and \textbf{M}apping\\
+%\textbf{ROS} & \textbf{R}obot \textbf{O}perating \textbf{S}ystem\\
+%
+%\end{abbreviations}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS
@@ -274,7 +277,7 @@ headsepline, % Uncomment to get a line under the header
 \include{Chapters/Chapter1/Chapter1}
 \include{Chapters/Chapter2/Chapter2}
 \include{Chapters/Chapter3/Chapter3}
-%\include{Chapters/Chapter4/Chapter4}
+\include{Chapters/Chapter4/Chapter4}
 %\include{Chapters/Chapter5/Chapter5}
 %\include{Chapters/Chapter6/Chapter6}
 
