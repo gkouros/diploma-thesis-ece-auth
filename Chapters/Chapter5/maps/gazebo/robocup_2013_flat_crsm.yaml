@@ -1,0 +1,7 @@
+image: robocup_2013_flat_crsm.pgm
+resolution: 0.040000
+origin: [-20.200000, -15.960000, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

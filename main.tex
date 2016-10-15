@@ -59,7 +59,11 @@ headsepline, % Uncomment to get a line under the header
 \algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
 
 \usepackage{url}
-%\usepackage[strings]{underscore}
+
+\usepackage{placeins}
+
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
 
 \captionsetup[table]{name=Πίνακας}
 
@@ -278,8 +282,8 @@ headsepline, % Uncomment to get a line under the header
 \include{Chapters/Chapter2/Chapter2}
 \include{Chapters/Chapter3/Chapter3}
 \include{Chapters/Chapter4/Chapter4}
-%\include{Chapters/Chapter5/Chapter5}
-%\include{Chapters/Chapter6/Chapter6}
+\include{Chapters/Chapter5/Chapter5}
+\include{Chapters/Chapter6/Chapter6}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
