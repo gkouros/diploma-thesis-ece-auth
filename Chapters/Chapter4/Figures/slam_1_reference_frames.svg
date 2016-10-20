@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="152.37503mm"
-   height="90.155769mm"
-   viewBox="0 0 539.91152 319.44958"
+   width="137.52527mm"
+   height="87.443436mm"
+   viewBox="0 0 487.29426 309.83895"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r"
@@ -481,8 +481,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="203.99187"
-     inkscape:cy="172.13966"
+     inkscape:cx="239.85228"
+     inkscape:cy="179.70162"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -506,7 +506,7 @@
        id="grid4136"
        empspacing="10"
        originx="-213.99643"
-       originy="-781.14456" />
+       originy="-790.75519" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -524,7 +524,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-213.99642,48.231959)">
+     transform="translate(-213.99642,48.23196)">
     <circle
        style="fill:#27ed22;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path6361-1-96"
@@ -19118,51 +19118,6 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold'">laser_link</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="261"
-       y="262.36221"
-       id="text19336"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan19338"
-         x="261"
-         y="262.36221"
-         style="font-weight:normal">world_to_map_tf</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="410"
-       y="262.36221"
-       id="text19344"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan19346"
-         x="410"
-         y="262.36221">map_to_footprint_tf</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="570"
-       y="162.3622"
-       id="text19348"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan19350"
-         x="570"
-         y="162.3622">base_footprint_to_base_stabilized_tf</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="440"
-       y="22.362207"
-       id="text19352"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan19354"
-         x="440"
-         y="22.362207">base_link_to_laser_link_tf</tspan></text>
-    <text
-       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="241"
        y="162.36218"
@@ -19223,16 +19178,5 @@
          x="630"
          y="112.36221"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold'">base_stabilized</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="630"
-       y="92.362206"
-       id="text19348-1"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan19350-1"
-         x="630"
-         y="92.362206">base_stabilized_to_base_link_tf</tspan></text>
   </g>
 </svg>
