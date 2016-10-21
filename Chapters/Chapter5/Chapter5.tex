@@ -1,4 +1,3 @@
-
 \chapter{Πειράματα και Αποτελέσματα} \label{Chapter5}
 Στο παρόν κεφάλαιο παρουσιάζονται τα πειράματα και τα αποτελέσματα που πραγματοποιήθηκαν για την επαλήθευση και την αξιολόγηση της συμπεριφοράς των υποσυστημάτων της ρομποτικής πλατφόρμας Monstertruck, σε σχέση με την επιθυμητή. Παράλληλα, πραγματοποιείται και σύγκριση μεταξύ των διαφορετικών εκδοχών ορισμένων υποσυστημάτων, όπως αυτά παρουσιάστηκαν στο Κεφάλαιο \ref{Chapter4}. 
 
@@ -38,7 +37,7 @@
 Συνολικά, πραγματοποιήθηκαν δύο είδη πειραμάτων για την αξιολόγηση του κινηματικού μοντέλου και συγκεκριμένα για την αξιολόγηση της ακτίνας τροχιάς κατά την εκτέλεση κυκλικών τροχιών με αρνητική τετραδιεύθυνση και για την αξιολόγηση της πλευρικής γωνίας ολίσθησης κατά την εκτέλεση διαγώνιων ευθύγραμμων τροχιών με θετική τετραδιεύθυνση, όπως αυτά παρουσιάζονται στην συνέχεια.
 
 \subsection{Τροχιές Αρνητικής Τετραδιεύθυνσης}
-Για την αξιολόγηση της αρνητικής τετραδιεύθυνσης πραγματοποιήθηκε μία σειρά πειραμάτων, στην οποία, δόθηκαν εντολές στο ρομπότ για εκτέλεση κυκλικών τροχιών, για διάφορες δυνατές γωνίες στρέψης των τροχών, για τις οποίες, έπειτα υπολογίστηκαν οι ιδανικές ακτίνες τροχιάς $R_{ideal}$ και οι πραγματικές $R_{sim}$ και $R_{real}$, προσομοίωσης και φυσικού ρομπότ αντίστοιχα, όπως αυτές παρουσιάζονται στον πίνακα \ref{tab:counter_steering_experiment} και στο σχήμα \ref{fig:counter_steering_experiment}. Με βάση τον πίνακα αυτόν, παρατηρείται μία μικρή απόκλιση των πραγματικών τροχιών που εκτελεί το ρομπότ σε σύγκριση με τις ιδανικές, κάτι που, παρόλα αυτά, είναι δικαιολογημένο, λόγω της μη ιδανικότητας του κινηματικού μοντέλου τετραδιεύθυνσης της ρομποτικής πλατφόρμας Monstertruck, όπως επίσης και την επιρροή φαινομένων τριβών και ολίσθησης στους τροχούς.
+Για την αξιολόγηση της αρνητικής τετραδιεύθυνσης πραγματοποιήθηκε μία σειρά πειραμάτων, στην οποία, δόθηκαν εντολές στο ρομπότ για εκτέλεση κυκλικών τροχιών, για διάφορες δυνατές γωνίες στρέψης $\delta_f$, $\delta_r$ των μπροστινών και πίσω τροχών αντίστοιχα, για τις οποίες, έπειτα υπολογίστηκαν οι ιδανικές ακτίνες τροχιάς $R_{ideal}$ και οι πραγματικές $R_{sim}$ και $R_{real}$, προσομοίωσης και φυσικού ρομπότ αντίστοιχα, όπως αυτές παρουσιάζονται στον πίνακα \ref{tab:counter_steering_experiment} και στο σχήμα \ref{fig:counter_steering_experiment}. Με βάση τον πίνακα αυτόν, παρατηρείται μία μικρή απόκλιση των πραγματικών τροχιών που εκτελεί το ρομπότ σε σύγκριση με τις ιδανικές, κάτι που, παρόλα αυτά, είναι δικαιολογημένο, λόγω της μη ιδανικότητας του κινηματικού μοντέλου τετραδιεύθυνσης της ρομποτικής πλατφόρμας Monstertruck, όπως επίσης και την επιρροή φαινομένων τριβών και ολίσθησης στους τροχούς.
  
 \begin{table}[!ht]
 	\centering
@@ -97,7 +96,7 @@
 Στην παρούσα ενότητα γίνεται μία αξιολόγηση των συστημάτων χαρτογράφησης και υπολογισμού θέσης, όπως αυτά παρουσιάσθηκαν στην ενότητα \ref{ssec:slam_components}, μέσω σύγκρισης των δύο επιμέρους συστημάτων, αλλά και μέσω σύγκρισης με τον πραγματικό χάρτη, εφόσον αυτός παρέχεται. Τα πειράματα πραγματοποιήθηκαν στον 2D προσομοιωτή STDR, στον 3D προσομοιωτή Gazebo, αλλά και στο φυσικό ρομπότ, με χρήση των συστημάτων χαρτογράφησης και εντοπισμού θέσης των αλγορίθμων CRSM-SLAM και Gmapping.
 
 \bigskip
-Για την χαρτογράφηση του περιβάλλοντος, η ρομποτική πλατφόρμα Monstertruck χρησιμοποιεί ως βασικό εργαλείο τον σαρωτή λέιζερ Hokuyo URG-04LX, ο οποίος έχει εμβέλεια $4m$ και επομένως τα περιβάλλοντα των πειραμάτων επιλέχθηκαν αναλόγως. Συγκεκριμένα, επιλέχθηκαν περιβάλλοντα με εσωτερικούς κλειστούς χώρους, με αρκετά στενούς διαδρόμους και δωμάτια με επαρκή ποικιλομορφία για την όσο το δυνατόν πιο αξιόπιστη χαρτογράφηση. Επίσης, λόγω της περιορισμένης υπολογιστικής ισχύς του υπολογιστή ODROID-XU4, της ρομποτικής πλατφόρμας Monstertruck, επιλέχθηκε ανάλυση χαρτογράφησης ίση με $0.04m$ και γενικότερα ειδική παραμετροποίηση των αλγορίθμων SLAM, έτσι ώστε να επιτευχθεί ταυτόχρονα αύξηση της συχνότητας ανανέωσης του χάρτη και μείωση του υπολογιστικού φόρτου, με εμφανή επίδραση, παρόλα αυτά, στην ποιότητα του.
+Για την χαρτογράφηση του περιβάλλοντος, η ρομποτική πλατφόρμα Monstertruck χρησιμοποιεί ως βασικό εργαλείο τον σαρωτή λέιζερ Hokuyo URG-04LX, ο οποίος έχει εμβέλεια $4m$ και επομένως τα περιβάλλοντα των πειραμάτων επιλέχθηκαν αναλόγως. Συγκεκριμένα, επιλέχθηκαν περιβάλλοντα με εσωτερικούς κλειστούς χώρους, με αρκετά στενούς διαδρόμους και δωμάτια με επαρκή ποικιλομορφία για την όσο το δυνατόν πιο αξιόπιστη χαρτογράφηση. Επίσης, λόγω της περιορισμένης υπολογιστικής ισχύος του υπολογιστή ODROID-XU4, της ρομποτικής πλατφόρμας Monstertruck, επιλέχθηκε ανάλυση χαρτογράφησης ίση με $0.04m$ και γενικότερα ειδική παραμετροποίηση των αλγορίθμων SLAM, έτσι ώστε να επιτευχθεί ταυτόχρονα αύξηση της συχνότητας ανανέωσης του χάρτη και μείωση του υπολογιστικού φόρτου, με επίδραση, παρόλα αυτά, στην ποιότητα του.
 
 \subsection{Χαρτογράφηση στον 2D Προσομοιωτή STDR} \label{ssec:stdr_slam}
 %------------------------------------------------%
@@ -126,7 +125,7 @@
 Για την χαρτογράφηση, σε ομαλό έδαφος, η αρένα RoboCup Rescue 2013 προσαρμόστηκε κατάλληλα για να επιτρέπει την πλήρη προσπέλαση της από το ρομπότ, μέσω της αφαίρεσης ανυψωμένων τμημάτων, όπως ράμπες, σκάλες κοκ. Στο σχήμα \ref{fig:robocup_2013_arena_flat} παρουσιάζεται η προσαρμοσμένη αρένα RoboCup Rescue 2013, με ομαλό έδαφος, όπως επίσης και οι αντίστοιχοι χάρτες που κατασκευάστηκαν από τους αλγορίθμους CRSM-SLAM και Gmapping.
 
 \bigskip
-Συγκρίνοντας, τους παραγόμενους χάρτες με το πραγματικό περιβάλλον παρατηρούνται κάποια σφάλματα συστροφής μεταξύ των οριζόντιων διαδρόμων της αρένας, που παρόλα αυτά, δεν επιδρούν σημαντικά στην ακεραιότητα του χάρτη. Τα δύο συστήματα χαρτογράφησης κατασκεύασαν επαρκείς αναπαραστάσεις της αρένας, με ελαφρώς καλύτερη αυτή του αλγορίθμου Gmapping, εις βάρος, παρόλα αυτά του υπολογιστικού φόρτου και των απαιτήσεων αυτού. 
+Συγκρίνοντας, τους παραγόμενους χάρτες με το πραγματικό περιβάλλον παρατηρούνται κάποια σφάλματα συστροφής μεταξύ των οριζόντιων διαδρόμων της αρένας, που παρόλα αυτά, δεν επιδρούν σημαντικά στην ακεραιότητα του χάρτη. Τα δύο συστήματα χαρτογράφησης κατασκεύασαν επαρκείς αναπαραστάσεις της αρένας, με ελαφρώς καλύτερη αυτή του αλγορίθμου Gmapping, εις βάρος, παρόλα αυτά των απαιτήσεων αυτού σε υπολογιστική ισχύ και πλήθος δεδομένων. 
 
 \subsubsection{Χαρτογράφηση της Αρένας RoboCup Rescue 2013 με Ανώμαλο Έδαφος}
 Για την περίπτωση της αρένας με ανώμαλο έδαφος, χρησιμοποιήθηκε αρχικά η ακέραιη εκδοχή της αρένας RoboCup Rescue 2013, αλλά παρατηρήθηκε ότι περιείχε τμήματα τα οποία δεν ήταν δυνατόν να γίνουν αντιληπτά, ενώ παράλληλα δεν ήταν ούτε προσπελάσιμα από το ρομπότ. Επομένως, κρίθηκε σκόπιμο, η εν λόγω αρένα να προσαρμοστεί, ούτως ώστε να αφαιρεθούν τα τμήματα αυτά. Συγκεκριμένα, αφαιρέθηκαν από την αρένα τα ακόλουθα τμήματα, όπως αυτά παρουσιάζονται ακολούθως και στο σχήμα \ref{fig:removed_parts_from_robocup_arena}:
@@ -142,7 +141,7 @@
 	\hspace{0.01\linewidth}
 	\subfloat[Ράμπα μεγάλης κλίσης.]{\includegraphics[width=0.32\linewidth, height=3.5cm]{Chapters/Chapter5/Figures/big_ramp.png}}
 	\hspace{0.01\linewidth}
-	\subfloat[Μη αντιλήψιμα - μη προσπελάσιμα εμπόδια.]{\includegraphics[width=0.32\linewidth, height=3.5cm]{Chapters/Chapter5/Figures/stepfield.png}}
+	\subfloat[Μη αντιλήψιμα και μη προσπελάσιμα εμπόδια.]{\includegraphics[width=0.32\linewidth, height=3.5cm]{Chapters/Chapter5/Figures/stepfield.png}}
 	\caption{Τα τμήματα που αφαιρέθηκαν από την αρένα με το ανώμαλο έδαφος, λόγω της αδυναμίας εντοπισμού και προσπελασιμότητας από την ρομποτική πλατφόρμα Monstertruck.}
 	\label{fig:removed_parts_from_robocup_arena}
 \end{figure}
@@ -155,16 +154,16 @@
 
 \subsection{Χαρτογράφηση σε Πραγματικό Περιβάλλον με τη Ρομποτική Πλατφόρμα Monstertruck}
 %---------------------------------%
-Πέρα από τα πειράματα χαρτογράφησης σε επίπεδο προσομοίωσης, αντίστοιχα πειράματα πραγματοποιήθηκαν για τη φυσική ρομποτική πλατφόρμα Monstertruck. Για την εκτέλεση των πειραμάτων με το φυσικό ρομπότ, επιλέχθηκε ο χώρος του {Εργαστηρίου Αρχιτεκτονικής και Υπολογιστών}, του τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών, του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης. Ο χώρος αυτός αποτελεί ένα δωμάτιο με τρεις σειρές γραφείων υπολογιστών με καρέκλες και περιλαμβάνει εξ ολοκλήρου ομαλό έδαφος. Για την αύξηση της πολυπλοκότητας του εν λόγω χώρου, παρόλα αυτά, προστέθηκαν και ξύλινες ράμπες για την επαλήθευση των αποτελεσμάτων που λήφθηκαν κατά την προσομοίωση, υπό όλες τις δυνατές συνθήκες.  Στο σχήμα \ref{fig:computer_architecture_lab} παρουσιάζεται ο χώρος του εργαστηρίου, όπως επίσης και οι αντίστοιχοι χάρτες που παράχθηκαν, βάσει αυτού, μέσω των αλγορίθμων CRSM-SLAM και Gmapping.
+Πέρα από τα πειράματα χαρτογράφησης σε επίπεδο προσομοίωσης, αντίστοιχα πειράματα πραγματοποιήθηκαν για τη φυσική ρομποτική πλατφόρμα Monstertruck. Για την εκτέλεση των πειραμάτων με το φυσικό ρομπότ, επιλέχθηκε ο χώρος του {Εργαστηρίου Αρχιτεκτονικής και Υπολογιστών}, του τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών, του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης. Ο χώρος αυτός αποτελεί ένα δωμάτιο με τρεις σειρές γραφείων υπολογιστών με καρέκλες και περιλαμβάνει εξ ολοκλήρου ομαλό έδαφος. Για την αύξηση της πολυπλοκότητας του εν λόγω χώρου, παρόλα αυτά, προστέθηκαν και ξύλινες ράμπες για την επαλήθευση των αποτελεσμάτων που λήφθηκαν κατά την προσομοίωση, υπό όλες τις δυνατές συνθήκες.  Στο σχήμα \ref{fig:csal} παρουσιάζεται ο χώρος του εργαστηρίου, όπως επίσης και οι αντίστοιχοι χάρτες που παράχθηκαν, βάσει αυτού, μέσω των αλγορίθμων CRSM-SLAM και Gmapping.
 
 \begin{figure}[!ht]
 	\centering
 	\subfloat[Εργαστήριο Αρχιτεκτονικής Υπολογιστών.]{\includegraphics[width=0.7\linewidth]{Chapters/Chapter5/Figures/csal.jpg}}\\
-	\subfloat[Χάρτης μέσω CRSM-SLAM.]{\includegraphics[height=5cm]{Chapters/Chapter5/Figures/csal_crsm_map.png}}
-	\hspace{1.5cm}
-	\subfloat[Χάρτης μέσω Gmapping.]{\includegraphics[height=5cm]{Chapters/Chapter5/Figures/csal_gmapping_map.png}}
+	\subfloat[Χάρτης μέσω CRSM-SLAM.]{\frame{\includegraphics[height=7.5cm]{Chapters/Chapter5/Figures/csal_crsm_map.png}}}
+	\hspace{1.0cm}
+	\subfloat[Χάρτης μέσω Gmapping.]{\frame{\includegraphics[height=7.5cm]{Chapters/Chapter5/Figures/csal_gmapping_map.png}}}
 	\caption{Εργαστήριο Αρχιτεκτονικής Υπολογιστών, Τμήματος ΗΜΜΥ, ΑΠΘ και οι αντίστοιχοι χάρτες που κατασκευάστηκαν.}
-	\label{fig:computer_architecture_lab}
+	\label{fig:csal}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -181,7 +180,7 @@
 	\subfloat[Αρένα RoboCup Rescue 2013 με ανώμαλο έδαφος.]{\includegraphics[height=6.5cm]{Chapters/Chapter5/Figures/robocup_2013_arena.png}}\\
 	\subfloat[Χάρτης μέσω CRSM-SLAM.]{\includegraphics[height=7cm]{Chapters/Chapter5/Figures/robocup_arena_crsm_map.png}}\\
 	\subfloat[Χάρτης μέσω Gmapping.]{\includegraphics[height=7cm]{Chapters/Chapter5/Figures/robocup_arena_gmapping_map.png}}
-	\caption{Η αρένα του διαγωνισμού RoboCup Rescue 2013 με ομαλό έδαφος και οι αντίστοιχοι παραγόμενοι χάρτες.}
+	\caption{Η αρένα του διαγωνισμού RoboCup Rescue 2013 με ανώμαλο έδαφος και οι αντίστοιχοι παραγόμενοι χάρτες.}
 	\label{fig:robocup_2013_arena}
 \end{figure}
 
@@ -200,8 +199,8 @@
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.6\linewidth]{Chapters/Chapter5/Figures/sparse_obstacles.png}
-	\caption{Το περιβάλλον sparse{\_}obstacles του προσομοιωτή STDR, που χρησιμοποιήθηκε για τα πειράματα κατασκευής μονοπατιού.}
+	\includegraphics[width=0.4\linewidth]{Chapters/Chapter5/Figures/sparse_obstacles.png}
+	\caption{Το περιβάλλον sparse{\_}obstacles του προσομοιωτή\\ STDR, που χρησιμοποιήθηκε για τα πειράματα\\κατασκευής μονοπατιού.}
 	\label{fig:sparse_obstacles}
 \end{figure}
 
@@ -229,7 +228,7 @@
    	\end{tabular}
 \end{table}
 
-Στην συνέχεια παρουσιάζονται στα σχήματα \ref{fig:dijkstra_experiments}-\ref{fig:adstar_experiments} τα τελικά μονοπάτια που κατασκευάζουν οι αλγόριθμοι κατασκευής μονοπατιών για την μετάβαση από την πόζα $p_0$ στις πόζες $p_i$, $i=1,...,4$, ενώ έπειτα, στον πίνακα \ref{tab:path_planning_experiments} με τα αποτελέσματα των μετρικών για τα εν λόγω μονοπάτια. Επιπλέον, στα σχήματα \ref{fig:arastar_successive_paths_experiment} και \ref{fig:adstar_experiments} παρουσιάζονται ενδεικτικές ακολουθίες βελτιστοποίησης μονοπατιού, μέσω των αλγορίθμων ARA* και AD*, για φθίνον παράγοντα διαστολής $\epsilon$ από $\epsilon_{init}=3$ έως $\epsilon_{final}=1$.
+Στην συνέχεια παρουσιάζονται στα σχήματα \ref{fig:dijkstra_experiments}-\ref{fig:adstar_experiments} τα τελικά μονοπάτια που κατασκευάζουν οι αλγόριθμοι κατασκευής μονοπατιών για την μετάβαση από την πόζα $p_0$ στις πόζες $p_i$, $i=1,...,4$, ενώ έπειτα, στον πίνακα \ref{tab:path_planning_experiments} με τα αποτελέσματα των μετρικών για τα εν λόγω μονοπάτια. Για τις περιπτώσεις των αλγορίθμων Dijkstra και A*, στα σχήματα \ref{fig:dijkstra_experiments}, \ref{fig:astar_experiments}, εικονίζεται, παράλληλα και η εξάπλωση του κάθε αλγορίθμου κατά την αναζήτηση του στόχου, με διακύμανση από μπλε έως κόκκινο βάσει της απόστασης από την αρχική θέση. Επιπλέον, στα σχήματα \ref{fig:arastar_successive_paths_experiment} και \ref{fig:adstar_successive_paths_experiment} παρουσιάζονται ενδεικτικές ακολουθίες βελτιστοποίησης μονοπατιού, μέσω των αλγορίθμων ARA* και AD*, για τυχαίο στόχο και για φθίνοντα παράγοντα διαστολής $\epsilon$ από $\epsilon_{init}=3$ έως $\epsilon_{final}=1$.
 
 \begin{figure}[!ht]
 	\centering
@@ -277,7 +276,7 @@
 	\subfloat[$\epsilon_1: \epsilon_2<\epsilon_1<3$]{\includegraphics[width=0.24\linewidth]{Chapters/Chapter5/Figures/sbpl/arastar_successive_paths/so_arastar_v2.png}} \vspace{0.01\linewidth}
  	\subfloat[$\epsilon_2: 1<\epsilon_2<\epsilon_1$]{\includegraphics[width=0.24\linewidth]{Chapters/Chapter5/Figures/sbpl/arastar_successive_paths/so_arastar_v3.png}} \vspace{0.01\linewidth}
 	\subfloat[$\epsilon_3=1$]{\includegraphics[width=0.24\linewidth]{Chapters/Chapter5/Figures/sbpl/arastar_successive_paths/so_arastar_v4.png}}\\[-0.25cm]
-	\caption{Διαδοχική βελτιστοποίηση μονοπατιού με τον αλγόριθμο ARA*.}
+	\caption{Διαδοχική βελτιστοποίηση μονοπατιού με τον αλγόριθμο ARA*, για αυθαίρετο στόχο.}
 	\label{fig:arastar_successive_paths_experiment}
 \end{figure}
 
@@ -287,7 +286,7 @@
 	\subfloat[$\epsilon_1: \epsilon_2<\epsilon_1<3$]{\includegraphics[width=0.24\linewidth]{Chapters/Chapter5/Figures/sbpl/adstar_successive_paths/so_adstar_v2.png}} \vspace{0.01\linewidth}
  	\subfloat[$\epsilon_2: 1<\epsilon_2<\epsilon_1$]{\includegraphics[width=0.24\linewidth]{Chapters/Chapter5/Figures/sbpl/adstar_successive_paths/so_adstar_v3.png}} \vspace{0.01\linewidth}
 	\subfloat[$\epsilon_3=1$]{\includegraphics[width=0.24\linewidth]{Chapters/Chapter5/Figures/sbpl/adstar_successive_paths/so_adstar_v4.png}}\\[-0.25cm]
-	\caption{Διαδοχική βελτιστοποίηση μονοπατιού με τον αλγόριθμο AD*.}
+	\caption{Διαδοχική βελτιστοποίηση μονοπατιού με τον αλγόριθμο AD*, για αυθαίρετο στόχο.}
 	\label{fig:adstar_successive_paths_experiment}
 \end{figure}
 
@@ -309,7 +308,7 @@
 \end{table}
 
 \bigskip
-Με βάσει τα παραπάνω αποτελέσματα κρίνεται ότι οι αλγόριθμοι Dijkstra και A* έχουν παραπλήσια συμπεριφορά, με τον αλγόριθμο Dijkstra να βρίσκει πάντα την βέλτιστη λύση, αλλά με τον αλγόριθμο A* να βρίσκει λύση σε μικρότερο χρόνο. Στην προκειμένη περίπτωση, εφόσον δεν υπάρχει σημαντικός περιορισμός στον χρόνο κατασκευής του μονοπατιού, μπορεί να χρησιμοποιηθεί οποιοσδήποτε από τους δύο αλγορίθμους, με προτίμηση στον αλγόριθμο Α*, λόγω του μικρότερου υπολογιστικού φόρτου, λόγω της πιο στοχευμένης αναζήτησης. Αντίστοιχα, όσον αφορά τους αλγορίθμους ARA* και AD* παρατηρείται, επίσης παραπλήσια στατική συμπεριφορά, και επομένως μπορεί να γίνει επιλογή μεταξύ οποιουδήποτε από τους δύο. Φυσικά, το πλεονέκτημα του AD*, έναντι του ARA* έγκειται στην δυναμική προσαρμογή του μονοπατιού σε περίπτωση που έχει αλλάξει  επαρκώς το περιβάλλον.%, κάτι που θα εξεταστεί σε επόμενη ενότητα.
+Με βάσει τα παραπάνω αποτελέσματα κρίνεται ότι οι αλγόριθμοι Dijkstra και A* έχουν παραπλήσια συμπεριφορά, με τον αλγόριθμο Dijkstra να βρίσκει πάντα την βέλτιστη λύση, αλλά με τον αλγόριθμο A* να βρίσκει λύση σε μικρότερο χρόνο. Στην προκειμένη περίπτωση, εφόσον δεν υπάρχει σημαντικός περιορισμός στον χρόνο κατασκευής του μονοπατιού, μπορεί να χρησιμοποιηθεί οποιοσδήποτε από τους δύο αλγορίθμους, με προτίμηση στον αλγόριθμο Α*, λόγω του μικρότερου υπολογιστικού φόρτου, λόγω της πιο στοχευμένης αναζήτησης. Αντίστοιχα, όσον αφορά τους αλγορίθμους ARA* και AD* παρατηρείται, επίσης παραπλήσια στατική συμπεριφορά, και επομένως μπορεί να γίνει επιλογή μεταξύ οποιουδήποτε από τους δύο. Φυσικά, το πλεονέκτημα του AD*, έναντι του ARA* έγκειται στην δυναμική προσαρμογή του μονοπατιού σε περίπτωση που έχει αλλάξει  επαρκώς το περιβάλλον, λόγω ανίχνευσης νέων εμποδίων, δυναμικών ή μη.
 
 \subsection{Παραμόρφωση Μονοπατιού με τον Αλγορίθμου Reeds-Shepp Band} \label{ssec:rsband_experiments}
 Τα πειράματα παραμόρφωσης μονοπατιού με τον αλγόριθμο Reeds-Shepp Band πραγματοποιήθηκαν εξ ολοκλήρου στον 2D προσομοιωτή STDR, σε αραιό και πυκνό περιβάλλον, όσον αφορά τα εμπόδια. Συγκεκριμένα, χρησιμοποιήθηκαν τα περιβάλλοντα  \textit{simple{\_}rooms} και \textit{sparse{\_}obstacles} που παρέχονται από τον προσομοιωτή STDR και τα οποία παρουσιάζονται στο σχήμα \ref{fig:rsband_stdr_environments}. Επίσης, επιλέχθηκε να χρησιμοποιηθεί και πάλι ο έτοιμος χάρτης με ιδανικό εντοπισμό θέσης, χωρίς να εμπλέκεται το πρόβλημα της χαρτογράφησης και του εντοπισμού θέσης στην προκειμένη περίπτωση, ενώ, παράλληλα χρησιμοποιήθηκε σαρωτής λέιζερ με οπτικό πεδίο $360^o$, αντί για $240^o$ για την απαλοιφή άγνωστων τμημάτων στην νεκρό εύρος γωνιών του ρομπότ, του τοπικού χάρτη κόστους.
@@ -331,47 +330,48 @@
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[Ολικό Μονοπάτι 1.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_1.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 1.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_1.png}}}  \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 1.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_1.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 1.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_1.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 1.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_1.png}}}  \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 1.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_1.png}}}\\
 
-	\subfloat[Ολικό Μονοπάτι 2.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_2.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 2.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_2.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 2.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_2.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 2.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_2.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 2.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_2.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 2.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_2.png}}}\\
 
-	\subfloat[Ολικό Μονοπάτι 3.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_3.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 3.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_3.png}}}  \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 3.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_3.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 3.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_3.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 3.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_3.png}}}  \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 3.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_3.png}}}\\
 
-	\subfloat[Ολικό Μονοπάτι 4.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_4.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 4.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_4.png}}}  \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 4.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_4.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 4.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_global_4.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 4.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_eband_4.png}}}  \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 4.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/simple_rooms/rsband_rsband_4.png}}}\\
 
-	\caption{Πειράματα παραμόρφωσης μονοπατιού με τον αλγόριθμο Reeds-Shepp Band σε ελεύθερο χώρο στο περιβάλλον simple{\_}rooms.}
+	\caption{Πειράματα παραμόρφωσης μονοπατιού με τον αλγόριθμο Reeds-Shepp Band σε ελεύθερο χώρο στο περιβάλλον simple{\_}rooms, όπου παρουσιάζονται το ολικό μονοπάτι (πράσινο), η ελαστική ζώνη (κίτρινο) και η ζώνη Reeds-Shepp (μωβ), για τέσσερις αυθαίρετες πόζες.}
 	\label{fig:simple_rooms_rsband}
 \end{figure}
 
+\bigskip
 Η δεύτερη κατηγορία πειραμάτων πραγματοποιήθηκε όμοια με την πρώτη, αλλά σε περιβάλλον πυκνό από εμπόδια, για την εξέταση της συμπεριφοράς του αλγορίθμου Reeds-Shepp Band, υπό την παρουσία εμποδίων. Τα αποτελέσματα παρουσιάζονται στο σχήμα \ref{fig:sparse_obstacles_rsband}.
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[Ολικό Μονοπάτι 1.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_1.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 1.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_1.png}}}  \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 1.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_1.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 1.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_1.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 1.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_1.png}}}  \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 1.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_1.png}}}\\
 
-	\subfloat[Ολικό Μονοπάτι 2.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_2.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 2.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_2.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 2.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_2.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 2.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_2.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 2.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_2.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 2.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_2.png}}}\\
 
-	\subfloat[Ολικό Μονοπάτι 3.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_3.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 3.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_3.png}}}  \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 3.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_3.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 3.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_3.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 3.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_3.png}}}  \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 3.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_3.png}}}\\
 
-	\subfloat[Ολικό Μονοπάτι 4.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_4.png}}} \hspace{0.02\linewidth}
-	\subfloat[Ελαστική Ζώνη 4.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_4.png}}}  \hspace{0.02\linewidth}
-	\subfloat[Ζώνη Reeds-Shepp 4.]{\frame{\includegraphics[width=0.25\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_4.png}}}\\
+	\subfloat[Ολικό Μονοπάτι 4.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_global_4.png}}} \hspace{0.02\linewidth}
+	\subfloat[Ελαστική Ζώνη 4.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_eband_4.png}}}  \hspace{0.02\linewidth}
+	\subfloat[Ζώνη Reeds-Shepp 4.]{\frame{\includegraphics[width=0.275\linewidth]{Chapters/Chapter5/Figures/rsband/sparse_obstacles/rsband_rsband_4.png}}}\\
 
-	\caption{Πειράματα παραμόρφωσης μονοπατιού με τον αλγόριθμο Reeds-Shepp Band, υπό την επίδραση εμποδίων, στο περιβάλλον sparse{\_}obstacles.}
+	\caption{Πειράματα παραμόρφωσης μονοπατιού με τον αλγόριθμο Reeds-Shepp Band, υπό την επίδραση εμποδίων, στο περιβάλλον sparse{\_}obstacles, όπου παρουσιάζονται το ολικό μονοπάτι (πράσινο), η ελαστική ζώνη (κίτρινο) και η ζώνη Reeds-Shepp (μωβ), για τέσσερις αυθαίρετες πόζες.}
 	\label{fig:sparse_obstacles_rsband}
 \end{figure}
 
@@ -436,7 +436,7 @@
 Για την πραγματοποίηση των πειραμάτων, χρησιμοποιήθηκε ο 3D προσομοιωτής Gazebo για την προσομοίωση των παραπάνω περιβαλλόντων. Επίσης, χρησιμοποιήθηκε το σύστημα χαρτογράφησης και εντοπισμού θέσης με τον αλγόριθμο SLAM και το σύστημα αυτόνομης πλοήγησης με δυναμική ανακατασκευή μονοπατιού, αλλά με σταθερό ολικό μονοπάτι σε συνδυασμό με τον αλγόριθμο διάσχισης μονοπατιού με ασαφή λογική.
 
 \bigskip
-Για την αξιολόγηση των πειραμάτων θα χρησιμοποιηθούν ως μετρικές, η ελάχιστη απόσταση $d_RP$ του ρομπότ από το μονοπάτι, όπως επίσης και το σφάλμα προσανατολισμού $E_o$ μεταξύ της πόζας του ρομπότ και της πόζας του τρέχοντος υπό-στόχου, πάνω στο μονοπάτι. Παράλληλα, θα παρουσιαστούν και τα σφάλματα θέσης $E_p$, απόκλισης γωνίας $E_a$, πλευρικής απόκλισης $E_y$, όπως επίσης και οι γωνίες στρέψης των τροχών καθ' όλη τη διάρκεια των πειραμάτων.
+Για την αξιολόγηση των πειραμάτων θα χρησιμοποιηθούν ως μετρικές, η ελάχιστη απόσταση $d_{RP}$ του ρομπότ από το μονοπάτι, όπως επίσης και το σφάλμα προσανατολισμού $E_o$ μεταξύ της πόζας του ρομπότ και της πόζας του τρέχοντος υπό-στόχου, πάνω στο μονοπάτι. Παράλληλα, θα παρουσιαστούν και τα σφάλματα θέσης $E_p$, απόκλισης γωνίας $E_a$, πλευρικής απόκλισης $E_y$, όπως επίσης και οι γωνίες στρέψης των τροχών καθ' όλη τη διάρκεια των πειραμάτων.
 
 \subsection{Διάσχιση Μονοπατιού σε Ομαλό Έδαφος}
 Για το πείραμα διάσχισης μονοπατιού σε ομαλό έδαφος σχεδιάστηκε και χρησιμοποιήθηκε το περιβάλλον \textit{zic{\_}zac{\_}room{\_}no{\_}ramps} που παρουσιάζεται στο σχήμα \ref{fig:zic_zac_room_no_ramps}. Για την πραγματοποίηση του εν λόγω πειράματος, εφόσον ο χάρτης του περιβάλλοντος δεν είναι εκ των προτέρων γνωστός, πραγματοποιήθηκε μία αρχική εξερεύνηση για την δημιουργία του πλήρους χάρτη του περιβάλλοντος και έπειτα πραγματοποιήθηκε το πείραμα για την μετάβαση από την μία πλευρά του χάρτη στην άλλη, με στόχο την παρακολούθηση της συμπεριφοράς του αλγορίθμου διάσχισης μονοπατιού. Στο σχήμα \ref{fig:zic_zac_room_no_ramps_path_and_traj} παρουσιάζονται το ολικό μονοπάτι που ακολούθησε το ρομπότ, όπως επίσης και η τροχιά που πραγματοποίησε για την επίτευξη του δεδομένου στόχου, ενώ στο σχήμα \ref{fig:zic_zac_room_no_ramps_errors} παρουσιάζονται τα σχετικά σφάλματα που προέκυψαν κατά την διάρκεια του πειράματος. Τέλος, στο σχήμα \ref{fig:zic_zac_room_no_ramps_fsa_rsa} παρουσιάζονται και οι γωνίες στρέψης των μπροστινών και πίσω τροχών του οχήματος καθ' όλη τη διάρκεια του πειράματος.
@@ -554,16 +554,16 @@
 %	SECTION 5: Exploration Experiments
 %----------------------------------------------------------------------------------------
 \section{Πειράματα Αυτόνομης Εξερεύνησης Πραγματικού Περιβάλλοντος} \label{exploration_experiments}
-Στην παρούσα ενότητα, πραγματοποιούνται πειράματα αυτόνομης εξερεύνησης, χωρίς εκ των προτέρων  γνωστό περιβάλλον, μέσω των συστημάτων αυτόνομης πλοήγησης με δυναμική παραμόρφωση μονοπατιού (DPM) και δυναμική ανακατασκευή μονοπατιού (DPR), ενώ, για την χαρτογράφηση και τον εντοπισμό θέσης, χρησιμοποιείται ο αλγόριθμος CRSM-SLAM. Τα πειράματα εξερεύνησης πραγματοποιήθηκαν στον χώρο του Εργαστηρίου Αρχιτεκτονικής Υπολγιστών του τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης το οποίο παρουσιάστηκε στο σχήμα \ref{fig:csal}. 
+Στην παρούσα ενότητα, πραγματοποιούνται πειράματα αυτόνομης εξερεύνησης, χωρίς εκ των προτέρων  γνωστό περιβάλλον, μέσω των συστημάτων αυτόνομης πλοήγησης με δυναμική παραμόρφωση μονοπατιού (DPM) και δυναμική ανακατασκευή μονοπατιού (DPR), ενώ, για την χαρτογράφηση και τον εντοπισμό θέσης, χρησιμοποιείται ο αλγόριθμος CRSM-SLAM. Τα πειράματα εξερεύνησης πραγματοποιήθηκαν στον χώρο του Εργαστηρίου Αρχιτεκτονικής Υπολγιστών του τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης το οποίο παρουσιάστηκε στο σχήμα \ref{fig:csal}.
 
 \bigskip
 Για την αξιολόγηση των αποτελεσμάτων χρησιμοποιούνται οι μετρικές $T_{E}$ και $S_{E}$ που δηλώνουν τον χρόνο πλήρους εξερεύνησης του περιβάλλοντος και το μήκος της τροχιάς που διανύθηκε αντίστοιχα. Τα σχετικά αποτελέσματα παρουσιάζονται στο σχήμα \ref{fig:exploration_experiments} και στον πίνακα \ref{tab:exploration_experiments}.
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[]{\includegraphics[height=7cm]{Chapters/Chapter5/Figures/exploration_dpm.png}}
+	\subfloat[]{\frame{\includegraphics[height=7cm]{Chapters/Chapter5/Figures/exploration_dpm.png}}}
 	\hspace{0.1cm}
-	\subfloat[]{\includegraphics[height=7cm]{Chapters/Chapter5/Figures/exploration_dpr.png}}
+	\subfloat[]{\frame{\includegraphics[height=7cm]{Chapters/Chapter5/Figures/exploration_dpr.png}}}
 	\caption{Τροχιές που διανύθηκαν για την πλήρη εξερεύνηση του εργαστηρίου Αρχιτεκτονικής Υπολογιστών, μέσω των συστημάτων αυτόνομης πλοήγησης με (α')δυναμική παραμόρφωση μονοπατιού και (β')δυναμική ανακατασκευή μονοπατιού.}
 	\label{fig:exploration_experiments}
 \end{figure}
@@ -580,24 +580,6 @@
 	\end{tabular}
 \end{table}
 
-Βάσει του πίνακα \ref{tab:exploration_experiments} παρατηρείται ότι το ρομπότ εξερεύνησε ταχύτερα τον χώρο, μέσω του συστήματος DPM, αλλά διάνυσε μεγαλύτερη συνολική απόσταση, από ότι μέσω του συστήματος DPR. Αυτό εξηγείται από το γεγονός ότι το σύστημα DPR απαιτεί περισότερο χρόνο για την κατασκευή μονοπατιών, με αποτέλεσμα να καθυστερεί η επιλογή στόχων, μέσω του συστήματος εξερεύνησης (exploration{\_}controller του πακέτου pandora{\_}explorer), καθώς απαιτεί την κατασκευή μονοπατιού για κάθε υποψήφιο στόχο, μέχρι να καταλήξει στην επιλογή ενός.
+Βάσει του πίνακα \ref{tab:exploration_experiments} παρατηρείται ότι το ρομπότ εξερεύνησε ταχύτερα τον χώρο, μέσω του συστήματος DPM, αλλά διάνυσε μεγαλύτερη συνολική απόσταση, από ότι μέσω του συστήματος DPR. Αυτό εξηγείται από το γεγονός ότι το σύστημα DPR απαιτεί περισότερο χρόνο για την κατασκευή μονοπατιών, με αποτέλεσμα να καθυστερεί η επιλογή στόχων, μέσω του συστήματος εξερεύνησης (exploration{\_}controller του πακέτου pandora{\_}explorer), καθώς αυτό απαιτεί την κατασκευή μονοπατιού για κάθε υποψήφιο στόχο, μέχρι να καταλήξει στην επιλογή ενός.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%----------------------------------------------------------------------------------------
-%	SECTION 5: Αξιολόγηση Απόδοσης Υπολογιστή Odroid-XU4
-%----------------------------------------------------------------------------------------
-%\section{Αξιολόγηση Απόδοσης Υπολογιστή Odroid-XU4} \label{hardware_experiments}
-
-
-
-%----------------------------------------------------------------------------------------
-%	SECTION 6: Dynamic Obstacle Avoidance Experiments
-%----------------------------------------------------------------------------------------
-%\section{Αποφυγή Δυναμικών Εμποδίων} \label{dynamic_obstacle_avoidance_experiments}
-
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=\linewidth]{Chapters/Chapter5/Figures/.png}
-%	\caption{}
-%	\label{fig:}
-%\end{figure}
