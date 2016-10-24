@@ -1,0 +1,423 @@
+\documentclass[10pt, compress]{beamer}
+
+\usetheme{m}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{minted}
+\usepackage{color}
+\usepackage{subfig}
+\usepackage{xltxtra}
+\usepackage{xgreek}	
+\usepackage{amsfonts}
+\usepackage[Greek,Latin]{ucharclasses}
+\setTransitionsForGreek{\setlanguage{greek}}{\setlanguage{american}}
+\setmainfont[Kerning=On,Mapping=tex-text]{Linux Libertine O}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+\usepackage{outlines}
+\usepackage[normalem]{ulem}
+\usepackage{url}
+
+\usepackage{placeins}
+
+\usepackage{multirow}
+
+\usemintedstyle{trac}
+
+\title{Ανάπτυξη Ρομποτικού Οχήματος Εδάφους με Κινηματικό Μοντέλο 4WS4WD και Υλοποίηση Συστήματος για Αυτόνομη Εξερεύνηση σε Άγνωστο Περιβάλλον}
+\date{\today}
+\author{Γεώργιος Κούρος}
+\institute{Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης\\[-0.1cm]Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών\\[-0.1cm]Τομέας Ηλεκτρονικής και Υπολογιστών}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Κίνητρο}
+\begin{figure}[!ht] \centering
+\begin{tikzpicture}
+  \node (pandora_tracked_robot) {\frame{\includegraphics[height=4.5cm]{pandora_tracked_robot.png}}};
+  \pause
+  \node (pandora_skid_steer_robot) at (pandora_tracked_robot.south east) [yshift=1cm] [xshift=2cm] {\frame{\includegraphics[height=5cm]{pandora_skid_steer_robot.png}}};
+  \pause
+  \node (pandora_monstertruck) at (pandora_skid_steer_robot.south west) [yshift=1cm] [xshift=1cm] {\frame{\includegraphics[height=5cm]{pandora_monstertruck.png}}};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+	\frametitle{Πρόβλημα}
+	Ανάπτυξη Αυτόνομου Ρομποτικού Οχήματος με Κινηματικό Μοντέλο 4WS4WD και Δυνατότητες Αυτόνομης Εξερεύνησης σε Άγνωστο Περιβάλλον
+	
+	\bigskip	
+	\begin{itemize}[<+- | alert@+>]
+		\item Ανάγκες σε εξοπλισμό
+		\item Δυνατότητες και περιορισμοί κίνησης
+		\item Αναπαράσταση περιβάλλοντος
+		\item Αυτόνομη πλοήγηση
+		\item Εργαλεία προς Αξιοποίηση
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+	\frametitle{Επισκόπιση}
+	\textbf{Τμήματα:}
+	\begin{itemize}[<+- | alert@+>]
+		\item{Ρομποτική Πλατφόρμα Monstertruck}
+		\item{Κινηματική Ανάλυση}
+		\item{Εκτίμηση Κατάστασης και Χαρτογράφηση}
+		\item{Αυτόνομη Πλοήγηση}
+		\item{Αρχιτεκτονική Συστήματος}
+		\item{Πειράματα}
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ρομποτική Πλατφόρμα Monstertruck}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Βάση}
+	Τηλεκατευθυνόμενο Όχημα \textbf{Groundpounder}, της Redcat Racing.\\[1cm]
+	
+	\begin{minipage}{0.55\textwidth}
+		\includegraphics[width=\textwidth]{Figures/groundpounder.jpg}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+		\begin{itemize}
+			\item Τετρακίνηση - 4WD
+			\item Τετραδιεύθυνση - 4WS
+			\item Αναρτήσεις
+			\item Μεταλλικό Σασί
+			\item Τροχοί Offroad
+		\end{itemize}
+	\end{minipage}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Τελική Ρομποτική Πλατφόρμα}
+	\begin{center}
+		\frame{\includegraphics[width=0.8\linewidth]{Figures/pandora_monstertruck.png}}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Κινητήρες}
+	\begin{figure}
+		\centering
+		\subfloat{{\includegraphics[width=0.4\linewidth]{Figures/servo.jpg}}} \hspace{1cm}
+		\subfloat{\frame{\includegraphics[width=0.4\linewidth]{Figures/maxon_motor.png}}}\\
+		\subfloat{{\includegraphics[width=0.4\linewidth]{Figures/dynamixel.jpg}}}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Αισθητήρες}
+	\begin{figure}
+		\centering
+		\subfloat{{\includegraphics[width=0.4\linewidth]{Figures/compass.jpg}}} \hspace{1cm}
+		\subfloat{\includegraphics[width=0.4\linewidth]{Figures/hokuyo.jpg}}\\[0.5cm]
+		\subfloat{{\includegraphics[width=0.25\linewidth]{Figures/webcam.jpg}}}
+	\end{figure}	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Υπολογιστής}
+	\begin{minipage}{0.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/odroid-xu4.jpg}
+	\end{minipage}
+	\begin{minipage}{0.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/odroid_specs.png}
+	\end{minipage}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Σύστημα Τετρακίνησης}
+	\begin{equation*}
+	\omega_{wheel} = \omega_{motor} / (\lambda_{gearbox} \times \lambda_{spur\_pinion} \times \lambda_{transfer\_case} \times \lambda_{differential}) = \omega_{motor} / 644
+	\end{equation*}\\[-0.3cm]
+	\begin{figure}
+		\centering
+		\subfloat{{\includegraphics[width=0.7\linewidth]{Figures/drivetrain.png}}}\\[0.15cm]
+		\subfloat{\frame{\includegraphics[height=2cm]{Figures/spur_and_pinion_gears.png}}}
+		\hspace{0.5cm}
+		\subfloat{\frame{\includegraphics[height=2cm]{Figures/transfer_case.png}}}
+		\hspace{0.5cm}
+		\subfloat{\frame{\includegraphics[height=2cm]{Figures/differential.png}}}	
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Σύστημα Τετραδιεύθνσης}
+	\begin{figure}
+		\centering
+		\subfloat{{\includegraphics[width=0.5\linewidth]{Figures/my_drag_link_steering.png}}} \\[0.15cm]
+		\subfloat{{\includegraphics[height=4cm]{Figures/drag_link_analysis.png}}}
+		\hspace{0.5cm}
+		\subfloat{{\includegraphics[height=4cm]{Figures/trapezoid_steering_mechanism}}} \\[0.05cm]
+		\subfloat{{\includegraphics[width=\linewidth]{Figures/steering_transfer.png}}}
+	\end{figure}
+\end{frame}
+
+%\plain{Dark background}{\vspace{-2em}\begin{center}\includegraphics[width=\textwidth]{images/valley.jpg}\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Κινηματική Ανάλυση}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Κινηματικό Μοντέλο Ackermann}
+	\begin{figure}
+		\includegraphics[height=5cm]{Figures/ackermann_model.png}
+	\end{figure}
+	\textbf{Συνθήκη Ackermann:}
+	\begin{equation*}
+		\cot{\delta_i} - \cot{\delta_o} = w / l
+	\end{equation*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Κινηματικό Μοντέλο Τετραδιεύθυνσης (4WS)}
+	\begin{figure}[!ht]
+		\subfloat{\includegraphics[height=5.2cm]{Figures/4ws_model.png}}
+		\subfloat{\includegraphics[height=5cm]{Figures/pos_4ws_model.png}}		
+	\end{figure}
+	\textbf{Συνθήκη Τετραδιεύθυνσης:}
+	\begin{equation*}
+		\frac{1}{\cot{\delta_{of}} - \cot{\delta_{if}}} + \frac{1}{\cot{\delta_{or}} - 	\cot{\delta_{ir}}} = \frac{l}{w}
+	\end{equation*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Κινηματικό Μοντέλο Ρομποτικής Πλατφόρμας Monstertruck}
+	\begin{figure}
+		\subfloat{\includegraphics[height=3.0cm]{Figures/steer_angles_comparison.png}}
+%		\hspace{1cm}
+		\subfloat{\includegraphics<1>[height=3.5cm]{Figures/monstertruck_model_parallel.png}}
+		\subfloat{\includegraphics<2>[height=3.5cm]{Figures/monstertruck_slip_angle_model_parallel.png}}\\
+		\subfloat{\includegraphics[height=2.0cm]{Figures/monstertruck_slip_angles.png}}
+	\end{figure}
+	\only<2>{\textbf{Μη Ιδανική Συνθήκη Τετραδιεύθυνσης:}	
+	\begin{equation*}
+		\frac{1}{\cot(\delta_{of} - \alpha_{of}) - \cot(\delta_{if} + \alpha_{if})} - \frac{1}{\cot(\delta_{or} - \alpha_{or}) - \cot(\delta_{ir} + \alpha_{ir})} = \frac{l}{w}
+	\end{equation*}}
+	\vspace{3cm}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Εκτίμηση Κατάστασης και Χαρτογράφηση}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Κατάσταση και Χαρτογράφηση}
+
+	\begin{itemize}
+		\item 6D Κατάσταση:  $s=(x,y,z,\phi,\psi,\theta)\; \text{ή}\; (x,y,z,roll,pitch,yaw)$
+    	\item	\textbf{SLAM}: \textbf{S}imultaneous \textbf{L}ocalization \textbf{A}nd \textbf{M}apping
+		\item 2D αλγόριθμοι SLAM $\rightarrow$ 3D πόζα $p=(x,y,\theta)$
+		\item Χάρτες Πλέγματος Κατάληψης (OGM)
+		\item Χαρτογράφηση, Εκτίμηση Κατάστασης $\rightarrow$ αλληλένδετα
+		\item Αξιοποίηση πληροφορίας από σαρωτές λέιζερ
+		\item Σταθεροποίηση του σαρωτή λέιζερ στο επίπεδο
+	\end{itemize}
+	\vspace{-0.5cm}
+	\begin{figure}[!ht]
+		\subfloat{\frame{\includegraphics[height=3.3cm]{Figures/map_and_scan.png}}}
+		\hspace{0.1cm}
+		\subfloat{\frame{\includegraphics[height=3.3cm]{Figures/stabilized_laser.png}}}
+	\end{figure}		
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{CRSM-SLAM}
+	\textbf{CRSM}: \textbf{C}ritical \textbf{R}ays \textbf{S}can \textbf{M}atching
+	
+	\begin{itemize}
+		\item Απαιτούμενα δεδομένα: σκαναρίσματα σαρωτή λέιζερ
+		\item Αντιστοίχιση σκαναρισμάτων του σαρωτή λέιζερ
+		\item Εντοπισμός πόζας $\rightarrow$ υπολογισμός μετασχηματισμού διαδοχικών σκαναρισμάτων
+		\item Προεπεξεργασία σκαναρισμάτων $\rightarrow$ επιλογή κρίσιμων ακτίνων
+		\item Αντιστοίχιση τρέχοντος σκαναρίσματος με ολικό χάρτη\\
+		$\rightarrow$ Random Restart Hill Climbing (RRHC)
+	\end{itemize}
+	\begin{figure}
+		\includegraphics[height=3.5cm]{Figures/crsm_slam_diagram.png}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Gmapping}
+	\begin{outline}
+		\1 Σωματίδια (particles)
+		\1 Rao-Blackwellized Φίλτρα Σωματιδίων
+		\1 Εκτίμηση κατάστασης μέσω συνδυασμού
+			\2 Οδομετρίας
+			\2 Αντιστοίχισης σκαναρίσματων σαρωτή λέιζερ
+		\1 Υψηλή εξάρτηση χαρτογράφησης από αξιόπιστη εκτίμηση κατάστασης\\[0.5cm]
+		
+		Εκτίμηση Κατάστασης μέσω συνδυαστικής αντίληψης
+		\1 EKF: Extended Kalman Filters
+		\1 Συνδυασμός πληροφορίας από 
+			\2 οδομετρία τροχών $\rightarrow$ $(x,y,\theta)$
+			\2 πυξίδα $\rightarrow$ $(roll,pitch,yaw)$
+			\2 \sout{οπτική οδομετρία $\rightarrow$ $(x,y,z,roll,pitch,yaw)$}
+	\end{outline}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Αυτόνομη Πλοήγηση}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Αυτόνομη Πλοήγηση}
+	\begin{itemize}
+		\item Στόχος: Μετάβαση από μία αρχική πόζα $p_{init}$ σε μία τελική $p_{final}$
+		\item	Αναζήτηση λύσης σε Χάρτες Κόστους\\ $\rightarrow$ αναπαράσταση ρομπότ ως  σημείο
+		\item Διάσπαση Προβλήματος $\rightarrow$ Ολικό και Τοπικό πρόβλημα
+		\item Κινηματικοί περιορισμοί $\rightarrow$ δυσκολότερο πρόβλημα
+	\end{itemize}
+	\vspace{-0.5cm}
+	\begin{figure}
+		\centering
+		\subfloat{\includegraphics[width=0.65\linewidth]{Figures/inflated_obstacles.png}}\\[0.5cm]
+		\subfloat{\includegraphics[width=0.65\linewidth]{Figures/costmaps.png}}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Προτάσεις}
+	\begin{enumerate}
+		\item Αυτόνομη Πλοήγηση με Δυναμική Παραμόρφωση Μονοπατιού (DPM)
+		\vspace{-0.5cm}
+		\begin{enumerate}
+			\item Κατασκευή στατικού ολικού μονοπατιού $\rightarrow$ Dijkstra / A*
+			\item Παραμόρφωση ολικού μονοπατιού σε τοπικό $\rightarrow$ Reeds-Shepp Band
+			\item Διάσχιση τοπικού μονοπατιού με ελεγκτή ασαφούς λογικής
+		\end{enumerate}
+		\item Αυτόνομη Πλοήγηση με Δυναμική Ανακατασκευή Μονοπατιού (DPR)
+		\begin{enumerate}
+			\item Δυναμική ανακατασκευή ολικού μονοπατιού $\rightarrow$ SBPL Lattice Planner
+			\item Διάσχιση τοπικού μονοπατιού με ελεγκτή ασαφούς λογικής
+		\end{enumerate}
+		
+	\end{enumerate}
+	\begin{figure}
+		\centering
+		\includegraphics[width=2cm]{Figures/dpm.png}
+		\hspace{2cm}
+		\includegraphics[width=2cm]{Figures/dpr.png}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DPM (1/3): Ολικό Μονοπάτι μέσω Dijkstra ή Α*}
+	\begin{itemize}
+		\item Αντιμετώπιση του ολικού χάρτη κόστους ως γράφο
+		\item Κατασκευή ολικού μονοπατιού μεταξύ αρχικής θέσης και στόχου
+		\item Dijkstra $\rightarrow$ Breadth-First Search $\rightarrow$ $f(n)=g(n)$
+		\item Α* $\rightarrow$ μεταξύ Breadth-First, Best-First Search $\rightarrow$ $f(n)=g(n)+h(n)$
+		\item Dijkstra $\rightarrow$ πάντα βέλτιστη λύση, αλλά Α* $\rightarrow$ αποδοτικότερος
+		\item \underline{Κινηματικά μη εφικτό μονοπάτι} για Car-Like Robots
+	\end{itemize}
+	\vspace{-0.2cm}
+	\begin{figure}
+		\captionsetup[subfigure]{labelformat=empty}
+		\subfloat[Dijkstra]{\includegraphics[width=0.4\linewidth]{Figures/so_dijkstra_p4.png}}
+		\hspace{1cm}
+		\subfloat[A*]{\includegraphics[width=0.4\linewidth]{Figures/so_astar_p4.png}}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DPM (2/3): Μετατροπή Μονοπατιού σε Ελαστική Ζώνη}
+	\begin{itemize}
+		\item Μετατροπή σε ελαστική ζώνη $\rightarrow$ σημείο σε Φούσκα (Bubble)
+		\item Φούσκα: Μέγιστο τοπικό, προσβάσιμο τμήμα γύρω από μία θέση b\\
+		 $\rightarrow$ $B(b) = \left\lbrace q : ||b - q|| < \rho(b)\right\rbrace$
+		\item Παραμόρφωση μέσω τεχνητών
+		\begin{itemize}
+			\item εσωτερικών ελκτικών δυνάμεων $\rightarrow$ τάση για ευθυγράμμιση
+				\begin{align*}
+					\mathbf{f}_c = k_c \cdot \left( \frac{\mathbf{b}_{i-1} - \mathbf{b}_i}{||\mathbf{b}_{i-1} - \mathbf{b}_i||} + \frac{\mathbf{b}_{i+1} - \mathbf{b}_i}{||\mathbf{b}_{i+1} - \mathbf{b}_i||}  \right)
+				\end{align*}
+			\item εξωτερικών απωστικών δυνάμεων $\rightarrow$ απομάκρυνση από εμπόδια
+				\begin{align*}
+					\mathbf{f}_r = \begin{cases}
+						k_r \cdot \left(\rho_0 - \rho \frac{\partial\rho}{\partial \mathbf{b}}\right) \;\; &\rho < \rho_0\\
+						0 \;\; &\rho \geq \rho_0
+				 \end{cases}
+			 \end{align*}
+		\end{itemize}
+	\end{itemize}
+	
+	\begin{figure}
+		\includegraphics[height=2.5cm]{Figures/eband.png}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DPM(3/3): Μετατροπή Ελαστικής Ζώνης σε Ζώνη Reeds-Shepp}
+\textbf{Μονοπάτι Reeds-Shepp}: βέλτιστο μονοπάτι για ένα αυτοκίνητο που κινείται και μπρος και πίσω
+	\begin{itemize}
+		\item 48 τύποι μονοπατιών Reeds-Shepp βάσει των λέξεων:\\[-0.8cm] 
+			\begin{align*}
+	\{C|C|C,\;CC|C,\;C|CC,\;CSC,\;CC_{\beta}|C_{\beta}C,\;	C|C_{\beta}C_{\beta}|C,\;\nonumber\\C|C_{\frac{\pi}{2}}SC,\;CSC_{\frac{\pi}{2}}|C,\;C|C_{\frac{\pi}{2}}SC_{\frac{\pi}2}|C\},\;\;\; C \in \{R,L\}
+			\end{align*}
+
+		\item Σύνδεση των κέντρων των φουσκών της ελαστικής ζώνης με μονοπάτια Reeds-Shepp
+		$\rightarrow$ \textbf{Ζώνη Reeds-Shepp}\\
+		$\rightarrow$ Κινηματικά εφικτό μονοπάτι
+	\end{itemize}
+	\vspace{-0.5cm}
+	\begin{figure}
+		\captionsetup[subfigure]{labelformat=empty}
+		\subfloat[Ολικό Μονοπάτι]{\frame{\includegraphics[height=2cm]{Figures/rsband_global_3.png}}} \hspace{0.1cm}
+		\subfloat[Ελαστική Ζώνη]{\frame{\includegraphics[height=2cm]{Figures/rsband_eband_3.png}}} \hspace{0.1cm}
+		\subfloat[Ζώνη Reeds-Shepp]{\frame{\includegraphics[height=2cm]{Figures/rsband_rsband_3.png}}}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DPR(1/2): SBPL Lattice Planner}
+	\begin{itemize}
+		\item Κατάσταση $s=(x,y,\theta,\upsilon)$
+		\item Δικτύωμα Καταστάσεων\\$\rightarrow$ διακριτοποίηση χώρου καταστάσεων + συνδέσεις καταστάσεων
+		\item Σύνδεση μεταξύ δύο καταστάσεων\\$\rightarrow$ κινηματικά και δυναμικά εφικτό μονοπάτι
+		\item Χώρος Κινήσεων: κινηματικά εφικτές κινήσεις
+		\item Μονοπάτι στο δικτύωμα $\rightarrow$ συνδυασμός εφικτών κινήσεων
+		\item Κατασκευή Μονοπατιού $\rightarrow$ αναζήτηση σε γράφο $\rightarrow$ ARA* ή AD*
+	\end{itemize}
+	\begin{figure}
+		\includegraphics[width=0.45\linewidth]{Figures/motion_primitives.png}
+	\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DPR(2/2): ARA* και AD*}
+	ARA*: Anytime Repairing A*\\
+	AD*: Anytime Dynamic A*
+	
+	\begin{itemize}
+		\item A* σε Μεγάλο πρόβλημα $\rightarrow$ παραβίαση χρονικών περιορισμών\\$\rightarrow$  παραλλαγές του A* (ARA*, AD*)
+		\item ARA*: γρήγορη εύρεση μη βέλτιστης λύσης και συνεχή βελτίωση, σε στατικό περιβάλλον
+		\item $\epsilon>1$: παράγοντας διαστολής αποδεκτού κόστους μονοπατιού
+		\item Επαναχρησιμοποίηση πληροφορίας από προηγούμενες αναζητήσεις
+		\item AD*: ARA* + D*/D* Lite $\rightarrow$ προσαρμογή σε δυναμικά εμπόδια
+	\end{itemize}
+	
+\end{frame}
+
+\plain{}{ΕΡΩΤΗΣΕΙΣ?}
+\end{document}

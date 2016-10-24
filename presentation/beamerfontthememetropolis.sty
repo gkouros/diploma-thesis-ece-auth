@@ -1,0 +1,49 @@
+% Beamer mtheme
+%
+% Copyright 2014 Matthias Vogelgesang
+% Licensed under CC-BY-SA 4.0 International.
+%
+% The initial template comes from the HSRM beamer theme by Benjamin Weiss, which
+% you can find at https://github.com/hsrmbeamertheme/hsrmbeamertheme.
+%
+
+\ProvidesPackage{beamerfontthememetropolis}
+
+\usepackage[no-math]{fontspec}
+\usepackage{etoolbox}
+
+
+%%% modified by KK for ShareLaTeX use
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont{Linux Libertine O}%[Path=fonts/,BoldFont={FiraSans-Regular.ttf}]{FiraSans-Light.ttf}
+\setmonofont{Linux Libertine O}%[Path=fonts/]{FiraMono-Regular.ttf}
+\newfontfamily\ExtraLight{Linux Libertine O}%[Path=fonts/,ItalicFont=FiraSans-ExtraLightItalic.ttf]{FiraSans-ExtraLight.ttf}
+\newfontfamily\Light{Linux Libertine O}%[Path=fonts/,ItalicFont=FiraSans-LightItalic.ttf]{FiraSans-Light.ttf}
+\newfontfamily\Book{Linux Libertine O}%[Path=fonts/,ItalicFont=FiraSans-Italic.ttf,BoldFont=FiraSans-Bold.ttf,BoldItalicFont=FiraSans-BoldItalic.ttf]{FiraSans-Regular.ttf}
+\newfontfamily\Medium{Linux Libertine O}%[Path=fonts/,ItalicFont=FiraSans-MediumItalic.ttf]{FiraSans-Medium.ttf}
+
+\AtBeginEnvironment{tabular}{\setsansfont[Path=fonts/,BoldFont={FiraSans-Regular.ttf}, Numbers={Monospaced}]{FiraSans-Light.ttf}}
+%%%
+
+\setbeamerfont{title}{family=\Medium, size=\large}
+\setbeamerfont{author}{family=\Book, size=\small}
+\setbeamerfont{date}{family=\Book, size=\small}
+\setbeamerfont{institute}{family=\Book, size=\fontsize{8}{10}}
+
+\setbeamerfont{section title}{family=\Medium, size=\fontsize{12}{14}}
+
+\setbeamerfont{block title}{family=\Book,size=\normalsize}
+\setbeamerfont{block title alerted}{family=\Book,size=\normalsize}
+
+\setbeamerfont{subtitle}{family=\Book, size=\fontsize{12}{14}}
+\setbeamerfont{frametitle}{family=\Book, series=\scshape, size=\large}
+
+\setbeamerfont{alerted text}{family=\Light}
+
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{family=\Book}
+
+\setbeamerfont{description item}{family=\Book}
+
+
+\linespread{1.15}
