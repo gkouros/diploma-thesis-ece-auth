@@ -11,6 +11,7 @@
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
 twoside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+openright,
 %chapterinoneline,% Have the chapter title next to the number in one single line
 english,
 %singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
@@ -105,7 +106,7 @@ headsepline, % Uncomment to get a line under the header
 \hypersetup{pdftitle=\ttitle}
 \hypersetup{pdfauthor=\authorname}
 \hypersetup{pdfkeywords=\keywordnames}
-
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
 \begin{document}
 
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
@@ -155,7 +156,11 @@ headsepline, % Uncomment to get a line under the header
 \end{center}
 \end{titlepage}
 
-\let\cleardoublepage\clearpage
+\let\cleardoublepage\clearpage % comment out to add empty empty pages for printed version
+
+\mbox{}
+\thispagestyle{empty}
+\newpage
 
 %----------------------------------------------------------------------------------------
 %	SUMMARY PAGE
@@ -163,19 +168,19 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{summary}
 %\addchaptertocentry{\summaryname} % Add the summary to the table of contents
-Η πιο σημαντική ικανότητα που μπορεί να διαθέτει ένα ρομποτικό σύστημα, είναι η αυτονομία, όσον αφορά την λειτουργία του για την επίτευξη ενός στόχου ή μίας εργασίας, χωρίς ανθρώπινη παρέμβαση. Τα αυτόνομα ρομποτικά οχήματα, συγκεκριμένα, για να μπορούν να εκτελέσουν μία εργασία, θα πρέπει να μπορούν να πλοηγούνται αυτόνομα μέσα στο περιβάλλον τους, λειτουργία που συνεπάγεται επίλυση ενός συνόλου προβλημάτων, προβλήματα, τα οποία μπορεί να επιλύονται με διαφορετική προσέγγιση, ανάλογα με τις δυνατότητες και περιορισμούς του εκάστοτε ρομποτικού συστήματος.
+Η πιο σημαντική ικανότητα που μπορεί να διαθέτει ένα ρομποτικό σύστημα, είναι η αυτονομία όσον αφορά την λειτουργία του για την επίτευξη ενός στόχου ή μίας εργασίας χωρίς ανθρώπινη παρέμβαση. Τα αυτόνομα ρομποτικά οχήματα, συγκεκριμένα, για να μπορούν να εκτελέσουν μία εργασία, θα πρέπει να μπορούν να πλοηγούνται αυτόνομα μέσα στο περιβάλλον τους, λειτουργία που συνεπάγεται επίλυση ενός συνόλου προβλημάτων, προβλήματα τα οποία μπορεί να επιλύονται με διαφορετική προσέγγιση ανάλογα με τις δυνατότητες και περιορισμούς του εκάστοτε ρομποτικού συστήματος.
 
 \bigskip
-Στα πλαίσια της παρούσας διπλωματικής εργασίας αναπτύχθηκε η ρομποτική πλατφόρμα Monstertruck, η οποία αποτελεί ένα ρομποτικό όχημα που περιγράφεται από ένα μη ιδανικό κινηματικό μοντέλο τετραδιεύθυνσης με ένα σύνολο κινηματικών περιορισμών που δεν επιτρέπουν την αξιοποίηση δημοφιλών αλγορίθμων, όσον αφορά την κίνηση και την αυτόνομη πλοήγηση. Το εν λόγω ρομποτικό όχημα εξοπλίστηκε κατάλληλα με αισθητήρες που του επιτρέπουν να αντιλαμβάνεται το περιβάλλον του και κινητήρες που του επιτρέπουν να κινείται μέσα σε αυτό, βάσει του κινηματικού νόμου που αναπτύχθηκε για στο όχημα, λαμβάνοντας υπόψιν ένα σύνολο παραδοχών και προσεγγίσεων.
+Στα πλαίσια της παρούσας διπλωματικής εργασίας αναπτύχθηκε η ρομποτική πλατφόρμα Monstertruck, η οποία αποτελεί ένα ρομποτικό όχημα που περιγράφεται από ένα μη ιδανικό κινηματικό μοντέλο τετραδιεύθυνσης με ένα σύνολο κινηματικών περιορισμών που δεν επιτρέπουν την αξιοποίηση δημοφιλών αλγορίθμων όσον αφορά την κίνηση και την αυτόνομη πλοήγηση. Το εν λόγω ρομποτικό όχημα εξοπλίστηκε κατάλληλα με αισθητήρες που του επιτρέπουν να αντιλαμβάνεται το περιβάλλον του και κινητήρες που του επιτρέπουν να κινείται μέσα σε αυτό, βάσει του κινηματικού νόμου που αναπτύχθηκε για αυτό, λαμβάνοντας υπόψιν ένα σύνολο παραδοχών και προσεγγίσεων.
 
 \bigskip
 Για να μπορεί το όχημα να παράγει μία αναπαράσταση του περιβάλλοντος του και ταυτόχρονα να εντοπίζει την θέση του μέσα σε αυτό, αξιοποιώντας μετρήσεις των αισθητήρων του, χρησιμοποιήθηκαν δύο πολύ δημοφιλείς αλγόριθμοι SLAM. Συγκεκριμένα, εξετάστηκε ο αλγόριθμος CRSM-SLAM ο οποίος χρησιμοποιεί αντιστοίχιση δισδιάστατων σαρώσεων του περιβάλλοντος, όπως επίσης και ο αλγόριθμος Gmapping που χρησιμοποιεί Φίλτρα Σωματιδίων σε συνδυασμό με εκτίμηση κατάστασης με Εκτεταμένα Φίλτρα Kalman, που συνδυάζουν εκτιμήσεις από το σύστημα οδομετρίας τροχών και μετρήσεις από τον αισθητήρα τρισδιάστατου προσανατολισμού του οχήματος.
 
 \bigskip
-Για την αυτόνομη πλοήγηση του ρομπότ σχεδιάστηκαν δύο συστήματα που επιλύουν το πρόβλημα του σχεδιασμού και της εκτέλεσης αξιοποιώντας αντίθετες προσεγγίσεις. Το ένα σύστημα χρησιμοποιεί στατική κατασκευή ενός μονοπατιού για την μετάβαση από την αρχική θέση του ρομπότ στην επιθυμητή, βάσει των αλγορίθμων Dijkstra και Α*, χωρίς να λαμβάνει υπόψιν τους κινηματικούς περιορισμούς του ρομπότ, ενώ έπειτα παραμορφώνει δυναμικά το ολικό μονοπάτι, για παραγωγή ενός τοπικού κινηματικά εφικτού και ασφαλούς μονοπατιού, βάσει του αλγορίθμου Reeds-Shepp Band, που αναπτύχθηκε στα πλαίσια της παρούσας διπλωματικής εργασίας. Αντίθετα, το δεύτερο σύστημα αυτόνομης πλοήγησης χρησιμοποιεί τον αλγόριθμο SBPL Lattice Planner για την δυναμική ανακατασκευή ενός ολικού μονοπατιού, κινηματικά εφικτού από το ρομπότ. Τα δύο παραπάνω συστήματα αυτόνομης πλοήγησης ολοκληρώνονται με την προσθήκη ενός αλγορίθμου διάσχισης μονοπατιού, βασισμένου σε Ασαφή Λογική, με στόχο την εκμετάλλευση του πλήρους σετ δυνατοτήτων του κινηματικού μοντέλο Τετραδιεύθυνσης, ενώ παράλληλα παρουσιάζει μεγάλο βαθμό προσαρμοστικότητας και επεκτασιμότητας, ανάλογα με την εφαρμογή.
+Για την αυτόνομη πλοήγηση του ρομπότ σχεδιάστηκαν δύο συστήματα που επιλύουν το πρόβλημα του σχεδιασμού και της εκτέλεσης αξιοποιώντας αντίθετες προσεγγίσεις. Το ένα σύστημα χρησιμοποιεί στατική κατασκευή ενός μονοπατιού για την μετάβαση από την αρχική θέση του ρομπότ στην επιθυμητή, βάσει των αλγορίθμων Dijkstra και Α*, χωρίς να λαμβάνει υπόψιν του τους κινηματικούς περιορισμούς του ρομπότ, ενώ έπειτα παραμορφώνει δυναμικά το ολικό μονοπάτι, για παραγωγή ενός τοπικού κινηματικά εφικτού και ασφαλούς μονοπατιού, βάσει του αλγορίθμου Reeds-Shepp Band, που αναπτύχθηκε στα πλαίσια της παρούσας διπλωματικής εργασίας. Αντίθετα, το δεύτερο σύστημα αυτόνομης πλοήγησης χρησιμοποιεί τον αλγόριθμο SBPL Lattice Planner για την δυναμική ανακατασκευή ενός ολικού μονοπατιού, κινηματικά εφικτού από το ρομπότ. Τα δύο παραπάνω συστήματα αυτόνομης πλοήγησης ολοκληρώνονται με την προσθήκη ενός αλγορίθμου διάσχισης μονοπατιού, βασισμένου σε Ασαφή Λογική, με στόχο την εκμετάλλευση του πλήρους σετ δυνατοτήτων του κινηματικού μοντέλου Τετραδιεύθυνσης, ενώ παράλληλα παρουσιάζει μεγάλο βαθμό προσαρμοστικότητας και επεκτασιμότητας, ανάλογα με την εφαρμογή.
 
 \bigskip
-Για την αξιολόγηση και επαλήθευση  της λειτουργίας των παραπάνω αλγορίθμων και συστημάτων του ρομποτικού οχήματος που αναπτύχθηκε πραγματοποιήθηκε ένα σύνολο πειραμάτων, σε επίπεδο δισδιάστατης και τρισδιάστατης προσομοίωσης, όπως επίσης και σε πραγματικές συνθήκες με το φυσικό ρομποτικό όχημα.
+Για την αξιολόγηση και επαλήθευση της λειτουργίας των παραπάνω αλγορίθμων και συστημάτων του ρομποτικού οχήματος που αναπτύχθηκε, πραγματοποιήθηκε ένα σύνολο πειραμάτων, σε επίπεδο δισδιάστατης και τρισδιάστατης προσομοίωσης, όπως επίσης και σε πραγματικές συνθήκες με το φυσικό ρομποτικό όχημα.
 \end{summary}
 
 
@@ -191,10 +196,10 @@ Autonomy is the most important property of any robotic system, regarding its ope
 The Monstertruck Robotic Platform that was developed, as part of this thesis, constitutes a robotic vehicle that adheres to a non ideal Four-Wheel-Steering kinematic model that presents a set of kinematic constraints that make the utilization of popular motion and navigation algorithms, extremely difficult or even impossible. The aforementioned robotic vehicle, was equipped with sensors that allow it to perceive its environment, as well as actuators that allow it to navigate through it, while, at the same time, adhering to the kinematic law that was developed for it and which takes into consideration a number of assumptions and approximations.
 
 \bigskip
-In order to be able to produce a representation of the environment of the robot, while simultaneously tracking its position, two very popular SLAM algorithms, were used. In particular, the first algorithm that was used is called CRSM-SLAM and uses a scan matching technique for 2D scans of the environment, while the second algorithm is called Gmapping and uses Particle Filters in combination with Extended Kalman Filters, which fuse the state estimation of the wheel odometry system of the robot, as well as readings from a 3D orientation sensor.
+In order to be able to produce a representation of the environment of the robot, while simultaneously tracking its position, two very popular SLAM algorithms, were used. In particular, the first algorithm that was used is called CRSM-SLAM and uses a scan matching technique for 2D scans of the environment, while the second algorithm is called Gmapping and uses Particle Filters and odometry produced via Extended Kalman Filters, which fuse the state estimation of the wheel odometry of the robot, as well as readings from a 3D orientation sensor.
 
 \bigskip
-Regarding the autonomous navigation of the developed robotic vehicle, two systems were developed that solve the problem, in question, using two opposite approaches. The first system uses static global path planning for the transition from an initial position to a desired one, utilizing the Dijkstra and A* graph search algorithms, without, however, taking into consideration the kinematic constraints of the robot. The resulting global path is then deformed dynamically, into a local kinematically feasible and safe path, using the Reeds-Shepp Band algorithm that was developed as part of this thesis. The second system uses the SBPL Lattice Planner algorithm to produce and dynamically reconstruct a global kinematically feasible path. The two aforementioned autonomous navigation systems, also contain a path tracking algorithm, that was developed, based on Fuzzy Logic, aspiring to take full advantage of the capabilities of the Four-Wheel-Steering kinematic model, while at the same time being easily adapted and extensible, depending on the application.
+Regarding the autonomous navigation of the developed robotic vehicle, two systems were developed that solve the problem, in question, using two opposite approaches. The first system uses static global path planning for the transition from an initial position to a desired one, utilizing the Dijkstra and A* graph search algorithms, without, however, taking into consideration the kinematic constraints of the robot. The resulting global path is then deformed dynamically, into a local kinematically feasible and safe path, using the Reeds-Shepp Band algorithm that was developed as part of this thesis. The second system uses the SBPL Lattice Planner algorithm to produce and dynamically reconstruct a global kinematically feasible path. The two aforementioned autonomous navigation systems, are complemented with a path tracking algorithm, that was developed, based on Fuzzy Logic, aspiring to take full advantage of the capabilities of the Four-Wheel-Steering kinematic model, while at the same time being adaptable and extensible, depending on the application.
 
 \bigskip
 The evaluation and verification of the functionality of the above algorithms and systems of the developed robotic vehicle, was conducted via a series of experiments, using 2D and 3D simulation, as well as real world conditions with the actual robotic vehicle.
