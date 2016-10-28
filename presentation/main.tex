@@ -54,21 +54,6 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}[fragile]
-%	\frametitle{Πρόβλημα}
-%	Ανάπτυξη Αυτόνομου Ρομποτικού Οχήματος με Κινηματικό Μοντέλο 4WS4WD και Δυνατότητες Αυτόνομης Εξερεύνησης σε Άγνωστο Περιβάλλον
-%	
-%	\bigskip	
-%	\begin{itemize}[<+- | alert@+>]
-%		\item Ανάγκες σε εξοπλισμό
-%		\item Δυνατότητες και περιορισμοί κίνησης
-%		\item Αντίληψη
-%		\item Αυτόνομη Λειτουργία
-%		\item Εργαλεία προς Αξιοποίηση
-%	\end{itemize}
-%\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 	\frametitle{Επισκόπιση}
 	\textbf{Τμήματα:}
@@ -77,7 +62,7 @@
 		\item{Κινηματική Ανάλυση}
 		\item{Εκτίμηση Κατάστασης και Χαρτογράφηση}
 		\item{Αυτόνομη Πλοήγηση και Εξερεύνηση}
-		\item{Αρχιτεκτονική Συστήματος}
+		\item{Αρχιτεκτονική Συστήματος και Εργαλεία}
 		\item{Πειράματα}
 	\end{itemize}
 \end{frame}
@@ -105,52 +90,22 @@
 	
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Εξοπλισμός}
-%	\begin{figure}
-%		\centering
-%		\subfloat{{\includegraphics[width=0.4\linewidth]{Figures/servo.jpg}}} \hspace{1cm}
-%		\subfloat{\frame{\includegraphics[width=0.4\linewidth]{Figures/maxon_motor.png}}}\\
-%		\subfloat{{\includegraphics[width=0.4\linewidth]{Figures/dynamixel.jpg}}}
-%	\end{figure}
-%\end{frame}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Αισθητήρες}
-%	\begin{figure}
-%		\centering
-%		\subfloat{{\includegraphics[width=0.4\linewidth]{Figures/compass.jpg}}} \hspace{1cm}
-%		\subfloat{\includegraphics[width=0.4\linewidth]{Figures/hokuyo.jpg}}\\[0.5cm]
-%		\subfloat{{\includegraphics[width=0.25\linewidth]{Figures/webcam.jpg}}}
-%	\end{figure}	
-%\end{frame}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Υπολογιστής}
-%	\begin{minipage}{0.49\textwidth}
-%		\centering
-%		\includegraphics[width=\linewidth]{Figures/odroid-xu4.jpg}
-%	\end{minipage}
-%	\begin{minipage}{0.49\textwidth}
-%		\centering
-%		\includegraphics[width=\linewidth]{Figures/odroid_specs.png}
-%	\end{minipage}
-%\end{frame}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Εξοπλισμός}
 	\begin{figure}
-		\includegraphics[width=\linewidth]{Figures/electronics.png}
+		\visible<1-3>{\subfloat{\includegraphics[width=0.4\linewidth]{Figures/odroid-xu4.jpg}}}\\
+		\visible<2-3>{\subfloat{\includegraphics[width=0.47\linewidth]{Figures/motors.png}}}
+		\hspace{0.03\linewidth}
+		\visible<3>{\subfloat{\includegraphics[width=0.47\linewidth]{Figures/sensors.png}}}
 	\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Τελική Ρομποτική Πλατφόρμα}
-	\begin{center}
-		\frame{\includegraphics[width=0.8\linewidth]{Figures/pandora_monstertruck.png}}
-	\end{center}
-\end{frame}
+%\begin{frame}{Τελική Ρομποτική Πλατφόρμα}
+%	\begin{center}
+%		\frame{\includegraphics[width=0.8\linewidth]{Figures/pandora_monstertruck.png}}
+%	\end{center}
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,8 +153,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Κινηματικό Μοντέλο Τετραδιεύθυνσης (4WS)}
 	\begin{figure}[!ht]
-		\subfloat{\includegraphics[height=5.2cm]{Figures/4ws_model.png}}
-		\subfloat{\includegraphics[height=5cm]{Figures/pos_4ws_model.png}}		
+		\visible<1-2>{\subfloat{\includegraphics[height=5.2cm]{Figures/4ws_model.png}}}
+		\visible<2>{\subfloat{\includegraphics[height=5cm]{Figures/pos_4ws_model.png}}}
 	\end{figure}
 	\textbf{Συνθήκη Τετραδιεύθυνσης:}
 	\begin{equation*}
@@ -216,7 +171,7 @@
 		\subfloat{\includegraphics<2>[height=3.5cm]{Figures/monstertruck_slip_angle_model_parallel.png}}\\
 		\subfloat{\includegraphics[height=2.0cm]{Figures/monstertruck_slip_angles.png}}
 	\end{figure}
-	\only<2>{\textbf{Μη Ιδανική Συνθήκη Τετραδιεύθυνσης:}	
+	\only<2>{\textbf{Μη Ιδανική Συνθήκη Τετραδιεύθυνσης:}
 	\begin{equation*}
 		\frac{1}{\cot(\delta_{of} - \alpha_{of}) - \cot(\delta_{if} + \alpha_{if})} - \frac{1}{\cot(\delta_{or} - \alpha_{or}) - \cot(\delta_{ir} + \alpha_{ir})} = \frac{l}{w}
 	\end{equation*}}
@@ -229,16 +184,15 @@
 \section{Εκτίμηση Κατάστασης και Χαρτογράφηση}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Κατάσταση και Χαρτογράφηση}
+\begin{frame}{Κατάσταση και SLAM}
 
 	\begin{itemize}
 		\item 6D Κατάσταση:  $s=(x,y,z,\phi,\psi,\theta)\; \text{ή}\; (x,y,z,roll,pitch,yaw)$
     	\item	\textbf{SLAM}: \textbf{S}imultaneous \textbf{L}ocalization \textbf{A}nd \textbf{M}apping
 		\item 2D αλγόριθμοι SLAM $\rightarrow$ 3D πόζα $p=(x,y,\theta)$
 		\item Χάρτες Πλέγματος Κατάληψης (OGM)
-		\item Χαρτογράφηση, Εκτίμηση Κατάστασης $\rightarrow$ αλληλένδετα
+		\item Χαρτογράφηση, εντοπισμός πόζας $\rightarrow$ αλληλένδετα
 		\item Αξιοποίηση πληροφορίας από σαρωτές λέιζερ
-		\item Σταθεροποίηση του σαρωτή λέιζερ στο επίπεδο
 	\end{itemize}
 	\vspace{-0.5cm}
 	\begin{figure}[!ht]
@@ -249,39 +203,28 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{CRSM-SLAM}
+\begin{frame}{Αλγόριθμοι SLAM}
+	\visible<1-2>{
 	\textbf{CRSM}: \textbf{C}ritical \textbf{R}ays \textbf{S}can \textbf{M}atching
-	
 	\begin{itemize}
-		\item Απαιτούμενα δεδομένα: σκαναρίσματα σαρωτή λέιζερ
-		\item Αντιστοίχιση σκαναρισμάτων
+		\item Αντιστοίχιση σκαναρισμάτων σαρωτή λέιζερ
 		\item Εντοπισμός πόζας $\rightarrow$ μετασχηματισμός διαδοχικών σκαναρισμάτων
 		\item Προεπεξεργασία σκαναρισμάτων $\rightarrow$ επιλογή κρίσιμων ακτίνων
-		\item Αντιστοίχιση τρέχοντος σκαναρίσματος με ολικό χάρτη\\
-		$\rightarrow$ Random Restart Hill Climbing (RRHC)
-	\end{itemize}
-	\begin{figure}
-		\includegraphics[height=3.5cm]{Figures/crsm_slam_diagram.png}
-	\end{figure}
-\end{frame}
+		\item Αντιστοίχιση τρέχοντος σκαναρίσματος με ολικό χάρτη\\$\rightarrow$ Random-Restart Hill Climbing (RRHC)
+	\end{itemize}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Gmapping}
+	\visible<2>{
+	\textbf{Gmapping}
 	\begin{outline}
 		\1 Σωματίδια (particles)
 		\1 Rao-Blackwellized Φίλτρα Σωματιδίων
-		\1 Εκτίμηση κατάστασης μέσω συνδυασμού
-			\2 Οδομετρίας και
-			\2 Αντιστοίχισης σκαναρίσματων σαρωτή λέιζερ
-		\1 Υψηλή εξάρτηση χαρτογράφησης από αξιόπιστη εκτίμηση κατάστασης\\[0.5cm]
-		
-		\1 Εκτίμηση Κατάστασης μέσω συνδυαστικής αντίληψης
-		\1 EKF: Εκτεταμένα Φίλτρα Kalman
-		\1 Συνδυασμός πληροφορίας από 
+		\1 Εκτίμηση κατάστασης $\rightarrow$ συνδυασμός
+			\2 οδομετρίας και
+			\2 αντιστοίχισης σκαναρίσματων		
+		\1 Συνδυαστική Οδομετρία $\rightarrow$ Εκτεταμένα Φίλτρα Kalman (EKF) σε
 			\2 οδομετρία τροχών $\rightarrow$ $(x,y,\theta)$
-			\2 πυξίδα $\rightarrow$ $(roll,pitch,yaw)$
-			\2 \sout{οπτική οδομετρία $\rightarrow$ $(x,y,z,roll,pitch,yaw)$}
-	\end{outline}
+			\2 πυξίδα $\rightarrow$ $(roll,pitch,yaw)$ ή $(\phi,\psi,\theta)$
+	\end{outline}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -299,33 +242,33 @@
 	\vspace{-0.5cm}
 	\begin{figure}
 		\centering
-		\subfloat{\includegraphics[width=0.65\linewidth]{Figures/inflated_obstacles.png}}\\[0.5cm]
-		\subfloat{\includegraphics[width=0.65\linewidth]{Figures/costmaps.png}}
+		\subfloat{\includegraphics[width=0.8\linewidth]{Figures/costmaps.png}}
 	\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Προτάσεις}
 	\begin{enumerate}
-		\item Αυτόνομη Πλοήγηση με Δυναμική Παραμόρφωση Μονοπατιού (DPM)
+		\visible<1-2>{\item Αυτόνομη Πλοήγηση με Δυναμική Παραμόρφωση Μονοπατιού (DPM)
 		\vspace{-0.5cm}
 		\begin{enumerate}
 			\item Κατασκευή στατικού ολικού μονοπατιού $\rightarrow$ Dijkstra / A*
 			\item Παραμόρφωση ολικού μονοπατιού σε τοπικό $\rightarrow$ Reeds-Shepp Band
 			\item Διάσχιση τοπικού μονοπατιού με ελεγκτή ασαφούς λογικής
-		\end{enumerate}
-		\item Αυτόνομη Πλοήγηση με Δυναμική Ανακατασκευή Μονοπατιού (DPR)
+		\end{enumerate}}
+		
+		\visible<2>{\item Αυτόνομη Πλοήγηση με Δυναμική Ανακατασκευή Μονοπατιού (DPR)
 		\begin{enumerate}
 			\item Δυναμική ανακατασκευή ολικού μονοπατιού $\rightarrow$ SBPL Lattice Planner
 			\item Διάσχιση τοπικού μονοπατιού με ελεγκτή ασαφούς λογικής
-		\end{enumerate}
+		\end{enumerate}}
 		
 	\end{enumerate}
 	\begin{figure}
 		\centering
-		\includegraphics[width=2cm]{Figures/dpm.png}
+		\visible<1-2>{\includegraphics[width=2cm]{Figures/dpm.png}}
 		\hspace{2cm}
-		\includegraphics[width=2cm]{Figures/dpr.png}
+		\visible<2>{\includegraphics[width=2cm]{Figures/dpr.png}}
 	\end{figure}
 \end{frame}
 
@@ -376,29 +319,38 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{DPM(3/3): Μετατροπή Ελαστικής Ζώνης σε Ζώνη Reeds-Shepp}
+\begin{frame}{DPM (3/3): Μετατροπή Ελαστικής Ζώνης σε Ζώνη Reeds-Shepp}
 \textbf{Μονοπάτι Reeds-Shepp}: βέλτιστο μονοπάτι για ένα αυτοκίνητο που κινείται και μπρος και πίσω
 	\begin{itemize}
-		\item 48 τύποι μονοπατιών Reeds-Shepp βάσει των λέξεων:\\[-0.8cm] 
-			\begin{align*}
-	\{C|C|C,\;CC|C,\;C|CC,\;CSC,\;CC_{\beta}|C_{\beta}C,\;	C|C_{\beta}C_{\beta}|C,\;\nonumber\\C|C_{\frac{\pi}{2}}SC,\;CSC_{\frac{\pi}{2}}|C,\;C|C_{\frac{\pi}{2}}SC_{\frac{\pi}2}|C\},\;\;\; C \in \{R,L\}
-			\end{align*}
-
-		\item Σύνδεση των σημείων της ελαστικής ζώνης με μονοπάτια Reeds-Shepp
-		$\rightarrow$ \textbf{Ζώνη Reeds-Shepp}\\
-		$\rightarrow$ Κινηματικά εφικτό μονοπάτι
+		\item 48 τύποι μονοπατιών Reeds-Shepp βάσει των λέξεων:
 	\end{itemize}
+	\vspace{-0.4cm}
+	\begin{align*}
+		\{C|C|C,\;CC|C,\;C|CC,\;CSC,\;CC_{\beta}|C_{\beta}C,\;	C|C_{\beta}C_{\beta}|C,\;\nonumber\\C|C_{\frac{\pi}{2}}SC,\;CSC_{\frac{\pi}{2}}|C,\;C|C_{\frac{\pi}{2}}SC_{\frac{\pi}2}|C\},\;\;\; C \in \{R,L\}
+	\end{align*}
+
+	\vspace{-0.5cm}	
+	\begin{figure}
+		\includegraphics[height=2.5cm]{Figures/reeds_shepp_paths.png}
+	\end{figure}
+
+	\vspace{-0.2cm}	
+	\begin{itemize}
+		\item Ζώνη Reeds-Shepp $\rightarrow$ ακολουθία μονοπατιών Reeds-Shepp
+	\end{itemize}
+	
 	\vspace{-0.5cm}
+	\only<2>{	
 	\begin{figure}
 		\captionsetup[subfigure]{labelformat=empty}
-		\subfloat[Ολικό Μονοπάτι]{\frame{\includegraphics[height=2cm]{Figures/rsband_global_3.png}}} \hspace{0.1cm}
-		\subfloat[Ελαστική Ζώνη]{\frame{\includegraphics[height=2cm]{Figures/rsband_eband_3.png}}} \hspace{0.1cm}
-		\subfloat[Ζώνη Reeds-Shepp]{\frame{\includegraphics[height=2cm]{Figures/rsband_rsband_3.png}}}
-	\end{figure}
+		\subfloat[Ολικό Μονοπάτι]{\frame{\includegraphics[height=1.5cm]{Figures/rsband_global_3.png}}} \hspace{0.5cm}
+		\subfloat[Ελαστική Ζώνη]{\frame{\includegraphics[height=1.5cm]{Figures/rsband_eband_3.png}}} \hspace{0.5cm}
+		\subfloat[Ζώνη Reeds-Shepp]{\frame{\includegraphics[height=1.5cm]{Figures/rsband_rsband_3.png}}}
+	\end{figure}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{DPR(1/2): SBPL Lattice Planner}
+\begin{frame}{DPR (1/2): SBPL Lattice Planner}
 	\begin{itemize}
 		\item Κατάσταση $s=(x,y,\theta,\upsilon)$
 		\item Δικτύωμα Καταστάσεων\\$\rightarrow$ διακριτοποίηση χώρου καταστάσεων + συνδέσεις καταστάσεων
@@ -413,13 +365,14 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{DPR(2/2): ARA* και AD*}
+\begin{frame}{DPR (2/2): ARA* και AD*}
 	ARA*: Anytime Repairing A*\\
 	AD*: Anytime Dynamic A*
 	
 	\begin{itemize}
-		\item A* σε Μεγάλο πρόβλημα $\rightarrow$ παραβίαση χρονικών περιορισμών\\$\rightarrow$  παραλλαγές του A*
-		\item ARA*: αρχική μη βέλτιστη λύση και συνεχή βελτίωση
+		\item A* σε Μεγάλο πρόβλημα $\rightarrow$ παραβίαση χρονικών περιορισμών
+		\item Λύση: παραλλαγές του A* $\rightarrow$ ΑΡΑ*, AD*
+		\item ARA*: αρχική μη βέλτιστη λύση και συνεχής βελτίωση
 		\item $\epsilon>1$: παράγοντας διαστολής κόστους μονοπατιού
 		\item $f(n) = g(n) + \epsilon \cdot h(n)$
 		\item Επαναχρησιμοποίηση πληροφορίας από προηγούμενες αναζητήσεις
@@ -434,38 +387,44 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ασαφής Ελεγκτής Διάσχισης Μονοπατιού(1/3)}
+\begin{frame}{Ασαφής Ελεγκτής Διάσχισης Μονοπατιού (1/2)}
 	\begin{figure}
 		\subfloat{\includegraphics[height=4cm]{Figures/ptc_errors.png}}
 		\hspace{1cm}
-		\subfloat{\includegraphics[height=4cm]{Figures/fuzzy_ptc_inside.png}}\\[0.5cm]
-		\subfloat{\includegraphics[width=0.8\linewidth]{Figures/ptc_block_diagram.png}}
+		\subfloat{\includegraphics[height=4cm]{Figures/fuzzy_ptc_inside.png}}
 	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ασαφής Ελεγκτής Διάσχισης Μονοπατιού(2/3): Μεταβλητές}
-	\begin{figure}
-		\centering
-		\vspace{-0.2cm}
-		\subfloat{\includegraphics[height=2.7cm]{Figures/eo_ea_mf.png}}\\[-0.4cm]
-		\subfloat{\includegraphics[height=2.7cm]{Figures/ep_mf.png}}
-		\subfloat{\includegraphics[height=2.7cm]{Figures/ey_mf.png}}
-		\subfloat{\includegraphics[height=2.7cm]{Figures/direction_mf.png}}\\[-0.4cm]
-		\subfloat{\includegraphics[height=2.7cm]{Figures/speed_mf.png}}
-		\subfloat{\includegraphics[height=2.7cm]{Figures/df_dr_mf.png}}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Ασαφής Ελεγκτής Διάσχισης Μονοπατιού(3/3): Κανόνες}
+	
+	Επιθυμητή Συμπεριφορά:
 	\begin{itemize}
 		\item $\upsilon:$ ανάλογη της απόστασης $E_p$ από τον τρέχον στόχο
 		\item $\delta_f:$ διόρθωση $E_\alpha$ μακρυά από τον στόχο και διόρθωση $E_o$ κοντά
 		\item $\alpha_r:$ διόρθωση πλευρικής απόκλισης $E_y$ εάν $E_o$, $E_y$ μικρά
 		\item Αντίστοιχη συμπεριφορά για θετική και αρνητική φορά κίνησης
 	\end{itemize}
-	\vspace{-0.3cm}
-	\includegraphics[width=0.9\linewidth]{Figures/fuzzy_rules.png}	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ασαφής Ελεγκτής Διάσχισης Μονοπατιού (2/2)}
+	\hspace{-0.5cm}
+	\begin{minipage}{0.75\textwidth}
+		\begin{figure}
+			\centering
+			\visible<1-3>{			
+			\subfloat{\includegraphics[height=2.5cm]{Figures/eo_ea_mf.png}}\\
+			\subfloat{\includegraphics[height=2.5cm]{Figures/ep_mf.png}}
+			\subfloat{\includegraphics[height=2.5cm]{Figures/ey_mf.png}}
+			\subfloat{\includegraphics[height=2.5cm]{Figures/direction_mf.png}}}\\
+			\visible<2-3>{
+			\subfloat{\includegraphics[height=2.5cm]{Figures/speed_mf.png}}
+			\subfloat{\includegraphics[height=2.5cm]{Figures/df_dr_mf.png}}}
+		\end{figure}
+	\end{minipage}%
+	\visible<3>{
+	\begin{minipage}{0.24\textwidth}
+		\begin{figure}
+			\includegraphics[height=8cm]{Figures/fuzzy_rules2.png}
+		\end{figure}
+	\end{minipage}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -487,7 +446,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Αρχιτεκτονική Συστήματος}
+\section{Αρχιτεκτονική Συστήματος και Εργαλεία}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{ROS}
@@ -603,32 +562,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Πειράματα Κατασκευής Ολικού Μονοπατιού (1/2)}
+	\vspace{-0.4cm}
 	\begin{table}
       \begin{tabular}{ c c }
-			Dijkstra & \raisebox{-.35\height}{\subfloat{\includegraphics[height=1.8cm]{Figures/dijkstra_exp.png}}}\\[-0.2cm]
-			A* & \raisebox{-.35\height}{\subfloat{\includegraphics[height=1.8cm]{Figures/astar_exp.png}}}\\[-0.2cm]
-			ARA* & \raisebox{-.35\height}{\subfloat{\includegraphics[height=1.8cm]{Figures/arastar_exp.png}}}\\[-0.2cm]
-			AD* &	\raisebox{-.35\height}{\subfloat{\includegraphics[height=1.8cm]{Figures/adstar_exp.png}}}
+			Dijkstra & \raisebox{-0.35\height}{\subfloat{\includegraphics[height=1.5cm]{Figures/dijkstra_exp.png}}}\\[-0.2cm]
+			A* & \raisebox{-0.35\height}{\subfloat{\includegraphics[height=1.5cm]{Figures/astar_exp.png}}}\\[-0.2cm]
+			ARA* & \raisebox{-0.35\height}{\subfloat{\includegraphics[height=1.5cm]{Figures/arastar_exp.png}}}\\[-0.2cm]
+			AD* &	\raisebox{-0.35\height}{\subfloat{\includegraphics[height=1.5cm]{Figures/adstar_exp.png}}}
 		\end{tabular}
 	\end{table}
-\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Πειράματα Κατασκευής Ολικού Μονοπατιού (2/2)}
-\begin{table}[!ht]
-\centering
-\resizebox{0.8\textwidth}{!}{  
-\begin{tabular}{|l|c|cc|cc|cc|cc|}
-\cline{3-10}
-\multicolumn{2}{l|}{}
-& \multicolumn{2}{c|}{\textbf{Dijkstra}}                                                                  & \multicolumn{2}{c|}{\textbf{A*}}                                                                        & \multicolumn{2}{c|}{\textbf{ARA*}}                                                                               & \multicolumn{2}{c|}{\textbf{AD*}}                                                           \\ \cline{3-10} 
-\multicolumn{2}{l|}{\multirow{-2}{*}{}}                                                                                & \multicolumn{1}{c}{\textbf{$T[s]$}} & \multicolumn{1}{c|}{\textbf{$s[m]$}} & \multicolumn{1}{c}{\textbf{$T[s]$}} & \multicolumn{1}{c|}{\textbf{$s[m]$}} & \multicolumn{1}{c}{\textbf{$s_{init}[m]$}} & \multicolumn{1}{c|}{\textbf{$s_{final}[m]$}} & \multicolumn{1}{c}{\textbf{$s_{init}[m]$}} & {\textbf{$s_{final}[m]$}} \\ \hline
-\multicolumn{1}{|c|}{} & \textbf{$p_1$} & 0.035 & 6.02 & 0.027 & 6.02 & 6.68 & 5.91 & 7.45 & 5.92 \\ %\cline{2-2}
-\multicolumn{1}{|c|}{} & \textbf{$p_2$} & 0.060 & 11.78 & 0.060 & 11.78 & 13.56 & 11.554 & 12.62 & 11.25  \\ 
-\multicolumn{1}{|c|}{} & \textbf{$p_3$} & 0.110 & 19.34 & 0.090 & 19.34 & 19.85 & 18.73 & 23.26 & 18.66 \\
-\multicolumn{1}{|c|}{\multirow{-4}{*}{\rotatebox[origin=c]{90}{\textbf{Στόχοι}}}} & \textbf{$p_4$} & 0.110 & 17.69 & 0.110 & 17.77 & 21.36 & 17.25 & 20.42 & 17.57 \\ \hline
-\end{tabular}}
-\end{table}
+
+	\vspace{-0.3cm}
+	\begin{table}
+		\hspace{1cm}
+		\resizebox{0.63\textwidth}{!}{
+			\begin{tabular}{|c|cc|cc|cc|cc|}
+				\cline{2-9}
+				\multicolumn{1}{l|}{} & \multicolumn{2}{c|}{\textbf{Dijkstra}} & \multicolumn{2}{c|}{\textbf{A*}} & \multicolumn{2}{c|}{\textbf{ARA*}} & \multicolumn{2}{c|}{\textbf{AD*}} \\ 
+				\cline{2-9}
+				\multicolumn{1}{l|}{\multirow{-2}{*}{}} & \multicolumn{1}{c}{\textbf{$T[s]$}} & \multicolumn{1}{c|}{\textbf{$s[m]$}} & \multicolumn{1}{c}{\textbf{$T[s]$}} & \multicolumn{1}{c|}{\textbf{$s[m]$}} & \multicolumn{1}{c}{\textbf{$s_{init}[m]$}} & \multicolumn{1}{c|}{\textbf{$s_{final}[m]$}} & \multicolumn{1}{c}{\textbf{$s_{init}[m]$}} & {\textbf{$s_{final}[m]$}} \\ \hline
+				\textbf{$p_1$} & 0.035 & 6.02 & 0.027 & 6.02 & 6.68 & 5.91 & 7.45 & 5.92\\
+				\textbf{$p_2$} & 0.060 & 11.78 & 0.060 & 11.78 & 13.56 & 11.554 & 12.62 & 11.25\\ 
+				\textbf{$p_3$} & 0.110 & 19.34 & 0.090 & 19.34 & 19.85 & 18.73 & 23.26 & 18.66\\
+				\textbf{$p_4$} & 0.110 & 17.69 & 0.110 & 17.77 & 21.36 & 17.25 & 20.42 & 17.57\\ 
+				\hline
+			\end{tabular}}
+		\end{table}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -639,38 +599,58 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Πειράματα Διάσχισης Μονοπατιού(1/2)}
-	\begin{figure}
-		\subfloat{\includegraphics[height=5.5cm]{Figures/path_tracking_flat_exp.png}}
-		\subfloat{\includegraphics[height=5.4cm]{Figures/path_tracking_exp.png}}
-	\end{figure}		
-\end{frame}
+\begin{frame}{Πειράματα Διάσχισης Μονοπατιού}
+	\visible<1-3>{
+	\begin{minipage}{0.5\textwidth}
+		\begin{figure}
+			\subfloat{\includegraphics[width=0.5\textwidth]{Figures/zic_zac_room_no_ramps.png}}
+			\subfloat{\includegraphics[width=0.5\textwidth]{Figures/zic_zac_room_no_ramps_path_and_traj.png}}
+		\end{figure}	
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/fsa_rsa_1.png}
+	\end{minipage}\\[0.5cm]}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Πειράματα Διάσχισης Μονοπατιού(2/2)}
-	\begin{figure}
-		\includegraphics[height=8cm]{Figures/path_tracking_slope_exp.png}
-	\end{figure}		
+	\visible<2-3>{
+	\begin{minipage}{0.5\textwidth}
+		\begin{figure}
+			\subfloat{\includegraphics[width=0.5\textwidth]{Figures/zic_zac_room.png}}
+			\subfloat{\includegraphics[width=0.5\textwidth]{Figures/zic_zac_room_path_and_traj.png}}
+		\end{figure}	
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/fsa_rsa_2.png}
+	\end{minipage}\\[0.5cm]}
+
+	\visible<3>{
+	\begin{minipage}{0.5\textwidth}
+		\begin{figure}				
+			\subfloat{\includegraphics[width=\textwidth]{Figures/slope_room.png}}\\[-0.1cm]
+			\subfloat{\includegraphics[width=\textwidth]{Figures/slope_room_path_and_traj.png}}
+		\end{figure}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/fsa_rsa_3.png}
+	\end{minipage}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Πειράματα Εξερεύνησης Πραγματικού Περιβάλλοντος}
 	\begin{figure}
-		\centering
-		\captionsetup[subfigure]{labelformat=empty}
+      \captionsetup[subfigure]{labelformat=empty,position=top}
 		\subfloat[DPM]{\frame{\includegraphics[height=4.5cm]{Figures/exploration_dpm.png}}}
 		\hspace{0.05\linewidth}
 		\subfloat[DPR]{\frame{\includegraphics[height=4.5cm]{Figures/exploration_dpr.png}}}
 	\end{figure}	
-	\bigskip
 
 	\begin{table}[!ht]
 		\centering
+		\resizebox{0.3\textwidth}{!}{
 		\begin{tabular}{|c|c|c|}	\hline
 			 & $\mathbf{T_E[s]}$ & $\mathbf{S_E[m]}$\\ \hline
 			\textbf{DPM} & $486$ & $114.89$\\ \hline
 			\textbf{DPR} & $698$ & $93.38$\\ \hline
-		\end{tabular}
+		\end{tabular}}
 	\end{table}
 \end{frame}
 
@@ -696,7 +676,6 @@
 	\end{itemize}
 \end{frame}
 
-%TODO ROBOT MODEL, EXPLORATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ερωτήσεις}
 	\begin{figure}
