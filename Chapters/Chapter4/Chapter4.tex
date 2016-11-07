@@ -217,13 +217,13 @@
 \begin{algorithm}[!ht]
 	\caption{Αλγόριθμος Ρουτίνας Επαναφοράς car{\_}maneuver{\_}recovery}
 	\label{alg:car_maneuver_recovery}
-	\textbf{Input:} frontSideCost, rearSideCost, leftSideCost, rightSideCost\\
+	\textbf{Input:} frontSideCost, rearSideCost, leftSideCost, rightSideCost, fourWheelSteering, crabSteering\\
 	\textbf{Output:} speed, frontSteeringAngle, rearSteeringAngle
 	\begin{algorithmic}[1]
-		\State front $\leftarrow$ frontSideCost < cost{\_}circumscribed
-		\State rear  $\leftarrow$ rearSideCost < cost{\_}circumscribed
-		\State left  $\leftarrow$ leftSideCost < cost{\_}circumscribed
-		\State right $\leftarrow$ rightSideCost < cost{\_}circumscribed
+		\State front $\leftarrow$ frontSideCost < COST{\_}POSSIBLY{\_}CIRCUMSCRIBED
+		\State rear  $\leftarrow$ rearSideCost < COST{\_}POSSIBLY{\_}CIRCUMSCRIBED
+		\State left  $\leftarrow$ leftSideCost < COST{\_}POSSIBLY{\_}CIRCUMSCRIBED
+		\State right $\leftarrow$ rightSideCost < COST{\_}POSSIBLY{\_}CIRCUMSCRIBED
 		\If{front \&\& right}
 			\If	{frontSideCost > rearSideCost}
 				\State speed $\leftarrow$ recoverySpeed
@@ -406,7 +406,7 @@
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Chapters/Chapter4/Figures/stdr_simulator.png}
+	\includegraphics[width=0.7\linewidth]{Chapters/Chapter4/Figures/stdr_simulator.jpg}
 	\caption{Περιβάλλον προσομοιωτή STDR.}
 	\label{fig:stdr_simulator}
 \end{figure}
@@ -425,7 +425,7 @@
 \bigskip
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Chapters/Chapter4/Figures/gazebo_simulator.png}
+	\includegraphics[width=0.7\linewidth]{Chapters/Chapter4/Figures/gazebo_simulator.jpg}
 	\caption{Περιβάλλον προσομοιωτή Gazebo.}
 	\label{fig:gazebo_simulator}
 \end{figure}

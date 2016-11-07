@@ -66,7 +66,7 @@
 Στην ρομποτική πλατφόρμα {Monstertruck}, όπως προαναφέρθηκε στην ενότητα \ref{ssec:electronic_equipment}, χρησιμοποιείται μία πυξίδα {Compass OS4000}, που διαθέτει μαγνητόμετρο και επιταχυνσιόμετρο και άρα παρέχει πληροφορία για τον απόλυτο προσανατολισμό $yaw, pitch, roll$ και την γραμμική επιτάχυνση $a_x, a_y, a_z$, ως προς τους άξονες x,y,z. Επίσης, οι γραμμικές επιταχύνσεις, μπορούν να ολοκληρωθούν, για τον υπολογισμό της μεταβολής των γραμμικών ταχυτήτων $u_x, u_y, u_z$ του οχήματος, ενώ με δεύτερη ολοκλήρωση, για τον υπολογισμό της μεταβολής της θέσης $X, Y, Z$. Παρόλα αυτά, οι εν λόγω μετρήσεις, δεν είναι αρκετά αξιόπιστες και είναι επιρρεπείς σε συσσωρευτικά σφάλματα.
 
 \bigskip
-Οι μετρήσεις της πυξίδας, μπορούν να χρησιμοποιηθούν, συμπληρωματικά με τις μετρήσεις της {οδομετρίας τροχών}, με στόχο την εξαγωγή της 5D κατάστασης $q = [x, y, roll, pitch, yaw]$  του οχήματος και τον πιο αξιόπιστο εντοπισμό θέσης, σε περίπτωση φαινομένων ολίσθησης των τροχών, μέσω αξιοποίησης της γραμμικής επιτάχυνσης που παρέχει η πυξίδα.
+Οι μετρήσεις της πυξίδας, μπορούν να χρησιμοποιηθούν, συμπληρωματικά με τις μετρήσεις της {οδομετρίας τροχών}, με στόχο την εξαγωγή της 5D κατάστασης $q = [x, y, roll, pitch, yaw]$  του οχήματος και τον πιο αξιόπιστο εντοπισμό θέσης.
 
 \bigskip
 \subsection{Εκτίμηση Κατάστασης με Συνδυαστική Αντίληψη} 
@@ -102,7 +102,7 @@
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.4\linewidth]{Chapters/Chapter3/Figures/ogm.png}
+	\includegraphics[width=0.4\linewidth]{Chapters/Chapter3/Figures/ogm.jpg}
 	\label{fig:ogm}
 	\caption[Χάρτης πλέγματος κατάληψης κελιού.]{Χάρτης πλέγματος κατάληψης κελιού \cite{crsm}.}
 \end{figure}
@@ -248,11 +248,11 @@
 \begin{figure}[!ht]
 	\centering
 	\subfloat[Dijkstra]{
-		\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/dijkstra.png}}
+		\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/dijkstra.jpg}}
 	\subfloat[Greedy]{
-		\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/greedy.png}}
+		\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/greedy.jpg}}
 	\subfloat[A*]{
-		\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/astar.png}}
+		\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/astar.jpg}}
 	\caption[Σύγκριση αλγορίθμων αναζήτησης μονοπατιού σε γράφο πλέγματος Dijkstra, Greedy και A*.]{Σύγκριση αλγορίθμων αναζήτησης μονοπατιού σε γράφο πλέγματος με Dijkstra, Greedy και A* \cite{etsardou_phd}.}
 	\label{fig:astar_and_dijkstra_comparison}
 \end{figure}
@@ -349,7 +349,7 @@
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\linewidth]{Chapters/Chapter3/Figures/vfh.png}
+	\includegraphics[width=0.8\linewidth]{Chapters/Chapter3/Figures/vfh.jpg}
 	\caption[Πολικό Ιστόγραμμα Πυκνότητας Εμποδίων βάσει του εμποδίων που βρίσκονται μέσα στο ενεργό παράθυρο.]{Πολικό Ιστόγραμμα Πυκνότητας Εμποδίων βάσει του εμποδίων που βρίσκονται μέσα στο ενεργό παράθυρο. \cite{vfh}.}
 	\label{fig:vfh}
 \end{figure}
@@ -577,9 +577,9 @@
 
 \begin{figure}
 	\centering
-	\subfloat[]{\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/initial_bubble_band.png}}
-	\subfloat[]{\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/equilibrium_bubble_band.png}}
-	\subfloat[]{\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/dynamic_bubble_band.png}}
+	\subfloat[]{\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/initial_bubble_band.jpg}}
+	\subfloat[]{\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/equilibrium_bubble_band.jpg}}
+	\subfloat[]{\includegraphics[width=0.3\linewidth]{Chapters/Chapter3/Figures/dynamic_bubble_band.jpg}}
 	\caption{(α')Δημιουργία ζώνης φουσκών, (β')παραμόρφωση και (γ') αντίδραση σε δυναμικό εμπόδιο \cite{dpm}.}
 \end{figure}
 
