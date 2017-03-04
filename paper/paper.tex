@@ -1,6 +1,5 @@
 \documentclass[conference]{IEEEtran}
 
-%\usepackage{cite}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage[caption=false,font=footnotesize]{subfig}
@@ -15,15 +14,14 @@
 
 % author names and affiliations
 \author{\IEEEauthorblockN{George Kouros}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
 Aristotle University of Thessaloniki\\
 Thessaloniki, Greece\\
 Email: gkourosg@yahoo.gr}
 \and
 \IEEEauthorblockN{Loukas Petrou}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Aristotle University of Thessaloniki\\
-Thessaloniki, Greece\\
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+Aristotle University of Thessaloniki\\ Thessaloniki, Greece\\
 Email: loukas@eng.auth.gr}}
 
 %\IEEEspecialpapernotice{(Invited Paper)}
@@ -31,20 +29,20 @@ Email: loukas@eng.auth.gr}}
 \maketitle
 
 \begin{abstract}
-This paper presents a Four-Wheel-Steering Four-Wheel-Drive (4WS4WD) car-like robot, able to autonomously explore unknown environments with flat or uneven terrain. The robot contains a set of sensors and actuators and utilizes a number of algorithms to effectively map the environment, localize in it, plan and execute motions, while utilizing the maneuverability of the four-wheel-steering kinematic model. For the task of autonomous navigation, a ROS-based 4-Tier architecture is proposed consisting of global path planning, dynamic local path deformation for collision avoidance, kinematically feasible local path synthesis and finally local path tracking using a fuzzy logic controller for 4WS car-like robots.
+This paper presents a four-wheel-steering four-wheel-drive (4WS4WD) car-like robot, able to autonomously explore unknown environments with flat or uneven terrain. The robot uses a set of sensors and actuators and employs a number of algorithms to effectively map the environment, localize in it, plan and execute motions while utilizing the maneuverability of the four-wheel-steering kinematic model. For the task of autonomous navigation, a ROS-based 4-Tier architecture is proposed consisting of global path planning, dynamic local path deformation for collision avoidance, kinematically feasible local path synthesis and finally path tracking control using a fuzzy logic controller for 4WS car-like robots.
 \end{abstract}
 
 
 \section{Introduction} \label{sec:introduction}
 Autonomous Mobile Robots (AMR) are robots able to perform tasks without any human intervention or control. AMRs are increasingly used in commercial, industrial, military and lately even domestic settings and are extensively researched worldwide. The AMR presented in this paper, was specifically developed for research purposes in the field of Unmanned Search and Rescue (USAR).
 
-An AMR must be able to perceive its environment, move safely and efficiently inside it and make decisions based on sensory inputs and artificial intelligence algorithms about how to proceed, in order to complete a given task. Therefore, it utilizes a set of algorithms that can be separated in three basic categories: perception, decision making and motion planning \& execution, which in this case, translates to simultaneous localization and mapping (SLAM), exploration - target selection and autonomous navigation respectively.
+An AMR must be able to perceive its environment, move safely and efficiently inside it and make decisions based on sensory input and artificial intelligence algorithms about how to proceed in order to complete a given task. Therefore, it utilizes a set of algorithms that can be separated into three basic categories, which are perception, decision making and motion planning \& execution. In this particular case, those categories translate to simultaneous localization and mapping (SLAM), exploration (target selection) and autonomous navigation respectively.
 
-This paper presents the architecture of an AMR and the algorithms required for its autonomous operation, focusing on motion planning and execution, while the problems of simultaneous localization and mapping (SLAM) and exploration are tackled, by utilizing a number of open source algorithm implementations. In particular, the CRSM-SLAM \cite{crsm} algorithm is used, which performs scan matching to determine the pose of the robot and construct the map of the environment. In addition, exploration is performed using a frontier exploration algorithm implementation for ROS, which considers frontiers as borders between explored free space and unknown space.
+This paper presents the architecture of an AMR and the algorithms required for its autonomous operation, focusing on motion planning and execution, while the problems of simultaneous localization and mapping (SLAM) and exploration are tackled, by utilizing a number of open source algorithm implementations. In particular, CRSM-SLAM \cite{crsm} is used to construct a 2D map of the environment and localize in it, while exploration is achieved using a frontier exploration algorithm, which selects a frontier to explore based on an objective function that  takes into account the distance and orientation difference to each frontier, as well as its size and reachability.
 
-The developed robotic platform adheres to a four-wheel-steering kinematic model, which presents a set of nonholonomic constraints that restrict the feasible velocities of the robot in the plane and as a result render the problem of motion planning especially difficult in comparison with the more popular Differential, Skid-Steer and Omnidirectional kinematic models. As a result, the open source implementations of navigation algorithms, such as Dijkstra and A* for path planning and the Dynamic Window Approach \cite{dwa} or Elastic Band \cite{eband} for collision avoidance and path tracking, should be modified. Thus, the navigation system architecture employed, is the same as for the above models, but the collision avoidance and path tracking component are replaced with appropriate ones that consider the kinematic constraints of the 4WS robot.
+The developed robotic platform adheres to a four-wheel-steering kinematic model, which presents a set of nonholonomic constraints that restrict the feasible velocities of the robot in the plane and as a result render the problem of motion planning especially difficult in comparison with the more popular Differential, Skid-Steer and Omnidirectional kinematic models. As a result, the open source implementations of navigation algorithms using Dijkstra and A* graph search for path planning and the Dynamic Window Approach \cite{dwa} or Elastic Band \cite{eband} for collision avoidance and path tracking, should be modified. The employed navigation system architecture follows the same structure as the aforementioned one, but features a collision avoidance and path tracking component that considers the kinematic constraints of the 4WS robot.
 
-The proposed Reeds-Shepp Band method was based on the Nonholonomic Bubble Band by Khatib et al. \cite{dpm}, which dynamically deforms a global path, while satisfying the nonholonomic constraints of car-like robots. The proposed method uses a two-step approach to dynamically deform the global path for collision avoidance using the Elastic Band algorithm and then perform interpolation on the deformed path waypoints using collsion-free Reeds-Shepp paths \cite{reeds_shepp}, in order to achieve the kinematic feasibility of the path. The navigation system is complemented with a fuzzy logic path tracking controller, based on the methods presented in \cite{flc_thesis} for car-like robots and \cite{reactive_fuzzy_ptc} for 4WS robots and aims to take advantage of both the counter steering and crab steering capabilities of the robot.
+The proposed Reeds-Shepp Band method was based on the Nonholonomic Bubble Band by Khatib et al. \cite{dpm}, which dynamically deforms a global path, while satisfying the nonholonomic constraints of car-like robots. The proposed method uses a two-step approach to dynamically deform the global path for collision avoidance using the Elastic Band algorithm and then perform interpolation on the deformed path waypoints using collsion-free Reeds-Shepp paths \cite{reeds_shepp} in order to achieve the kinematic feasibility of the path. The navigation system is complemented with a fuzzy logic path tracking controller, based on the methods presented in \cite{flc_thesis} for car-like robots and \cite{reactive_fuzzy_ptc} for 4WS robots and aims to take advantage of both the counter steering and crab steering capabilities of the robot.
 
 In Section \ref{sec:robot}, the developed PANDORA Monstertruck robotic platform is presented.  Section \ref{sec:autonav} focuses on the software architecture of the robot and the proposed autonomous navigation system. Section \ref{sec:results} demonstrates the experimental results from simulation and physical robot operation, followed by the conclusions and future work in Section \ref{sec:conclusions}.
 
@@ -53,7 +51,7 @@ The PANDORA Monstertruck robotic platform that is depicted in Fig. \ref{fig:mons
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.45\linewidth]{Figures/monstertruck.png}
+	\includegraphics[width=0.46\linewidth]{Figures/monstertruck2.png}
 	\caption{PANDORA Monstertruck.}
 	\label{fig:monstertruck}
 \end{figure}
@@ -81,11 +79,11 @@ The main goal of the developed robotic platform is to autonomously explore unkno
 
 Reliable localization, mapping and obstacle detection demands the laser scanner to always be stabilized on the horizontal level. This is accomplished by employing a roll-pitch stabilization mechanism consisting of two Dynamixel AX-12A smart servos in a roll-pitch topology (Fig. \ref{fig:stabilizer}) that continuously correct the roll and pitch deviations of the sensor.
 
-For the laser scanner stabilization task, the roll and pitch deviations are required, in order to adjust the mechanism rotations using the inverse angles. The roll and pitch angles are measured using a compass and specifically an Ocean Server Compass OS4000 (Fig. \ref{fig:compass}), which contains a 3-axis magnetometer and a 3-axis accelerometer and offers measurements of the $roll$, $pitch$ and $yaw$ angles, as well as the linear accelerations $\alpha_x, \alpha_y, \alpha_z$.
+The laser scanner stabilization task requires the knowledge of the pitch and roll deviation angles in order to adjust the mechanism rotations using the inverse angles. The roll and pitch angles are measured using a compass and specifically an Ocean Server Compass OS4000 (Fig. \ref{fig:compass}), which contains a 3-axis magnetometer and a 3-axis accelerometer and offers measurements of the $roll$, $pitch$ and $yaw$ angles, as well as the linear accelerations $\alpha_x, \alpha_y, \alpha_z$.
 
 In addition, the sensor equipment of the robot is complemented with a Logitech Portable Webcam C905 (Fig. \ref{fig:webcam}), used at the time, only for monitoring purposes during the teleoperated and autonomous operation of the robot.
 
-Finally, the central node that acts as the brain of the robot and communicates with the sensors and actuators, consists of an ODROID-XU4 single board computer (Fig. \ref{fig:odroid}) that was chosen due to its small size, low power consumption and high enough processing power.
+Finally, the central node that acts as the brain of the robot and communicates with the sensors and actuators, consists of an ODROID-XU4 single board computer (Fig. \ref{fig:odroid}) that was chosen due to its small size, low power consumption and adequate processing power.
 
 \begin{figure}[!ht]
 	\centering
@@ -102,7 +100,7 @@ Finally, the central node that acts as the brain of the robot and communicates w
 
 % lidar, imu, camera
 \subsection{Kinematics}
-In \cite{vehicle_dynamics} the 4WS kinematic model is presented with the requirement that in order for a 4WS vehicle to perform slip-free motion in low speeds, it must comply with the 4WS Kinematic Condition. This condition states that the perpendicular lines to each wheel must intersect at the same point $O$, called the Instantaneous Center of Rotation (ICR) and is expressed as
+In \cite{vehicle_dynamics} the 4WS kinematic model is presented with the constraint that in order for a 4WS vehicle to perform slip-free motion in low speeds, it must comply with the 4WS Kinematic Condition. This condition states that the perpendicular lines to each wheel must intersect at the same point $O$, called the Instantaneous Center of Rotation (ICR) and is expressed as
 
 \begin{equation}
 	\frac{1}{\cot{\delta_{of}} - \cot{\delta_{if}}} + \frac{1}{\cot{\delta_{or}} - \cot{\delta_{ir}}} = \frac{l}{w}
@@ -111,14 +109,8 @@ In \cite{vehicle_dynamics} the 4WS kinematic model is presented with the require
 
 \noindent
 where $\delta$: steering angle, $i$: inner, $o$: outer, $f$: front and $r$: rear, $l$: wheelbase and $w$: track.
-%
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[height=4.5cm]{Figures/4ws_model.png}
-%	\caption{The 4WS Kinematic Condition.}
-%\end{figure}
 
-However, the developed robotic platform uses steering mechanisms that do not comply with the above kinematic condition and define a steering relation between the left and right wheels that is approximated as equal ($\delta_{if}=\delta_{of}=\delta_f$, $\delta_{ir}=\delta_{or}=\delta_r$). As a result, the wheels are subjected to slipping by a side-slip angle $\alpha$ even in low speeds. The slipping of the wheels is demonstrated in Fig. \ref{fig:4ws_slip_model} and is expressed as
+However, the developed robotic platform uses steering mechanisms that do not comply with the above kinematic condition and define a steering relation between the left and right wheels that is approximated as equal ($\delta_{if}=\delta_{of}=\delta_f$, $\delta_{ir}=\delta_{or}=\delta_r$). As a result, the wheels are subjected to slipping by their corresponding side-slip angle $\alpha$ ($\alpha_{if}, \alpha_{of}, \alpha_{ir}, \alpha_{or}$), even in low speeds. The slipping of the wheels is demonstrated in Fig. \ref{fig:4ws_slip_model} and is expressed as
 
 \begin{equation}
 	\begin{split}
@@ -136,12 +128,12 @@ However, the developed robotic platform uses steering mechanisms that do not com
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\linewidth]{Figures/4ws_xy_plane.png}%
+	\includegraphics[width=0.7\linewidth]{Figures/4ws_xy_plane.png}%
 	\caption{Equivalent bicycle model of the 4WS model on the plane.}
 	\label{fig:4ws_xy_plane}
 \end{figure}
 
-The motion of the robot in the plane, as shown in Fig. \ref{fig:4ws_xy_plane}, using the equivalent bicycle model, can be expressed using the velocity equations from \cite{4ws_trajectory_planning}:
+The motion of the robot in the plane, that is the linear and angular velocities $\dot X, \dot Y, \dot\Theta$, as shown in Fig. \ref{fig:4ws_xy_plane}, using the equivalent bicycle model, can be expressed using the velocity equations from \cite{4ws_trajectory_planning}:
 
 \begin{align}
 	\dot X &= v_c \cdot \cos(\theta + \beta)
@@ -153,10 +145,10 @@ The motion of the robot in the plane, as shown in Fig. \ref{fig:4ws_xy_plane}, u
 \end{align}
 
 \noindent
-where 
+where $\beta$ is the sideslip angle of the robot and $\upsilon_c$ is the resultant speed of the robot and are expressed by
 \begin{align}
 	v_c = \frac{v_f \cdot \cos{\delta_f} + v_r \cos{\delta_r}}{2 \cdot \cos{\beta}}
-	\label{eq:v_c_f_r}\\[0.2cm]
+	\label{eq:v_c_f_r}\\[0.1cm]
 	\beta = \arctan{\frac{l_r \cdot \tan{\delta_f} + l_f \cdot \tan{\delta_r}}{l}}
 	\label{eq:beta}
 \end{align}
@@ -165,8 +157,6 @@ where
 \section{Autonomous Navigation in Unknown Environments} \label{sec:autonav}
 \subsection{Software Architecture}
 The software of PANDORA Monstertruck was based on the Robot Operating System (ROS) and as shown in Fig. \ref{fig:component_diagram} consists of six basic components, as described below.
-
-% which offers many tools and open source implementions of popular algorithms that significantly expedite the development of robotic applications.
 
 \begin{figure}[!ht]
 	\centering
@@ -181,7 +171,7 @@ Component that contains drivers and ROS interfaces for sensors and actuator cont
 \subsubsection{Control}
 Component responsible for teleoperation, the laser scanner stabilization and velocity command priority multiplexing, between navigation and teleoperation commands.
 \subsubsection{SLAM}
-Component responsible for environment mapping using the CRSM-SLAM algorithm and state estimation.
+Component responsible for environment mapping and state estimation using the CRSM-SLAM algorithm.
 \subsubsection{Robot State}
 Component responsible for publishing the transformations between the reference frames of the joints of the robot.
 \subsubsection{Visualization}
@@ -191,25 +181,15 @@ Component responsible for the exploration and autonomous navigation of the robot
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{Figures/move_base2.png}%
-	\caption{The ROS move\_base node with the global\_planner and rsband\_local\_planner plugins.}
+	\includegraphics[width=0.9\linewidth]{Figures/move_base_3.png}%
+	\caption{The ROS move\_base node with the global\_planner and\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; rsband\_local\_planner plugins.}
 	\label{fig:move_base}
 \end{figure}
 
 \subsection{Reeds-Shepp Band}
-The Reeds-Shepp Band algorithm is an approximation of the Nonholonomic Bubble Band algorithm by Khatib et al. \cite{dpm}, which is used for dynamic modification of a global path, in order to achieve dynamic collision avoidance, while at the same time transforming the path to a kinematically feasible one for car-like robots.
+The Reeds-Shepp Band algorithm is an approximation of the Nonholonomic Bubble Band algorithm by Khatib et al. \cite{dpm}, which is used for dynamic modification of a global path, in order to achieve dynamic collision avoidance, while at the same time transforming the path into a kinematically feasible one for car-like robots.
 
 The Bubble Band algorithm uses bubbles, which represent the locally reachable space around a given configuration, while considering the obstacles around it via an appropriate distance metric. A nonholonomic bubble is a bubble produced using the shortest nonholonomic distance \cite{rs_metric} or the shortest collision causing Reeds-Shepp Path around a configuration, where Reeds-Shepp paths are defined in \cite{reeds_shepp} as the optimal paths for a car that goes both forwards and backwards. The Bubble Band is produced by generating nonholonomic bubbles across the given global path and dynamically applying to them artificial internal forces that tend to straighten the path and external forces that tend to move the path away from obstacles.
-
-%\begin{figure}[!ht]
-%	\centering
-%	\subfloat[]{\includegraphics[height=3.5cm]{{Figures/nh_bubble_band.jpg}}
-%	\label{fig:nh_bubble_band}}%
-%%	\hspace{0.5cm}	
-%	\subfloat[]{\includegraphics[height=3.5cm]{{Figures/eband.png}}
-%	\label{fig:eband}}%
-%	\caption{(a) Nonholonomic Bubble Band \cite{dpm} and (b) Elastic Band \cite{eband}.}
-%\end{figure}
 
 The Reeds-Shepp Band algorithm approximates the Nonholonomic Bubble Band algorithm, by using the computationally more efficient euclidean distance metric, resulting in a holonomic elastic band. The elastic band \cite{eband} algorithm dynamically deforms the global path (Fig. \ref{fig:global_path}) in a collision free path, which, however, is not kinematically feasible. Therefore, in the next stage, the elastic band path (Fig. \ref{fig:eband_path}) is interpolated using collision-free Reeds-Shepp paths, resulting in a both collision-free and kinematically feasible local path (Fig. \ref{fig:rsband_path}) that the robot can follow, using the fuzzy path tracking controller presented in the following subsection.
 
@@ -228,9 +208,9 @@ In order to track/follow the Reeds-Shepp Band path, the information about the pa
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[]{\includegraphics[width=0.57\linewidth]{Figures/ptc_errors2.png} \label{fig:ptc_errors}}%
+	\subfloat[]{\includegraphics[height=4cm]{Figures/ptc_errors2.png} \label{fig:ptc_errors}}%
 %	\hspace{0.1cm}
-	\subfloat[]{\includegraphics[width=0.43\linewidth]{Figures/fuzzy_ptc_inside.png}	\label{fig:ptc}}%
+	\subfloat[]{\includegraphics[height=4cm]{Figures/fuzzy_ptc_inside.png}	\label{fig:ptc}}%
 	\caption{(a) The deviation errors between robot pose and goal pose and (b) the fuzzy path tracking controller.}
 	\label{fig:ptc_and_errors}
 \end{figure}
@@ -239,31 +219,98 @@ As shown in Fig. \ref{fig:ptc_and_errors}, the PTC considers four error variable
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[$E_o$, $E_\alpha$]{\includegraphics[height=2.9cm]{Figures/eo_ea_mf.png}}\\%
-	\subfloat[$E_p$]{\includegraphics[height=2.9cm]{Figures/ep_mf.png}}%
-	\subfloat[$E_y$]{\includegraphics[height=2.9cm]{Figures/ey_mf.png}}%
-	\subfloat[$Direction$]{\includegraphics[height=2.9cm]{Figures/direction_mf.png}}\\%
+	\subfloat[$E_o$, $E_\alpha$]{\includegraphics[width=\columnwidth]{Figures/eo_ea_mf.png}}\\%
+	\subfloat[$E_p$]{\includegraphics[height=2.5cm]{Figures/ep_mf.png}}%
+	\hspace{0.01cm}
+	\subfloat[$E_y$]{\includegraphics[height=2.5cm]{Figures/ey_mf.png}}%
+	\hspace{0.01cm}
+	\subfloat[$Direction$]{\includegraphics[height=2.5cm]{Figures/direction_mf.png}}\\%
 	\caption{The membership functions of the input variables of the controller.}
 	\label{fig:input_mfs}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[$speed$ $(v)$]{\includegraphics[height=2.8cm]{Figures/speed_mf.png}}%
-	\hspace{0.5cm}
-	\subfloat[$FSA$ $(\delta_f)$, $RSA$ $(\delta_r)$]{\includegraphics[height=2.8cm]{Figures/df_dr_mf.png}}%	
+	\subfloat[$speed$ $(v)$]{\includegraphics[height=2.5cm]{Figures/speed_mf.png}}%
+	\hspace{0.2cm}
+	\subfloat[$FSA$ $(\delta_f)$, $RSA$ $(\delta_r)$]{\includegraphics[height=2.5cm]{Figures/df_dr_mf.png}}%	
 	\caption{The membership functions of the output variables of the controller.}
 	\label{fig:output_mfs}
 \end{figure}
 
-The rule set of the FLCs (Fig. \ref{fig:fuzzy_rules}) was designed, such that the robot performs position correction when it is far from the goal and orientation correction when it is close to the goal so that it reaches the final goal pose, similarly to the approach in \cite{flc_thesis}. In addition, using the rear steering deviation controller, the robot uses counter steering when the position and angular deviation errors are big and crab steering in order to correct slight lateral deviations without any significant increase in the orientation error.
+The rule set of the FLCs (Table \ref{tab:fuzzy_rules}) was designed, such that the robot performs position correction when it is far from the goal and orientation correction when it is close to the goal so that it reaches the final goal pose, similarly to the approach in \cite{flc_thesis}. In addition, using the rear steering deviation controller, the robot uses counter steering when the position and angular deviation errors are big and crab steering in order to correct slight lateral deviations without any significant increase in the orientation error.
 
-\begin{figure}[!ht]
+\begin{table}[!ht]
 	\centering
-	\includegraphics[width=0.75\linewidth]{Figures/fuzzy_rules2.png}%
-	\caption{The rule set of the fuzzy path tracking controller.}
-	\label{fig:fuzzy_rules}
-\end{figure}
+	\caption{Fuzzy Path Tracking Controller Rule Set}
+	\label{tab:fuzzy_rules}
+   \resizebox{0.9\columnwidth}{!}{%
+	\begin{tabular}{| c | l |}
+		\hline
+	   \rotatebox[origin=c]{90}{\;\textbf{Speed}\;} &
+	   	\begin{tabular}{l}
+	   		if Ep is CLOSE then Speed is SLOW\\
+		   	if Ep is FAR then Speed is FAST\\
+		\end{tabular}\\ \hline
+	   \rotatebox[origin=c]{90}{\textbf{FSA}} &
+	   	\begin{tabular}{l}\\[-0.2cm]
+	   if Ep is FAR and Ea is RBL then FSA is  Z\\
+      if Ep is FAR and Ea is  RL then FSA is LH\\
+      if Ep is FAR and Ea is  SL then FSA is LH\\
+      if Ep is FAR and Ea is  FL then FSA is LL\\
+      if Ep is FAR and Ea is  FA then FSA is  Z\\
+      if Ep is FAR and Ea is  FR then FSA is RL\\
+      if Ep is FAR and Ea is  SR then FSA is RH\\
+      if Ep is FAR and Ea is  RR then FSA is RH\\
+    	if Ep is FAR and Ea is RBR then FSA is  Z\\
+	   if Ep is CLOSE and Direction is FW and Eo is SL then FSA is LH\\
+    	if Ep is CLOSE and Direction is FW and Eo is FL then FSA is LL\\
+    	if Ep is CLOSE and Direction is FW and Eo is FA then FSA is Z\\
+    	if Ep is CLOSE and Direction is FW and Eo is FR then FSA is RL\\
+    	if Ep is CLOSE and Direction is FW and Eo is SR then FSA is RH\\
+   		if Ep is CLOSE and Direction is BW and Eo is SL then FSA is RH\\
+	   if Ep is CLOSE and Direction is BW and Eo is FL then FSA is RL\\
+	   if Ep is CLOSE and Direction is BW and Eo is FR then FSA is LL\\
+    	if Ep is CLOSE and Direction is BW and Eo is SR then FSA is LH\\[0.05cm]
+		\end{tabular}\\ \hline
+	   \rotatebox[origin=c]{90}{\textbf{RSDA}} &
+	   	\begin{tabular}{l}\\[-0.2cm]
+	    	if Eo is not FA and Eo is not FR and Eo is not FL then RSDA is Z\\
+	    	if Direction is FW and Eo is FA and Ey is BP then RSDA is  Z\\
+	    	if Direction is FW and Eo is FL and Ey is BP then RSDA is  Z\\
+	    	if Direction is FW and Eo is FR and Ey is BP then RSDA is  Z\\
+	    	if Direction is FW and Eo is FA and Ey is SP then RSDA is LH\\
+	    	if Direction is FW and Eo is FL and Ey is SP then RSDA is LH\\
+	    	if Direction is FW and Eo is FR and Ey is SP then RSDA is LH\\
+	    	if Direction is FW and Eo is FA and Ey is  Z then RSDA is  Z\\
+   		 	if Direction is FW and Eo is FL and Ey is  Z then RSDA is  Z\\
+	    	if Direction is FW and Eo is FR and Ey is  Z then RSDA is  Z\\
+	    	if Direction is FW and Eo is FA and Ey is SN then RSDA is RH\\
+   		 	if Direction is FW and Eo is FL and Ey is SN then RSDA is RH\\
+	    	if Direction is FW and Eo is FR and Ey is SN then RSDA is RH\\
+    		if Direction is FW and Eo is FA and Ey is BN then RSDA is  Z\\
+	    	if Direction is FW and Eo is FL and Ey is BN then RSDA is  Z\\
+	    	if Direction is FW and Eo is FR and Ey is BN then RSDA is  Z\\
+	    	if Direction is BW and Eo is FA and Ey is BP then RSDA is  Z\\
+	    	if Direction is BW and Eo is FL and Ey is BP then RSDA is  Z\\
+	    	if Direction is BW and Eo is FR and Ey is BP then RSDA is  Z\\
+		   	if Direction is BW and Eo is FA and Ey is SP then RSDA is LH\\
+	    	if Direction is BW and Eo is FL and Ey is SP then RSDA is LH\\
+	    	if Direction is BW and Eo is FR and Ey is SP then RSDA is LH\\
+	    	if Direction is BW and Eo is FA and Ey is  Z then RSDA is  Z\\
+	    	if Direction is BW and Eo is FL and Ey is  Z then RSDA is  Z\\
+	    	if Direction is BW and Eo is FR and Ey is  Z then RSDA is  Z\\
+	    	if Direction is BW and Eo is FA and Ey is SN then RSDA is RH\\
+	    	if Direction is BW and Eo is FL and Ey is SN then RSDA is RH\\
+	    	if Direction is BW and Eo is FR and Ey is SN then RSDA is RH\\
+	    	if Direction is BW and Eo is FA and Ey is BN then RSDA is  Z\\
+	    	if Direction is BW and Eo is FL and Ey is BN then RSDA is  Z\\
+	    	if Direction is BW and Eo is FR and Ey is BN then RSDA is  Z\\[0.05cm]
+    	\end{tabular}\\ \hline
+	\end{tabular}
+	}
+\end{table}
+
 
 \section{Experimental Results} \label{sec:results}
 This section presents a series of experiments conducted in order to demonstrate the behavior of the autonomous navigation and exploration of the developed robotic platform.
@@ -272,30 +319,30 @@ The path tracking experiments presented in Fig. \ref{fig:ptc_exp1}-\ref{fig:ptc_
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=0.9\linewidth]{Figures/zic_zac_room.png}}\\[-0.05cm]%
+	\subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/zic_zac_room.png}}\\%
 	\subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_1.png}}%
-	\caption{Path tracking experiment in an environment in Gazebo.}
+	\caption{Path tracking experiment in Gazebo.}
 	\label{fig:ptc_exp1}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/slope_room_path_and_traj2.png}}\\[-0.05cm]%
+	\subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/slope_room_path_and_traj3.png}}\\%
 	\subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_3.png}}%	
 	\caption{Path tracking experiment under high slippage in a perpendicularly inclined corridor.}
 	\label{fig:ptc_exp2}
 \end{figure}
 
-The experiments presented in Fig. \ref{fig:rsband_exp} demonstrate the trajectories followed by the robot, using the A* global path planner, the Reeds-Shepp Band local path planner and the fuzzy path tracking controller, in order to reach three arbitrarily selected goal poses. Theses experiments were run on the 2D simulator STDR with a known map and perfect localization.
+The experiments presented in Fig. \ref{fig:rsband_exp} were conducted in the STDR 2D simulator and demonstrate the global path that the robot produced and the trajectory that it followed in order to reach three arbitrarily selected goal poses.
 
 \begin{figure}[!ht]
 	\centering
-	\subfloat[$p_1$]{\includegraphics[width=0.3\linewidth]{Figures/p1.png}}%
-	\hspace{0.03\linewidth}
-	\subfloat[$p_2$]{\includegraphics[width=0.3\linewidth]{Figures/p3.png}}%
-	\hspace{0.03\linewidth}
-	\subfloat[$p_3$]{\includegraphics[width=0.3\linewidth]{Figures/p4.png}}%
-	\caption{Autonomous navigation experiments using the Reeds-Shepp Band algorithm with the fuzzy path tracking controller for three random goal poses in the map sparse\_obstacles of the STDR simulator.}
+	\subfloat[$p_1$]{\includegraphics[width=0.33\linewidth]{Figures/p1.png}}%
+%	\hspace{0.03\linewidth}
+	\subfloat[$p_2$]{\includegraphics[width=0.33\linewidth]{Figures/p3.png}}%
+%	\hspace{0.03\linewidth}
+	\subfloat[$p_3$]{\includegraphics[width=0.33\linewidth]{Figures/p4.png}}%
+	\caption{Autonomous navigation experiments using the Reeds-Shepp Band algorithm with the fuzzy path tracking controller for three random goal poses in the map sparse\_obstacles of the STDR simulator. The green line denotes the global path and the red line, the trajectory of the robot.}
 	\label{fig:rsband_exp}
 \end{figure}
 
@@ -303,14 +350,16 @@ Finally, an autonomous exploration experiment with the actual PANDORA Monstertru
 
 \begin{figure}[!ht]
 	\centering
-	\frame{\includegraphics[width=0.7\linewidth]{Figures/exploration_exp.png}}%
+	\frame{\includegraphics[width=0.94\linewidth]{Figures/exploration_exp.png}}%
 	\caption{Autonomous exploration experiment of PANDORA Monstertruck in CSAL. The map was constructed using the CRSM SLAM algorithm and the executed trajectory is denoted by the red continuous line.}
 	\label{fig:exploration_exp}
 \end{figure}
 
 
 \section{Conclusions} \label{sec:conclusions}
-In this paper, the software and hardware architecture for a 4WS4WD mobile robot was presented capable of successfully exploring unknown environments by utilizing the CRSM-SLAM algorithm for mapping and localization and a 4-Tier Navigation System containing a Dijkstra/A* global path planner, Elastic Band dynamic path modification, with Reeds-Shepp interpolation (Reeds-Shepp Band) and complemented with a fuzzy path tracking controller.
+%In this paper, the software and hardware architecture for a 4WS4WD mobile robot was presented capable of successfully exploring unknown environments by utilizing SLAM, exploration and navigation algorithms with focus on the prosposed 4-Tier Navigation architecture containing a Dijkstra/A* global path planning, Elastic Band dynamic path modification, with Reeds-Shepp interpolation (Reeds-Shepp Band) and complemented with a fuzzy path tracking controller.
+
+In this paper, a 4WS4WD mobile robot was presented with regards to both its hardware and algorithmic architecture, which enable it to autonomously explore unknown environments. As demonstrated in the experimental results, the robot uses the proposed 4-Tier navigation system architecture to plan a holonomic global path, deform it dynamically so that it can be collision free and kinematically feasible and finally track it robustly using both counter and crab steering.
 
 Further work could be done to improve the robustness, stability and safety of the navigation system by using a more deterministic Reeds-Shepp planner and by adding collision detection capabilities in the path tracking controller. In addition, through the employment of additional sensors and perception algorithms, the capabilities of the robot could be significantly increased regarding localization, mapping, rough terrain traversal and point of interest search.
 
