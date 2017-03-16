@@ -241,74 +241,74 @@ As shown in Fig. \ref{fig:ptc_and_errors}, the PTC considers four error variable
 The rule set of the FLCs (Table \ref{tab:fuzzy_rules}) was designed, such that the robot performs position correction when it is far from the goal and orientation correction when it is close to the goal so that it reaches the final goal pose, similarly to the approach in \cite{flc_thesis}. In addition, using the rear steering deviation controller, the robot uses counter steering when the position and angular deviation errors are big and crab steering in order to correct slight lateral deviations without any significant increase in the orientation error.
 
 \begin{table}[!ht]
-	\centering
-	\caption{Fuzzy Path Tracking Controller Rule Set}
-	\label{tab:fuzzy_rules}
-   \resizebox{0.9\columnwidth}{!}{%
-	\begin{tabular}{| c | l |}
-		\hline
-	   \rotatebox[origin=c]{90}{\;\textbf{Speed}\;} &
-	   	\begin{tabular}{l}
-	   		if Ep is CLOSE then Speed is SLOW\\
-		   	if Ep is FAR then Speed is FAST\\
-		\end{tabular}\\ \hline
-	   \rotatebox[origin=c]{90}{\textbf{FSA}} &
-	   	\begin{tabular}{l}\\[-0.2cm]
-	   if Ep is FAR and Ea is RBL then FSA is  Z\\
-      if Ep is FAR and Ea is  RL then FSA is LH\\
-      if Ep is FAR and Ea is  SL then FSA is LH\\
-      if Ep is FAR and Ea is  FL then FSA is LL\\
-      if Ep is FAR and Ea is  FA then FSA is  Z\\
-      if Ep is FAR and Ea is  FR then FSA is RL\\
-      if Ep is FAR and Ea is  SR then FSA is RH\\
-      if Ep is FAR and Ea is  RR then FSA is RH\\
-    	if Ep is FAR and Ea is RBR then FSA is  Z\\
-	   if Ep is CLOSE and Direction is FW and Eo is SL then FSA is LH\\
-    	if Ep is CLOSE and Direction is FW and Eo is FL then FSA is LL\\
-    	if Ep is CLOSE and Direction is FW and Eo is FA then FSA is Z\\
-    	if Ep is CLOSE and Direction is FW and Eo is FR then FSA is RL\\
-    	if Ep is CLOSE and Direction is FW and Eo is SR then FSA is RH\\
-   		if Ep is CLOSE and Direction is BW and Eo is SL then FSA is RH\\
-	   if Ep is CLOSE and Direction is BW and Eo is FL then FSA is RL\\
-	   if Ep is CLOSE and Direction is BW and Eo is FR then FSA is LL\\
-    	if Ep is CLOSE and Direction is BW and Eo is SR then FSA is LH\\[0.05cm]
-		\end{tabular}\\ \hline
-	   \rotatebox[origin=c]{90}{\textbf{RSDA}} &
-	   	\begin{tabular}{l}\\[-0.2cm]
-	    	if Eo is not FA and Eo is not FR and Eo is not FL then RSDA is Z\\
-	    	if Direction is FW and Eo is FA and Ey is BP then RSDA is  Z\\
-	    	if Direction is FW and Eo is FL and Ey is BP then RSDA is  Z\\
-	    	if Direction is FW and Eo is FR and Ey is BP then RSDA is  Z\\
-	    	if Direction is FW and Eo is FA and Ey is SP then RSDA is LH\\
-	    	if Direction is FW and Eo is FL and Ey is SP then RSDA is LH\\
-	    	if Direction is FW and Eo is FR and Ey is SP then RSDA is LH\\
-	    	if Direction is FW and Eo is FA and Ey is  Z then RSDA is  Z\\
-   		 	if Direction is FW and Eo is FL and Ey is  Z then RSDA is  Z\\
-	    	if Direction is FW and Eo is FR and Ey is  Z then RSDA is  Z\\
-	    	if Direction is FW and Eo is FA and Ey is SN then RSDA is RH\\
-   		 	if Direction is FW and Eo is FL and Ey is SN then RSDA is RH\\
-	    	if Direction is FW and Eo is FR and Ey is SN then RSDA is RH\\
-    		if Direction is FW and Eo is FA and Ey is BN then RSDA is  Z\\
-	    	if Direction is FW and Eo is FL and Ey is BN then RSDA is  Z\\
-	    	if Direction is FW and Eo is FR and Ey is BN then RSDA is  Z\\
-	    	if Direction is BW and Eo is FA and Ey is BP then RSDA is  Z\\
-	    	if Direction is BW and Eo is FL and Ey is BP then RSDA is  Z\\
-	    	if Direction is BW and Eo is FR and Ey is BP then RSDA is  Z\\
-		   	if Direction is BW and Eo is FA and Ey is SP then RSDA is LH\\
-	    	if Direction is BW and Eo is FL and Ey is SP then RSDA is LH\\
-	    	if Direction is BW and Eo is FR and Ey is SP then RSDA is LH\\
-	    	if Direction is BW and Eo is FA and Ey is  Z then RSDA is  Z\\
-	    	if Direction is BW and Eo is FL and Ey is  Z then RSDA is  Z\\
-	    	if Direction is BW and Eo is FR and Ey is  Z then RSDA is  Z\\
-	    	if Direction is BW and Eo is FA and Ey is SN then RSDA is RH\\
-	    	if Direction is BW and Eo is FL and Ey is SN then RSDA is RH\\
-	    	if Direction is BW and Eo is FR and Ey is SN then RSDA is RH\\
-	    	if Direction is BW and Eo is FA and Ey is BN then RSDA is  Z\\
-	    	if Direction is BW and Eo is FL and Ey is BN then RSDA is  Z\\
-	    	if Direction is BW and Eo is FR and Ey is BN then RSDA is  Z\\[0.05cm]
-    	\end{tabular}\\ \hline
-	\end{tabular}
-	}
+  \centering
+  \caption{Fuzzy Path Tracking Controller Rule Set}
+  \label{tab:fuzzy_rules}
+  \resizebox{0.9\columnwidth}{!}{%
+  \begin{tabular}{| c | l |}
+    \hline
+    \rotatebox[origin=c]{90}{\;\textbf{Speed}\;} &
+    \begin{tabular}{l}
+      if Ep is CLOSE then Speed is SLOW\\
+      if Ep is FAR then Speed is FAST\\
+    \end{tabular}\\ \hline
+    \rotatebox[origin=c]{90}{\textbf{FSA}} &
+    \begin{tabular}{l}\\[-0.2cm]
+      if Ep is FAR and Ea is RBL then FSA is  Z\\
+      if Ep is FAR and Ea is RL then FSA is LH\\
+      if Ep is FAR and Ea is SL then FSA is LH\\
+      if Ep is FAR and Ea is FL then FSA is LL\\
+      if Ep is FAR and Ea is FA then FSA is  Z\\
+      if Ep is FAR and Ea is FR then FSA is RL\\
+      if Ep is FAR and Ea is SR then FSA is RH\\
+      if Ep is FAR and Ea is RR then FSA is RH\\
+      if Ep is FAR and Ea is RBR then FSA is  Z\\
+      if Ep is CLOSE and Direction is FW and Eo is SL then FSA is LH\\
+      if Ep is CLOSE and Direction is FW and Eo is FL then FSA is LL\\
+      if Ep is CLOSE and Direction is FW and Eo is FA then FSA is Z\\
+      if Ep is CLOSE and Direction is FW and Eo is FR then FSA is RL\\
+      if Ep is CLOSE and Direction is FW and Eo is SR then FSA is RH\\
+      if Ep is CLOSE and Direction is BW and Eo is SL then FSA is RH\\
+      if Ep is CLOSE and Direction is BW and Eo is FL then FSA is RL\\
+      if Ep is CLOSE and Direction is BW and Eo is FR then FSA is LL\\
+      if Ep is CLOSE and Direction is BW and Eo is SR then FSA is LH\\[0.05cm]
+    \end{tabular}\\ \hline
+    \rotatebox[origin=c]{90}{\textbf{RSDA}} &
+    \begin{tabular}{l}\\[-0.2cm]
+      if Eo is not FA and Eo is not FR and Eo is not FL then RSDA is Z\\
+      if Direction is FW and Eo is FA and Ey is BP then RSDA is  Z\\
+      if Direction is FW and Eo is FL and Ey is BP then RSDA is  Z\\
+      if Direction is FW and Eo is FR and Ey is BP then RSDA is  Z\\
+      if Direction is FW and Eo is FA and Ey is SP then RSDA is LH\\
+      if Direction is FW and Eo is FL and Ey is SP then RSDA is LH\\
+      if Direction is FW and Eo is FR and Ey is SP then RSDA is LH\\
+      if Direction is FW and Eo is FA and Ey is  Z then RSDA is  Z\\
+      if Direction is FW and Eo is FL and Ey is  Z then RSDA is  Z\\
+      if Direction is FW and Eo is FR and Ey is  Z then RSDA is  Z\\
+      if Direction is FW and Eo is FA and Ey is SN then RSDA is RH\\
+      if Direction is FW and Eo is FL and Ey is SN then RSDA is RH\\
+      if Direction is FW and Eo is FR and Ey is SN then RSDA is RH\\
+      if Direction is FW and Eo is FA and Ey is BN then RSDA is  Z\\
+      if Direction is FW and Eo is FL and Ey is BN then RSDA is  Z\\
+      if Direction is FW and Eo is FR and Ey is BN then RSDA is  Z\\
+      if Direction is BW and Eo is FA and Ey is BP then RSDA is  Z\\
+      if Direction is BW and Eo is FL and Ey is BP then RSDA is  Z\\
+      if Direction is BW and Eo is FR and Ey is BP then RSDA is  Z\\
+      if Direction is BW and Eo is FA and Ey is SP then RSDA is LH\\
+      if Direction is BW and Eo is FL and Ey is SP then RSDA is LH\\
+      if Direction is BW and Eo is FR and Ey is SP then RSDA is LH\\
+      if Direction is BW and Eo is FA and Ey is  Z then RSDA is  Z\\
+      if Direction is BW and Eo is FL and Ey is  Z then RSDA is  Z\\
+      if Direction is BW and Eo is FR and Ey is  Z then RSDA is  Z\\
+      if Direction is BW and Eo is FA and Ey is SN then RSDA is RH\\
+      if Direction is BW and Eo is FL and Ey is SN then RSDA is RH\\
+      if Direction is BW and Eo is FR and Ey is SN then RSDA is RH\\
+      if Direction is BW and Eo is FA and Ey is BN then RSDA is  Z\\
+      if Direction is BW and Eo is FL and Ey is BN then RSDA is  Z\\
+      if Direction is BW and Eo is FR and Ey is BN then RSDA is  Z\\[0.05cm]
+    \end{tabular}\\ \hline
+  \end{tabular}
+  }
 \end{table}
 
 
@@ -318,41 +318,41 @@ This section presents a series of experiments conducted in order to demonstrate 
 The path tracking experiments presented in Fig. \ref{fig:ptc_exp1}-\ref{fig:ptc_exp2} were conducted in the Gazebo 3D simulator, with a view to demonstrate the operation of the fuzzy path tracking controller. For this experiment, a feasible static global path was constructed, which the robot managed to track successfully in both cases by using both counter and crab steering in order to offset angular and distance errors so as to follow the path as close as possible.
 
 \begin{figure}[!ht]
-	\centering
-	\subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/zic_zac_room.png}}\\%
-	\subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_1.png}}%
-	\caption{Path tracking experiment in Gazebo.}
-	\label{fig:ptc_exp1}
+  \centering
+  \subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/zic_zac_room.png}}\\%
+  \subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_1.png}}%
+  \caption{Path tracking experiment in Gazebo.}
+  \label{fig:ptc_exp1}
 \end{figure}
 
 \begin{figure}[!ht]
-	\centering
-	\subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/slope_room_path_and_traj3.png}}\\%
-	\subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_3.png}}%	
-	\caption{Path tracking experiment under high slippage in a perpendicularly inclined corridor.}
-	\label{fig:ptc_exp2}
+  \centering
+  \subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/slope_room_path_and_traj3.png}}\\%
+  \subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_3.png}}%	
+  \caption{Path tracking experiment under high slippage in a perpendicularly inclined corridor.}
+  \label{fig:ptc_exp2}
 \end{figure}
 
 The experiments presented in Fig. \ref{fig:rsband_exp} were conducted in the STDR 2D simulator and demonstrate the global path that the robot produced and the trajectory that it followed in order to reach three arbitrarily selected goal poses.
 
 \begin{figure}[!ht]
-	\centering
-	\subfloat[$p_1$]{\includegraphics[width=0.33\linewidth]{Figures/p1.png}}%
-%	\hspace{0.03\linewidth}
-	\subfloat[$p_2$]{\includegraphics[width=0.33\linewidth]{Figures/p3.png}}%
-%	\hspace{0.03\linewidth}
-	\subfloat[$p_3$]{\includegraphics[width=0.33\linewidth]{Figures/p4.png}}%
-	\caption{Autonomous navigation experiments using the Reeds-Shepp Band algorithm with the fuzzy path tracking controller for three random goal poses in the map sparse\_obstacles of the STDR simulator. The green line denotes the global path and the red line, the trajectory of the robot.}
-	\label{fig:rsband_exp}
+  \centering
+  \subfloat[$p_1$]{\includegraphics[width=0.33\linewidth]{Figures/p1.png}}%
+  %	\hspace{0.03\linewidth}
+  \subfloat[$p_2$]{\includegraphics[width=0.33\linewidth]{Figures/p3.png}}%
+  %	\hspace{0.03\linewidth}
+  \subfloat[$p_3$]{\includegraphics[width=0.33\linewidth]{Figures/p4.png}}%
+  \caption{Autonomous navigation experiments using the proposed 4-Tier navigation system for three random goal poses in the map sparse\_obstacles of the STDR simulator. The green line denotes the global path and the red line, the trajectory of the robot.}
+  \label{fig:rsband_exp}
 \end{figure}
 
 Finally, an autonomous exploration experiment with the actual PANDORA Monstertruck robot was conducted in the Computer Systems and Architecture Lab (CSAL) of the School of Electrical and Computer Engineering, AUTH, as presented in Fig. \ref{fig:exploration_exp}.
 
 \begin{figure}[!ht]
-	\centering
-	\frame{\includegraphics[width=0.94\linewidth]{Figures/exploration_exp.png}}%
-	\caption{Autonomous exploration experiment of PANDORA Monstertruck in CSAL. The map was constructed using the CRSM SLAM algorithm and the executed trajectory is denoted by the red continuous line.}
-	\label{fig:exploration_exp}
+  \centering
+  \frame{\includegraphics[width=0.94\linewidth]{Figures/exploration_exp.png}}%
+  \caption{Autonomous exploration experiment of PANDORA Monstertruck in CSAL. The map was constructed using the CRSM SLAM algorithm and the executed trajectory is denoted by the red continuous line.}
+  \label{fig:exploration_exp}
 \end{figure}
 
 
