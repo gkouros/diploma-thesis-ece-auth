@@ -42,7 +42,7 @@ This paper presents the architecture of an AMR and the algorithms required for i
 
 The developed robotic platform adheres to a four-wheel-steering kinematic model, which presents a set of nonholonomic constraints that restrict the feasible velocities of the robot in the plane and as a result render the problem of motion planning especially difficult in comparison with the more popular Differential, Skid-Steer and Omnidirectional kinematic models. As a result, the open source implementations of navigation algorithms using Dijkstra and A* graph search for path planning and the Dynamic Window Approach \cite{dwa} or Elastic Band \cite{eband} for collision avoidance and path tracking, should be modified. The employed navigation system architecture follows the same structure as the aforementioned one, but features a collision avoidance and path tracking component that considers the kinematic constraints of the 4WS robot.
 
-The proposed Reeds-Shepp Band method was based on the Nonholonomic Bubble Band by Khatib et al. \cite{dpm}, which dynamically deforms a global path, while satisfying the nonholonomic constraints of car-like robots. The proposed method uses a two-step approach to dynamically deform the global path for collision avoidance using the Elastic Band algorithm and then perform interpolation on the deformed path waypoints using collsion-free Reeds-Shepp paths \cite{reeds_shepp} in order to achieve the kinematic feasibility of the path. The navigation system is complemented with a fuzzy logic path tracking controller, based on the methods presented in \cite{flc_thesis} for car-like robots and \cite{reactive_fuzzy_ptc} for 4WS robots and aims to take advantage of both the counter steering and crab steering capabilities of the robot.
+The proposed Reeds-Shepp Band method was based on the Nonholonomic Bubble Band by Khatib et al. \cite{dpm}, which dynamically deforms a global path, while satisfying the nonholonomic constraints of car-like robots. The proposed method uses a two-step approach to dynamically deform the global path for collision avoidance using the Elastic Band algorithm and then perform interpolation on the deformed path waypoints using collsion-free Reeds-Shepp paths \cite{reeds_shepp} in order to achieve the kinematic feasibility of the path. The navigation system is complemented with a fuzzy path tracking controller, based on the methods presented in \cite{flc_thesis} for car-like robots and \cite{reactive_fuzzy_ptc} for 4WS robots and aims to take advantage of both the counter steering and crab steering capabilities of the robot.
 
 In Section \ref{sec:robot}, the developed PANDORA Monstertruck robotic platform is presented.  Section \ref{sec:autonav} focuses on the software architecture of the robot and the proposed autonomous navigation system. Section \ref{sec:results} demonstrates the experimental results from simulation and physical robot operation, followed by the conclusions and future work in Section \ref{sec:conclusions}.
 
@@ -51,7 +51,7 @@ The PANDORA Monstertruck robotic platform that is depicted in Fig. \ref{fig:mons
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.46\linewidth]{Figures/monstertruck2.png}
+	\includegraphics[width=0.46\linewidth]{Figures/monstertruck3.png}
 	\caption{PANDORA Monstertruck.}
 	\label{fig:monstertruck}
 \end{figure}
@@ -135,23 +135,23 @@ However, the developed robotic platform uses steering mechanisms that do not com
 
 The motion of the robot in the plane, that is the linear and angular velocities $\dot X, \dot Y, \dot\Theta$, as shown in Fig. \ref{fig:4ws_xy_plane}, using the equivalent bicycle model, can be expressed using the velocity equations from \cite{4ws_trajectory_planning}:
 
-\begin{align}
-	\dot X &= v_c \cdot \cos(\theta + \beta)
+\begin{gather}
+	\dot X = v_c \cdot \cos(\theta + \beta)
 	\label{eq:x_dot}\\
-	\dot Y &= v_c \cdot \sin(\theta + \beta)
+	\dot Y = v_c \cdot \sin(\theta + \beta)
 	\label{eq:y_dot}\\
-	\dot \Theta &= \omega_c = \frac{v_c \cdot \cos{\beta} \cdot (\tan{\delta_f - \tan{\delta_r}})}{l}
+	\dot \Theta = \omega_c = \frac{v_c \cdot \cos{\beta} \cdot (\tan{\delta_f - \tan{\delta_r}})}{l}
 	\label{eq:th_dot}
-\end{align}
+\end{gather}
 
 \noindent
-where $\beta$ is the sideslip angle of the robot and $\upsilon_c$ is the resultant speed of the robot and are expressed by
-\begin{align}
+where $\upsilon_c$ is the resultant speed of the robot and $\beta$ is the sideslip angle and are expressed by
+\begin{gather}
 	v_c = \frac{v_f \cdot \cos{\delta_f} + v_r \cos{\delta_r}}{2 \cdot \cos{\beta}}
 	\label{eq:v_c_f_r}\\[0.1cm]
 	\beta = \arctan{\frac{l_r \cdot \tan{\delta_f} + l_f \cdot \tan{\delta_r}}{l}}
 	\label{eq:beta}
-\end{align}
+\end{gather}
 
 \bigskip
 \section{Autonomous Navigation in Unknown Environments} \label{sec:autonav}
@@ -181,30 +181,20 @@ Component responsible for the exploration and autonomous navigation of the robot
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{Figures/move_base_3.png}%
+	\includegraphics[width=\linewidth]{Figures/move_base_3.png}%
 	\caption{The ROS move\_base node with the global\_planner and\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; rsband\_local\_planner plugins.}
 	\label{fig:move_base}
 \end{figure}
 
 \subsection{Reeds-Shepp Band}
-The Reeds-Shepp Band algorithm is an approximation of the Nonholonomic Bubble Band algorithm by Khatib et al. \cite{dpm}, which is used for dynamic modification of a global path, in order to achieve dynamic collision avoidance, while at the same time transforming the path into a kinematically feasible one for car-like robots.
+The proposed Reeds-Shepp Band algorithm is an approximation of the Nonholonomic Bubble Band algorithm by Khatib et al. \cite{dpm}, which is used for dynamic modification of a global path, in order to achieve dynamic collision avoidance, while at the same time transforming the path into a kinematically feasible one for car-like robots.
 
 The Bubble Band algorithm uses bubbles, which represent the locally reachable space around a given configuration, while considering the obstacles around it via an appropriate distance metric. A nonholonomic bubble is a bubble produced using the shortest nonholonomic distance \cite{rs_metric} or the shortest collision causing Reeds-Shepp Path around a configuration, where Reeds-Shepp paths are defined in \cite{reeds_shepp} as the optimal paths for a car that goes both forwards and backwards. The Bubble Band is produced by generating nonholonomic bubbles across the given global path and dynamically applying to them artificial internal forces that tend to straighten the path and external forces that tend to move the path away from obstacles.
 
-The Reeds-Shepp Band algorithm approximates the Nonholonomic Bubble Band algorithm, by using the computationally more efficient euclidean distance metric, resulting in a holonomic elastic band. The elastic band \cite{eband} algorithm dynamically deforms the global path (Fig. \ref{fig:global_path}) in a collision free path, which, however, is not kinematically feasible. Therefore, in the next stage, the elastic band path (Fig. \ref{fig:eband_path}) is interpolated using collision-free Reeds-Shepp paths, resulting in a both collision-free and kinematically feasible local path (Fig. \ref{fig:rsband_path}) that the robot can follow, using the fuzzy path tracking controller presented in the following subsection.
-
-\begin{figure}[!ht]
-	\centering
-	\subfloat[]{\frame{\includegraphics[width=0.32\linewidth]{Figures/rsband_global_2.png}}\label{fig:global_path}}%
-	\hspace{0.05cm}
-	\subfloat[]{\frame{\includegraphics[width=0.32\linewidth]{Figures/rsband_eband_2.png}}\label{fig:eband_path}}%
-	\hspace{0.05cm}
-	\subfloat[]{\frame{\includegraphics[width=0.32\linewidth]{Figures/rsband_rsband_2.png}}\label{fig:rsband_path}}%
-	\caption{(a) A Global Path (A*) and the resulting (b) Elastic Band and (c) Reeds-Shepp Band.}
-\end{figure}
+The Reeds-Shepp Band algorithm is comparable to the Nonholonomic Bubble Band algorithm of Khatib et al. \cite{dpm}, but uses the computationally more efficient euclidean distance metric, resulting in a holonomic elastic band \cite{eband} algorithm that dynamically deforms a static global path to a collision free local path, which, however, is not kinematically feasible. Therefore, the deformation is followed by an interpolation using collision-free Reeds-Shepp paths, resulting in a both collision-free and kinematically feasible local path that the robot can follow using the fuzzy path tracking controller presented in the following subsection.
 
 \subsection{Fuzzy Path Tracking Controller}
-In order to track/follow the Reeds-Shepp Band path, the information about the path and the robot pose must be fed to a controller in order to produce suitable velocity commands. This role is fullfilled by a path tracking controller (PTC), shown in Fig. \ref{fig:ptc_and_errors}, which is based on fuzzy logic and was developed with the goal to utilize both the counter steering and the crab steering capabilities of the robot.
+In order to track/follow the Reeds-Shepp Band path, the information about the path and the robot pose must be fed to a controller in order to produce suitable velocity commands. This role is fulfilled by a fuzzy-logic-based path tracking controller, shown in Fig. \ref{fig:ptc_and_errors} and which was developed with the goal to utilize both the counter steering and the crab steering capabilities of the robot.
 
 \begin{figure}[!ht]
 	\centering
@@ -214,8 +204,6 @@ In order to track/follow the Reeds-Shepp Band path, the information about the pa
 	\caption{(a) The deviation errors between robot pose and goal pose and (b) the fuzzy path tracking controller.}
 	\label{fig:ptc_and_errors}
 \end{figure}
-
-As shown in Fig. \ref{fig:ptc_and_errors}, the PTC considers four error variables and in particular the orientation error $E_o$, the angular deviation error $E_\alpha$, the position error $E_p$ and the lateral deviation error $E_y$, as well as the direction of motion defined as forwards for $|E_\alpha| \leq 120^\circ$ and backwards for $|E_\alpha| > 120^\circ$, whose membership functions are presented in Fig. \ref{fig:input_mfs}. The path tracking controller, similarly to the controller presented in \cite{reactive_fuzzy_ptc}, consists of three individual fuzzy logic controllers (FLCs), responsible for the control of the speed $v$, the front steering angle $\delta_f$ and the rear steering deviation angle $\alpha_r$, the membership functions of which are shown in Fig. \ref{fig:output_mfs}.
 
 \begin{figure}[!ht]
 	\centering
@@ -238,13 +226,16 @@ As shown in Fig. \ref{fig:ptc_and_errors}, the PTC considers four error variable
 	\label{fig:output_mfs}
 \end{figure}
 
-The rule set of the FLCs (Table \ref{tab:fuzzy_rules}) was designed, such that the robot performs position correction when it is far from the goal and orientation correction when it is close to the goal so that it reaches the final goal pose, similarly to the approach in \cite{flc_thesis}. In addition, using the rear steering deviation controller, the robot uses counter steering when the position and angular deviation errors are big and crab steering in order to correct slight lateral deviations without any significant increase in the orientation error.
+
+As shown in Fig. \ref{fig:ptc_and_errors}, the controller considers four error variables and in particular the orientation error $E_o$, the angular deviation error $E_\alpha$, the position error $E_p$ and the lateral deviation error $E_y$, as well as the direction of motion defined as forwards for $|E_\alpha| \leq 120^\circ$ and backwards for $|E_\alpha| > 120^\circ$, whose membership functions are presented in Fig. \ref{fig:input_mfs}. The path tracking controller, similarly to the controller presented in \cite{reactive_fuzzy_ptc}, consists of three individual fuzzy logic controllers (FLCs), responsible for the control of the speed $v$, the front steering angle $\delta_f$ and the rear steering deviation angle $\alpha_r$, the membership functions of which are shown in Fig. \ref{fig:output_mfs}.
+
+The rule set of the FLCs (Table \ref{tab:fuzzy_rules}) was designed such that the robot performs position correction when it is far from the goal and orientation correction when it is close to the goal so that it reaches the final goal pose similarly to the approach in \cite{flc_thesis}. In addition, using the rear steering deviation controller, the robot uses counter steering when the position and angular deviation errors are big and crab steering in order to correct slight lateral deviations without significant increase in the orientation error.
 
 \begin{table}[!ht]
   \centering
   \caption{Fuzzy Path Tracking Controller Rule Set}
   \label{tab:fuzzy_rules}
-  \resizebox{0.9\columnwidth}{!}{%
+  \resizebox{0.88\columnwidth}{!}{%
   \begin{tabular}{| c | l |}
     \hline
     \rotatebox[origin=c]{90}{\;\textbf{Speed}\;} &
@@ -313,13 +304,13 @@ The rule set of the FLCs (Table \ref{tab:fuzzy_rules}) was designed, such that t
 
 
 \section{Experimental Results} \label{sec:results}
-This section presents a series of experiments conducted in order to demonstrate the behavior of the autonomous navigation and exploration of the developed robotic platform.
+This section presents a series of experiments that demonstrate the behaviour of the autonomous navigation and exploration capabilities of the developed robotic platform.
 
 The path tracking experiments presented in Fig. \ref{fig:ptc_exp1}-\ref{fig:ptc_exp2} were conducted in the Gazebo 3D simulator, with a view to demonstrate the operation of the fuzzy path tracking controller. For this experiment, a feasible static global path was constructed, which the robot managed to track successfully in both cases by using both counter and crab steering in order to offset angular and distance errors so as to follow the path as close as possible.
 
 \begin{figure}[!ht]
   \centering
-  \subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=\linewidth]{Figures/zic_zac_room.png}}\\%
+  \subfloat[The SLAM map, global path (green) and trajectory (red))]{\includegraphics[width=0.8\linewidth]{Figures/zic_zac_room.png}}\\%
   \subfloat[Front and rear steering angles $\delta_f (blue), \delta_r (red)$]{\includegraphics[width=\linewidth]{Figures/fsa_rsa_1.png}}%
   \caption{Path tracking experiment in Gazebo.}
   \label{fig:ptc_exp1}
@@ -333,7 +324,18 @@ The path tracking experiments presented in Fig. \ref{fig:ptc_exp1}-\ref{fig:ptc_
   \label{fig:ptc_exp2}
 \end{figure}
 
-The experiments presented in Fig. \ref{fig:rsband_exp} were conducted in the STDR 2D simulator and demonstrate the global path that the robot produced and the trajectory that it followed in order to reach three arbitrarily selected goal poses.
+The experiments presented in Fig. \ref{fig:rsband_path}- \ref{fig:rsband_exp} were conducted in the STDR 2D simulator and demonstrate the planning stages of the proposed autonomous navigation system, as well as its successful application for three distinct goal poses.
+
+\begin{figure}[!ht]
+	\centering
+	\subfloat[Global Plan]{\frame{\includegraphics[width=0.32\linewidth]{Figures/rsband_global_2.png}}}%
+	\hspace{0.05cm}
+	\subfloat[Elastic Band]{\frame{\includegraphics[width=0.32\linewidth]{Figures/rsband_eband_2.png}}}%
+	\hspace{0.05cm}
+	\subfloat[Reeds-Shepp Band]{\frame{\includegraphics[width=0.32\linewidth]{Figures/rsband_rsband_2.png}}}%
+	\caption{Demonstration of the planning stages of the proposed 4-Tier autonomous navigation system.}
+  \label{fig:rsband_path}
+\end{figure}
 
 \begin{figure}[!ht]
   \centering
@@ -342,7 +344,7 @@ The experiments presented in Fig. \ref{fig:rsband_exp} were conducted in the STD
   \subfloat[$p_2$]{\includegraphics[width=0.33\linewidth]{Figures/p3.png}}%
   %	\hspace{0.03\linewidth}
   \subfloat[$p_3$]{\includegraphics[width=0.33\linewidth]{Figures/p4.png}}%
-  \caption{Autonomous navigation experiments using the proposed 4-Tier navigation system for three random goal poses in the map sparse\_obstacles of the STDR simulator. The green line denotes the global path and the red line, the trajectory of the robot.}
+  \caption{Autonomous navigation experiments using the proposed 4-Tier autonomous navigation system for three distinct goal poses in the map sparse\_obstacles of the STDR simulator. The green line denotes the global path and the red line, the trajectory of the robot.}
   \label{fig:rsband_exp}
 \end{figure}
 
@@ -350,22 +352,22 @@ Finally, an autonomous exploration experiment with the actual PANDORA Monstertru
 
 \begin{figure}[!ht]
   \centering
-  \frame{\includegraphics[width=0.94\linewidth]{Figures/exploration_exp.png}}%
+  \frame{\includegraphics[width=\linewidth]{Figures/exploration_exp.png}}%
   \caption{Autonomous exploration experiment of PANDORA Monstertruck in CSAL. The map was constructed using the CRSM SLAM algorithm and the executed trajectory is denoted by the red continuous line.}
   \label{fig:exploration_exp}
 \end{figure}
 
 
 \section{Conclusions} \label{sec:conclusions}
-%In this paper, the software and hardware architecture for a 4WS4WD mobile robot was presented capable of successfully exploring unknown environments by utilizing SLAM, exploration and navigation algorithms with focus on the prosposed 4-Tier Navigation architecture containing a Dijkstra/A* global path planning, Elastic Band dynamic path modification, with Reeds-Shepp interpolation (Reeds-Shepp Band) and complemented with a fuzzy path tracking controller.
+%OLD: In this paper, the software and hardware architecture for a 4WS4WD mobile robot was presented capable of successfully exploring unknown environments by utilizing SLAM, exploration and navigation algorithms with focus on the prosposed 4-Tier Navigation architecture containing a Dijkstra/A* global path planning, Elastic Band dynamic path modification, with Reeds-Shepp interpolation (Reeds-Shepp Band) and complemented with a fuzzy path tracking controller.
 
-In this paper, a 4WS4WD mobile robot was presented with regards to both its hardware and algorithmic architecture, which enable it to autonomously explore unknown environments. As demonstrated in the experimental results, the robot uses the proposed 4-Tier navigation system architecture to plan a holonomic global path, deform it dynamically so that it can be collision free and kinematically feasible and finally track it robustly using both counter and crab steering.
+In this paper, an autonomous 4WS4WD car-like robot was presented with regards to both its hardware and software architecture. As demonstrated in the experimental results, autonomous navigation is accomplished using the proposed 4-Tier autonomous navigation system that plans a holonomic global path, deforms it dynamically using the proposed Reeds-Shepp Band algorithm so that it can be collision free and kinematically feasible and finally tracks it robustly using the proposed fuzzy path tracking controller utilizing both counter and crab steering. It was also demonstrated that the robot can autonomously explore and map a previously unknown environment by employing the proposed software architecture.
 
 Further work could be done to improve the robustness, stability and safety of the navigation system by using a more deterministic Reeds-Shepp planner and by adding collision detection capabilities in the path tracking controller. In addition, through the employment of additional sensors and perception algorithms, the capabilities of the robot could be significantly increased regarding localization, mapping, rough terrain traversal and point of interest search.
 
 % use section* for acknowledgment
 \section*{Acknowledgment}
-The authors would like to thank P.A.N.D.O.R.A. Robotics Team for the equipment, source code and know-how provided for the development of the PANDORA Monstertruck robotic platform.
+The authors would like to thank PANDORA Robotics of the Aristotle University of Thessaloniki for the equipment, source code and know-how provided for the development of the PANDORA Monstertruck robotic platform.
 
 
 \bibliographystyle{IEEEtran}
